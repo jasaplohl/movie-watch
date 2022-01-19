@@ -1,4 +1,6 @@
 <div>
   <h1>Hello world</h1>
-  <p>Font size test</p>
+  <p
+    (click)="onClickTest($event)"
+    *ngFor="let genre of genres">{{ genre.name }}</p>
 </div>
