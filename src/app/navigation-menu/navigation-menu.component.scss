@@ -1,0 +1,25 @@
+@import "../../variables.scss";
+
+.nav-menu {
+  padding: $padding;
+
+  &--title {
+    font-size: $font-size-lg;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  &--item {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+      margin: 0;
+      padding: 0.3rem;
+    }
+  }
+}

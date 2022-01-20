@@ -1,6 +1,7 @@
 <div>
-  <h1>Hello world</h1>
-  <p
-    (click)="onClickTest($event)"
-    *ngFor="let genre of genres">{{ genre.name }}</p>
+  <app-header></app-header>
+  <div class="display-flex">
+    <app-navigation-menu></app-navigation-menu>
+    <app-main-page></app-main-page>
+  </div>
 </div>

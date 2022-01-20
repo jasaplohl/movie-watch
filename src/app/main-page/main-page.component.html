@@ -1,0 +1,7 @@
+<div class="main-page">
+  <div
+    *ngFor="let movie of movies">
+    <img [src]="getMovieImageUrl(movie)"/>
+    <p>{{movie.title}}</p>
+  </div>
+</div>

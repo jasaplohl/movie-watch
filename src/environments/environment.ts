@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   API_URL: "https://api.themoviedb.org/3",
-  API_KEY: "9ffe7ff87b4d884b1172d88fd86fd167"
+  API_KEY: "9ffe7ff87b4d884b1172d88fd86fd167",
+  IMG_URL: "https://image.tmdb.org/t/p",
+  IMG_SIZE: "w200"
 };
 
 /*

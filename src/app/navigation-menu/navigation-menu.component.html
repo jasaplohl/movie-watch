@@ -1,0 +1,12 @@
+<div class="nav-menu">
+  <p class="nav-menu--title">Genres</p>
+  <ul>
+    <li
+      [id]="genre.id"
+      class="nav-menu--item"
+      (click)="onClickTest(genre)"
+      *ngFor="let genre of genres">
+        <p>{{genre.name}}</p>
+    </li>
+  </ul>
+</div>
