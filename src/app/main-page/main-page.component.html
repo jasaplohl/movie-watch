@@ -1,7 +1,38 @@
 <div class="main-page">
-  <div
-    *ngFor="let movie of movies">
-    <img [src]="getMovieImageUrl(movie)"/>
-    <p>{{movie.title}}</p>
+  <div>
+    <h1>Upcomming</h1>
+    <div class="display-flex movie-carousel">
+      <app-movie-card
+        *ngFor="let movie of upcomingMovies"
+        [movie]="movie">
+      </app-movie-card>
+    </div>
+  </div>
+  <div>
+    <h1>Now Playing</h1>
+    <div class="display-flex movie-carousel">
+      <app-movie-card
+        *ngFor="let movie of nowPlayingMovies"
+        [movie]="movie">
+      </app-movie-card>
+    </div>
+  </div>
+  <div>
+    <h1>Popular</h1>
+    <div class="display-flex movie-carousel">
+      <app-movie-card
+        *ngFor="let movie of popularMovies"
+        [movie]="movie">
+      </app-movie-card>
+    </div>
+  </div>
+  <div>
+    <h1>Top rated</h1>
+    <div class="display-flex movie-carousel">
+      <app-movie-card
+        *ngFor="let movie of topRatedMovies"
+        [movie]="movie">
+      </app-movie-card>
+    </div>
   </div>
 </div>

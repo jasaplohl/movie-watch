@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { ImageService } from '../image.service';
 
 @Component({
   selector: 'app-main-page',
@@ -8,9 +9,13 @@ import { environment } from 'src/environments/environment';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: ImageService) { }
 
-  movies: any;
+  movies: any
+  upcomingMovies: any;
+  nowPlayingMovies: any;
+  popularMovies: any;
+  topRatedMovies: any;
 
   fetchMoviesByGenre(genreId: Number): void {
     const urlParams = new URLSearchParams({
@@ -30,13 +35,80 @@ export class MainPageComponent implements OnInit {
       });
   }
 
-  getMovieImageUrl(movie: any): String {
-    const url = environment.IMG_URL + "/" + environment.IMG_SIZE + "/" + movie.poster_path;
-    return url;
+  fetchUpcommingMovies() {
+    const urlParams = new URLSearchParams({
+      api_key: environment.API_KEY
+    });
+    const url = environment.API_URL + "/movie/upcoming?" + urlParams;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        this.upcomingMovies = response.results;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  fetchLatestMovies() {
+    const urlParams = new URLSearchParams({
+      api_key: environment.API_KEY
+    });
+    const url = environment.API_URL + "/movie/now_playing?" + urlParams;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        this.nowPlayingMovies = response.results;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  fetchPopularMovies() {
+    const urlParams = new URLSearchParams({
+      api_key: environment.API_KEY
+    });
+    const url = environment.API_URL + "/movie/popular?" + urlParams;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        this.popularMovies = response.results;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  fetchTopRatedMovies() {
+    const urlParams = new URLSearchParams({
+      api_key: environment.API_KEY
+    });
+    const url = environment.API_URL + "/movie/top_rated?" + urlParams;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        this.topRatedMovies = response.results;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   ngOnInit(): void {
-    this.fetchMoviesByGenre(878);
+    // this.fetchMoviesByGenre(878);
+    this.fetchUpcommingMovies();
+    this.fetchLatestMovies();
+    this.fetchPopularMovies();
+    this.fetchTopRatedMovies();
   }
 
 }

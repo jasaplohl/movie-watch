@@ -3,3 +3,8 @@
 .main-page {
   padding: $padding;
 }
+
+.movie-carousel {
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
