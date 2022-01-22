@@ -1,7 +1,6 @@
-app-navigation-menu {
-  width: 10%;
-}
+@import "../variables.scss";
 
-.page-content {
-  width: 90%
+.app-container {
+  width: 100%;
+  height: 100%;
 }

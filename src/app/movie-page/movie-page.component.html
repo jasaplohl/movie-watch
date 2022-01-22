@@ -1,10 +1,17 @@
 <div>
-  <h1>{{movie.title}}</h1>
-  <img />
-  <div>
-    <p>{{movie.vote_average}} ({{movie.vote_count}})</p>
-    <p>{{movie.release_date | date}}</p>
-    <p>{{movie.tagline}}</p>
-    <p>{{movie.overview}}</p>
+  <div *ngIf="movie; else movie_not_found">
+    <h1>{{movie.title}}</h1>
+    <img />
+    <div>
+      <p>{{movie.vote_average}} ({{movie.vote_count}})</p>
+      <p>{{movie.release_date | date}}</p>
+      <p>{{movie.tagline}}</p>
+      <p>{{movie.overview}}</p>
+    </div>
   </div>
+  <ng-template #movie_not_found>
+    <div class="display-flex display-flex--justify-center display-flex--align-center">
+      <p>{{error_message}}</p>
+    </div>
+  </ng-template>
 </div>

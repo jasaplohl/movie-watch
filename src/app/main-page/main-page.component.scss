@@ -1,7 +1,12 @@
 @import "../../variables.scss";
 
 .main-page {
-  padding: $padding;
+  padding-inline: $padding;
+
+  h1 {
+    color: $color-secondary;
+    margin: 1rem;
+  }
 }
 
 .movie-carousel {

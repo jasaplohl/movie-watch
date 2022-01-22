@@ -4,12 +4,22 @@
 app-root {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: $font-size-md;
+  color: $color-font;
 }
 
 body {
   margin: 0;
+  background-color: $color-primary;
 }
 
 .display-flex {
   display: flex;
+
+  &--justify-center {
+    justify-content: center;
+  }
+
+  &--align-center {
+    align-items: center;
+  }
 }

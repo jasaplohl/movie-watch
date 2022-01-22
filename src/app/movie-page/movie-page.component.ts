@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 export class MoviePageComponent implements OnInit {
 
   movie: any;
+  error_message!: String;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -28,7 +29,11 @@ export class MoviePageComponent implements OnInit {
       .then(response => response.json())
       .then(response => {
         console.log(response);
-        this.movie = response;
+        if(response.status_message) {
+          this.error_message = response.status_message;
+        } else {
+          this.movie = response;
+        }
       })
       .catch(error => {
         console.log(error);
