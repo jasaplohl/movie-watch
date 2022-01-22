@@ -1,5 +1,10 @@
-<div class="nav-menu">
+<div class="nav-menu" [ngStyle]="{'width': (menuOpen) ? '100%' : '0%'}">
   <div class="nav-menu--content">
+    <div class="d-flex justify-content-end">
+      <p (click)="closeMenu()" class="nav-menu--close-btn">
+        <fa-icon [icon]="faTimesIcon"></fa-icon>
+      </p>
+    </div>
     <p class="nav-menu--title">Genres</p>
     <ul>
       <li

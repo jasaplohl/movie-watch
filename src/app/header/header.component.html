@@ -1,5 +1,19 @@
-<div class="display-flex header">
-  <a 
-    href="/"
-    class="header--title">MovieWatch</a>
+<div>
+  <div class="header d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      <p (click)="openMenu()" class="header--menu-btn">
+        <fa-icon [icon]="faBarsIcon"></fa-icon> 
+      </p>
+    </div>
+    <div>
+      <a href="/" class="header--title">MovieWatch</a>
+    </div>
+    <div class="d-flex">
+      <input type="text" class="form-control" placeholder="Search"/>
+      <button type="submit" class="btn btn-secondary">Search</button>
+    </div>
+  </div>
+  <app-navigation-menu
+    (onMenuClose)="openMenu()"
+    [menuOpen]="menuOpen"></app-navigation-menu>
 </div>

@@ -11,11 +11,9 @@ import { Router } from '@angular/router';
 export class MovieCardComponent implements OnInit {
   @Input() declare movie: any;
 
-  faStarIcon: any;
+  faStarIcon = faStar;
 
-  constructor(public service: ImageService, private router: Router) {
-    this.faStarIcon = faStar;
-  }
+  constructor(public service: ImageService, private router: Router) {}
 
   onMovieCardClick() {
     this.router.navigate(["/movie", { id: this.movie.id }]);

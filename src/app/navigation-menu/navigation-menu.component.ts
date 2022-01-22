@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navigation-menu',
@@ -7,7 +8,10 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./navigation-menu.component.scss']
 })
 export class NavigationMenuComponent {
+  @Input() declare menuOpen: boolean;
+  @Output() onMenuClose = new EventEmitter<void>();
 
+  faTimesIcon = faTimes;
   genres: { "id": Number, "name": String }[];
 
   fetchAvailableGenres() {
@@ -29,6 +33,10 @@ export class NavigationMenuComponent {
 
   onClickTest(genre: any) {
     console.log(genre);
+  }
+
+  closeMenu() {
+    this.onMenuClose.emit();
   }
 
   constructor() {

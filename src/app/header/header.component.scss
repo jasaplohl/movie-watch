@@ -4,6 +4,15 @@
   background-color: $color-primary-dark;
   padding: $padding;
 
+  &--menu-btn {
+    margin: 0;
+    font-size: 1.5rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   &--title {
     color: $color-secondary;
     font-weight: 600;
