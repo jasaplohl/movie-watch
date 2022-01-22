@@ -1,0 +1,8 @@
+<div class="genre-page">
+  <h1 class="genre-page--title">{{genreName}}</h1>
+  <ul class="genre-page--list">
+    <app-movie-card
+      *ngFor="let movie of movies"
+      [movie]="movie"></app-movie-card>
+  </ul>
+</div>

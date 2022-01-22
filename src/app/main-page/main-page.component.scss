@@ -7,6 +7,9 @@
 .genre-list {
   padding-inline: 1rem;
   background-color: $color-secondary;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
 
   &--item {
     float: left;

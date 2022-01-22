@@ -2,9 +2,11 @@
   class="movie-card"
   (click)="onMovieCardClick()">
   <img [src]="service.getMovieImageUrl(movie)"/>
-  <p class="movie-card--rating">
-    <fa-icon [icon]="faStarIcon"></fa-icon> 
-      {{movie.vote_average}}
-  </p>
-  <p class="movie-card--title">{{movie.title}}</p>
+  <div class="movie-card--info">
+    <p class="movie-card--rating">
+      <fa-icon [icon]="faStarIcon"></fa-icon> 
+        {{movie.vote_average}}
+    </p>
+    <p class="movie-card--title">{{movie.title}}</p>
+  </div>
 </li>

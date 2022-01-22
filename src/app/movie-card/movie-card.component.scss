@@ -21,6 +21,10 @@
     margin-top: 0.5rem;
   }
 
+  &--info {
+    width: 200px;
+  }
+
   &:hover {
     color: rgba($color-font, 0.5);
   }

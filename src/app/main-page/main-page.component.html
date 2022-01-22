@@ -1,23 +1,13 @@
 <div>
-  <ul class="genre-list d-flex justify-content-between">
+  <ul class="genre-list">
     <li
       class="genre-list--item" 
-      *ngFor="let genre of genres">
+      *ngFor="let genre of genres"
+      (click)="onGenreClick(genre)">
       <p>{{genre.name}}</p>
     </li>
   </ul>
   <div class="main-page">
-    <app-movie-carousel
-      title="Upcoming"
-      [movies]="upcomingMovies"></app-movie-carousel>
-    <app-movie-carousel
-      title="Now Playing"
-      [movies]="nowPlayingMovies"></app-movie-carousel>
-    <app-movie-carousel
-      title="Popular"
-      [movies]="popularMovies"></app-movie-carousel>
-    <app-movie-carousel
-      title="Top rated"
-      [movies]="topRatedMovies"></app-movie-carousel>
+    <router-outlet></router-outlet>
   </div>
 </div>
