@@ -11,6 +11,7 @@ export class MainPageComponent implements OnInit {
 
   constructor(public service: ImageService) { }
 
+  genres: any;
   movies: any
   upcomingMovies: any;
   nowPlayingMovies: any;
@@ -29,6 +30,23 @@ export class MainPageComponent implements OnInit {
       .then(response => {
         console.log(response);
         this.movies = response.results;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  fetchAvailableGenres() {
+    const urlParams = new URLSearchParams({
+      api_key: environment.API_KEY
+    });
+    const url = environment.API_URL + "/genre/movie/list?" + urlParams;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        this.genres = response.genres;
       })
       .catch(error => {
         console.log(error);
@@ -105,6 +123,7 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
     // this.fetchMoviesByGenre(878);
+    this.fetchAvailableGenres();
     this.fetchUpcommingMovies();
     this.fetchLatestMovies();
     this.fetchPopularMovies();

@@ -12,3 +12,29 @@
 .movie-carousel {
   overflow-x: scroll;
 }
+
+.genre-list {
+  padding-inline: 1rem;
+  background-color: $color-secondary;
+
+  &--item {
+    float: left;
+    list-style: none;
+    white-space: nowrap;
+
+    &:hover {
+      cursor: pointer;
+      p {
+        color: $color-font;
+      }
+    }
+  
+    p {
+      margin: 0;
+      padding: 0.3rem;
+      color: $color-primary;
+      font-weight: 500;
+      transition: 0.5s;
+    }
+  }
+}

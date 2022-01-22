@@ -8,11 +8,16 @@
     <p class="nav-menu--title">Genres</p>
     <ul>
       <li
-        [id]="genre.id"
-        class="nav-menu--item"
-        (click)="onClickTest(genre)"
-        *ngFor="let genre of genres">
-          <p>{{genre.name}}</p>
+        class="nav-menu--item">
+          <p>Movies</p>
+      </li>
+      <li
+        class="nav-menu--item">
+          <p>TV Shows</p>
+      </li>
+      <li
+        class="nav-menu--item">
+          <p>Actors</p>
       </li>
     </ul>
   </div>

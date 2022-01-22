@@ -12,24 +12,6 @@ export class NavigationMenuComponent {
   @Output() onMenuClose = new EventEmitter<void>();
 
   faTimesIcon = faTimes;
-  genres: { "id": Number, "name": String }[];
-
-  fetchAvailableGenres() {
-    const urlParams = new URLSearchParams({
-      api_key: environment.API_KEY
-    });
-    const url = environment.API_URL + "/genre/movie/list?" + urlParams;
-
-    fetch(url)
-      .then(response => response.json())
-      .then(response => {
-        console.log(response);
-        this.genres = response.genres;
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
 
   onClickTest(genre: any) {
     console.log(genre);
@@ -39,9 +21,6 @@ export class NavigationMenuComponent {
     this.onMenuClose.emit();
   }
 
-  constructor() {
-    this.genres = [];
-    this.fetchAvailableGenres();
-  }
+  constructor() {}
 
 }
