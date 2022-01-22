@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { ImageService } from './image.service';
 import { MoviePageComponent } from './movie-page/movie-page.component';
+import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
 
 const appRoutes: Routes = [
   { path: "", component: MainPageComponent },
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     MainPageComponent,
     HeaderComponent,
     MovieCardComponent,
-    MoviePageComponent
+    MoviePageComponent,
+    MovieCarouselComponent
   ],
   imports: [
     BrowserModule,
