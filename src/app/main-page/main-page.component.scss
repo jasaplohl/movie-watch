@@ -2,15 +2,6 @@
 
 .main-page {
   padding-inline: $padding;
-
-  h1 {
-    color: $color-secondary;
-    margin: 1rem;
-  }
-}
-
-.movie-carousel {
-  overflow-x: scroll;
 }
 
 .genre-list {
@@ -34,7 +25,7 @@
       padding: 0.3rem;
       color: $color-primary;
       font-weight: 500;
-      transition: 0.5s;
+      transition: $transition-time;
     }
   }
 }

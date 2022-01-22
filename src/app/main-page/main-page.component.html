@@ -7,41 +7,17 @@
     </li>
   </ul>
   <div class="main-page">
-    <div>
-      <h1>Upcomming</h1>
-      <div class="d-flex movie-carousel">
-        <app-movie-card
-          *ngFor="let movie of upcomingMovies"
-          [movie]="movie">
-        </app-movie-card>
-      </div>
-    </div>
-    <div>
-      <h1>Now Playing</h1>
-      <div class="d-flex movie-carousel">
-        <app-movie-card
-          *ngFor="let movie of nowPlayingMovies"
-          [movie]="movie">
-        </app-movie-card>
-      </div>
-    </div>
-    <div>
-      <h1>Popular</h1>
-      <div class="d-flex movie-carousel">
-        <app-movie-card
-          *ngFor="let movie of popularMovies"
-          [movie]="movie">
-        </app-movie-card>
-      </div>
-    </div>
-    <div>
-      <h1>Top rated</h1>
-      <div class="d-flex movie-carousel">
-        <app-movie-card
-          *ngFor="let movie of topRatedMovies"
-          [movie]="movie">
-        </app-movie-card>
-      </div>
-    </div>
+    <app-movie-carousel
+      title="Upcoming"
+      [movies]="upcomingMovies"></app-movie-carousel>
+    <app-movie-carousel
+      title="Now Playing"
+      [movies]="nowPlayingMovies"></app-movie-carousel>
+    <app-movie-carousel
+      title="Popular"
+      [movies]="popularMovies"></app-movie-carousel>
+    <app-movie-carousel
+      title="Top rated"
+      [movies]="topRatedMovies"></app-movie-carousel>
   </div>
 </div>

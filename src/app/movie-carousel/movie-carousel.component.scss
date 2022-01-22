@@ -1,0 +1,31 @@
+@import "../../variables.scss";
+
+h1 {
+  color: $color-secondary;
+  margin: 1rem;
+}
+
+.movie-carousel {
+  overflow-x: scroll;
+  padding-inline: 0;
+  margin-inline: 0.5rem;
+  scroll-behavior: smooth;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.scroll-btn {
+  border: none;
+  border-radius: 15%;
+  height: fit-content;
+  width: fit-content;
+  font-size: 1.5rem;
+  background-color: $color-secondary;
+  transition: $transition-time;
+
+  &:hover {
+    color: $color-font;
+  }
+}
