@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

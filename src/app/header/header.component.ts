@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
 
   menuOpen: boolean;
   faBarsIcon = faBars;
+  faSearchIcon = faSearch;
 
   constructor() {
     this.menuOpen = false;
