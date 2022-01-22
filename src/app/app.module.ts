@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -9,6 +10,12 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './header/header.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { ImageService } from './image.service';
+import { MoviePageComponent } from './movie-page/movie-page.component';
+
+const appRoutes: Routes = [
+  { path: "", component: MainPageComponent },
+  { path: "movie", component: MoviePageComponent }
+];
 
 @NgModule({
   declarations: [
@@ -16,11 +23,13 @@ import { ImageService } from './image.service';
     NavigationMenuComponent,
     MainPageComponent,
     HeaderComponent,
-    MovieCardComponent
+    MovieCardComponent,
+    MoviePageComponent
   ],
   imports: [
     BrowserModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [ImageService],
   bootstrap: [AppComponent]

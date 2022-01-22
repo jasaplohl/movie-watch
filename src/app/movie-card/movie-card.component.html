@@ -1,4 +1,6 @@
-<div class="movie-card">
+<div 
+  class="movie-card"
+  (click)="onMovieCardClick()">
   <img [src]="service.getMovieImageUrl(movie)"/>
   <p class="movie-card--rating">
     <fa-icon
