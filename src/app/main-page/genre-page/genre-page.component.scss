@@ -1,0 +1,14 @@
+@import "../../../variables.scss";
+
+.genre-page {
+
+  &--title {
+    color: $color-secondary;
+  }
+
+  &--list {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+  }
+}

@@ -12,9 +12,18 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { ImageService } from './image.service';
 import { MoviePageComponent } from './movie-page/movie-page.component';
 import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
+import { GenrePageComponent } from './main-page/genre-page/genre-page.component';
+import { GeneralPageComponent } from './main-page/general-page/general-page.component';
 
 const appRoutes: Routes = [
-  { path: "", component: MainPageComponent },
+  { 
+    path: "", 
+    component: MainPageComponent,
+    children: [
+      { path: "", component: GeneralPageComponent },
+      { path: "genre", component: GenrePageComponent }
+    ] 
+  },
   { path: "movie", component: MoviePageComponent }
 ];
 
@@ -26,7 +35,9 @@ const appRoutes: Routes = [
     HeaderComponent,
     MovieCardComponent,
     MoviePageComponent,
-    MovieCarouselComponent
+    MovieCarouselComponent,
+    GenrePageComponent,
+    GeneralPageComponent
   ],
   imports: [
     BrowserModule,
