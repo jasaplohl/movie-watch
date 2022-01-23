@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -15,6 +16,7 @@ import { MovieCarouselComponent } from './movie-carousel/movie-carousel.componen
 import { GenrePageComponent } from './main-page/genre-page/genre-page.component';
 import { GeneralPageComponent } from './main-page/general-page/general-page.component';
 import { FooterComponent } from './footer/footer.component';
+import { SafePipe } from './safe.pipe';
 
 const appRoutes: Routes = [
   { 
@@ -39,10 +41,12 @@ const appRoutes: Routes = [
     MovieCarouselComponent,
     GenrePageComponent,
     GeneralPageComponent,
-    FooterComponent
+    FooterComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     FontAwesomeModule,
     RouterModule.forRoot(appRoutes)
   ],

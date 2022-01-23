@@ -1,0 +1,9 @@
+@import "../../variables.scss";
+
+.movie-page {
+  padding: $padding;
+
+  &--title {
+    color: $color-secondary;
+  }
+}

@@ -8,9 +8,14 @@
     <div>
       <a href="/" class="header--title">MovieWatch</a>
     </div>
-    <form (submit)="onSearch()" class="d-flex">
-      <input type="text" class="form-control" placeholder="Search"/>
-      <button type="submit" class="btn btn-secondary">
+    <form (submit)="onSearch($event)" class="d-flex">
+      <input 
+        	type="text" 
+          name="search-term"
+          class="form-control" 
+          placeholder="Search" 
+          [(ngModel)]="searchTerm"/>
+      <button (click)="onSearch()" type="button" class="btn btn-secondary">
         <fa-icon [icon]="faSearchIcon"></fa-icon> 
       </button>
     </form>

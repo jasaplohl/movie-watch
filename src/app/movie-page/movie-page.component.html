@@ -1,12 +1,19 @@
-<div>
+<div class="movie-page">
   <div *ngIf="movie; else movie_not_found">
-    <h1>{{movie.title}}</h1>
+    <h1 class="movie-page--title">{{movie.title}}</h1>
     <img />
     <div>
-      <p>{{movie.vote_average}} ({{movie.vote_count}})</p>
+      <p>{{movie.vote_average}}/10 ({{movie.vote_count}})</p>
       <p>{{movie.release_date | date}}</p>
+      <p>{{movie.original_language |uppercase}}</p>
       <p>{{movie.tagline}}</p>
       <p>{{movie.overview}}</p>
+      <div>
+        <h2>Videos</h2>
+        <iframe 
+          *ngFor="let video of movie.videos.results"
+          [src]="getVideoURL(video) | safe"></iframe>
+      </div>
     </div>
   </div>
   <ng-template #movie_not_found>

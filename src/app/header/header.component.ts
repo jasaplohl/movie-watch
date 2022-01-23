@@ -8,12 +8,14 @@ import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
 
+  searchTerm: String;
   menuOpen: boolean;
   faBarsIcon = faBars;
   faSearchIcon = faSearch;
 
   constructor() {
     this.menuOpen = false;
+    this.searchTerm = "";
   }
 
   ngOnInit(): void {
@@ -23,8 +25,9 @@ export class HeaderComponent implements OnInit {
     this.menuOpen = !this.menuOpen;
   }
 
-  onSearch() {
-    
+  onSearch(event?: any) {
+    if(event) event.preventDefault();
+    console.log(this.searchTerm);
   }
 
 }

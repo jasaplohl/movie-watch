@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { ImageService } from '../image.service';
 
 @Component({
   selector: 'app-movie-page',
@@ -12,7 +13,7 @@ export class MoviePageComponent implements OnInit {
   movie: any;
   error_message!: String;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(public service: ImageService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const movieId = this.route.snapshot.paramMap.get("id") ? Number(this.route.snapshot.paramMap.get("id")) : -1;
@@ -21,7 +22,8 @@ export class MoviePageComponent implements OnInit {
 
   getMovieById(movieId: Number) {
     const urlParams = new URLSearchParams({
-      api_key: environment.API_KEY
+      api_key: environment.API_KEY,
+      append_to_response: "videos,images,credits,keywords"
     });
     const url = environment.API_URL + "/movie/" + movieId + "?" + urlParams;
 
@@ -38,6 +40,23 @@ export class MoviePageComponent implements OnInit {
       .catch(error => {
         console.log(error);
       });
+  }
+
+  getVideoURL(video: any) {
+    const url = `https://www.youtube.com/embed/${video.key}`;
+    return url;
+  }
+
+  getRecommendedMovies() {
+
+  }
+
+  getSimilarMovies() {
+
+  }
+
+  getMovieReviews() {
+
   }
 
 }
