@@ -36,11 +36,10 @@ export class MainPageComponent implements OnInit {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         this.genres = response.genres;
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
   }
 

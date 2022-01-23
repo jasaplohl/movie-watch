@@ -31,11 +31,10 @@ export class GeneralPageComponent implements OnInit {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         this.upcomingMovies = response.results;
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
   }
 
@@ -48,11 +47,10 @@ export class GeneralPageComponent implements OnInit {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         this.nowPlayingMovies = response.results;
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
   }
 
@@ -65,11 +63,10 @@ export class GeneralPageComponent implements OnInit {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         this.popularMovies = response.results;
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
   }
 
@@ -82,11 +79,10 @@ export class GeneralPageComponent implements OnInit {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         this.topRatedMovies = response.results;
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
   }
 

@@ -33,7 +33,6 @@ export class GenrePageComponent implements OnInit {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         if(response.total_results == 0) {
           this.noResults = true;
         } else {
@@ -41,7 +40,7 @@ export class GenrePageComponent implements OnInit {
         }
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
   }
 

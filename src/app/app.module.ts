@@ -17,6 +17,10 @@ import { GenrePageComponent } from './main-page/genre-page/genre-page.component'
 import { GeneralPageComponent } from './main-page/general-page/general-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { SafePipe } from './safe.pipe';
+import { MoviePageRecommendedComponent } from './movie-page/movie-page-recommended/movie-page-recommended.component';
+import { MoviePageSimilarComponent } from './movie-page/movie-page-similar/movie-page-similar.component';
+import { MoviePageCastComponent } from './movie-page/movie-page-cast/movie-page-cast.component';
+import { MoviePageReviewsComponent } from './movie-page/movie-page-reviews/movie-page-reviews.component';
 
 const appRoutes: Routes = [
   { 
@@ -42,7 +46,11 @@ const appRoutes: Routes = [
     GenrePageComponent,
     GeneralPageComponent,
     FooterComponent,
-    SafePipe
+    SafePipe,
+    MoviePageRecommendedComponent,
+    MoviePageSimilarComponent,
+    MoviePageCastComponent,
+    MoviePageReviewsComponent
   ],
   imports: [
     BrowserModule,

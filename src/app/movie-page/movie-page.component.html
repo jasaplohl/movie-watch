@@ -1,18 +1,72 @@
-<div class="movie-page">
+<div class="movie-page app-container">
   <div *ngIf="movie; else movie_not_found">
     <h1 class="movie-page--title">{{movie.title}}</h1>
-    <img />
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex">
+        <p>{{movie.release_date | date}}</p>
+        <p class="ms-2">{{movie.original_language |uppercase}}</p>
+        <p class="ms-2">{{getMovieDuration()}}</p>
+      </div>
+      <p class="movie-page--rating">
+        <fa-icon [icon]="faStarIcon"></fa-icon> 
+        <span class="vote-avg">{{movie.vote_average}}</span>
+        <span class="vote-max">/10</span> 
+        ({{movie.vote_count}} votes)
+      </p>
+    </div>
     <div>
-      <p>{{movie.vote_average}}/10 ({{movie.vote_count}})</p>
-      <p>{{movie.release_date | date}}</p>
-      <p>{{movie.original_language |uppercase}}</p>
-      <p>{{movie.tagline}}</p>
-      <p>{{movie.overview}}</p>
-      <div>
-        <h2>Videos</h2>
-        <iframe 
-          *ngFor="let video of movie.videos.results"
-          [src]="getVideoURL(video) | safe"></iframe>
+      <ul class="movie-page--genres">
+        <li 
+          (click)="onGenreClick(genre)"
+          *ngFor="let genre of movie.genres"
+          class="movie-page--genre">
+          <p>{{genre.name}}</p>
+        </li>
+      </ul>
+    </div>
+    <div 
+      *ngIf="movie.videos.results.length > 0"
+      class="movie-page--trailer-container">
+      <iframe 
+        class="movie-page--trailer"
+        [src]="getTrailerURL() | safe"></iframe>
+    </div>
+    <div class="pt-4">
+      <div class="d-flex">
+        <div>
+          <p class="font-bold">{{movie.tagline}}</p>
+          <p>{{movie.overview}}</p>
+          <p><span class="font-bold font-secondary">Director:</span> {{getDirector()}}</p>
+          <p><span class="font-bold font-secondary">Writer:</span> {{getWriter()}}</p>
+          <p><span class="font-bold font-secondary">Actors:</span> {{getActors()}}</p>
+        </div>
+        <img [src]="service.getMovieBackdropPathUrl(movie)" />
+      </div>
+      <div class="pt-4">
+        <div class="d-flex justify-content-between">
+          <h3 
+            [ngClass]="{'selected': chosenSection === '' }"
+            class="movie-page--section-button" 
+            (click)="showSection('')">Recommended</h3>
+          <h3 
+            [ngClass]="{'selected': chosenSection === 'similar' }"
+            class="movie-page--section-button" 
+            (click)="showSection('similar')">Similar</h3> <!-- Display keywords under similar videos -->
+          <h3 
+            [ngClass]="{'selected': chosenSection === 'cast' }"
+            class="movie-page--section-button" 
+            (click)="showSection('cast')">Cast</h3>
+          <h3 
+            [ngClass]="{'selected': chosenSection === 'reviews' }"
+            class="movie-page--section-button" 
+            (click)="showSection('reviews')">Reviews</h3>
+        </div>
+        <div [ngSwitch]="chosenSection">
+          <app-movie-page-recommended *ngSwitchCase="''"></app-movie-page-recommended>
+          <app-movie-page-similar *ngSwitchCase="'similar'"></app-movie-page-similar>
+          <app-movie-page-cast *ngSwitchCase="'cast'"></app-movie-page-cast>
+          <app-movie-page-reviews *ngSwitchCase="'reviews'"></app-movie-page-reviews>
+        </div>
       </div>
     </div>
   </div>

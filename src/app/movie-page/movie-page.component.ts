@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ImageService } from '../image.service';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-movie-page',
@@ -12,12 +13,30 @@ export class MoviePageComponent implements OnInit {
 
   movie: any;
   error_message!: String;
+  faStarIcon = faStar;
+  chosenSection: String;
 
-  constructor(public service: ImageService, private route: ActivatedRoute) { }
+  constructor(public service: ImageService, private route: ActivatedRoute, private router: Router) {
+    this.chosenSection = "";
+  }
 
   ngOnInit(): void {
-    const movieId = this.route.snapshot.paramMap.get("id") ? Number(this.route.snapshot.paramMap.get("id")) : -1;
-    this.getMovieById(movieId);
+    this.route.params.subscribe(routeParams => {
+      const newMovieId = routeParams.id;
+      this.getMovieById(newMovieId);
+      window.scroll({
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth' 
+      });
+    });
+  }
+
+  onGenreClick(genre: any) {
+    this.router.navigate(["/genre", { 
+      id: genre.id,
+      name: genre.name
+    }]);
   }
 
   getMovieById(movieId: Number) {
@@ -35,28 +54,70 @@ export class MoviePageComponent implements OnInit {
           this.error_message = response.status_message;
         } else {
           this.movie = response;
+          this.showSection(this.chosenSection); //Update the data in the bottom section
         }
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
   }
 
-  getVideoURL(video: any) {
+  getVideoURL(video: any): string {
     const url = `https://www.youtube.com/embed/${video.key}`;
     return url;
   }
 
-  getRecommendedMovies() {
-
+  getTrailerURL(): string {
+    for(let video of this.movie.videos.results) {
+      if(video.type === "Trailer") {
+        return this.getVideoURL(video);
+      }
+    };
+    return this.getVideoURL(this.movie.videos.results[0]);
   }
 
-  getSimilarMovies() {
+  getMovieDuration() {
+    const hours = Math.floor(this.movie.runtime / 60);
+    const minutes = this.movie.runtime % 60;
 
+    const hoursStr = (hours > 0) ? hours + " h " : "";
+    return hoursStr + minutes + " min";
   }
 
-  getMovieReviews() {
+  getDirector() {
+    for(let person of this.movie.credits.crew) {
+      if(person.job === "Director") {
+        return person.name;
+      }
+    }
+    return "Unknown";
+  }
 
+  getWriter() {
+    for(let person of this.movie.credits.crew) {
+      if(person.job === "Writer") {
+        return person.name;
+      }
+    }
+    return "Unknown";
+  }
+
+  getActors() {
+    let i = 0;
+    let actors = "";
+    for(let person of this.movie.credits.cast) {
+      actors += person.name;
+      actors += person.character ? (" (" + person.character + "), ") : (", ");
+      i++;
+      if(i>=3) {
+        break;
+      }
+    }
+    return actors.substring(0, actors.length - 2);
+  }
+
+  showSection(path: String) {
+    this.chosenSection = path;
   }
 
 }
