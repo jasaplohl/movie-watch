@@ -5,6 +5,7 @@
       <div class="d-flex">
         <p>{{movie.release_date | date}}</p>
         <p class="ms-2">{{movie.original_language |uppercase}}</p>
+        <p class="ms-2">{{getMovieDuration()}}</p>
       </div>
       <p class="movie-page--rating">
         <fa-icon [icon]="faStarIcon"></fa-icon> 
@@ -33,17 +34,20 @@
     <div class="pt-4">
       <div class="d-flex">
         <div>
-          <p>{{movie.tagline}}</p>
+          <p class="font-bold">{{movie.tagline}}</p>
           <p>{{movie.overview}}</p>
+          <p><span class="font-bold font-secondary">Director:</span> {{getDirector()}}</p>
+          <p><span class="font-bold font-secondary">Writer:</span> {{getWriter()}}</p>
+          <p><span class="font-bold font-secondary">Actors:</span> {{getActors()}}</p>
         </div>
         <img [src]="service.getMovieBackdropPathUrl(movie)" />
       </div>
-      <div>
+      <div class="pt-4">
         <div class="d-flex justify-content-between">
-          <h2>Similar videos</h2>
-          <h2>Recommended videos</h2>
-          <h2>Videos</h2>
-          <h2>Images</h2>
+          <h2>Recommended</h2>
+          <h2>Similar</h2> <!-- Display keywords under similar videos -->
+          <h2>Cast</h2>
+          <h2>Reviews</h2>
         </div>
         <!-- <iframe 
           *ngFor="let video of movie.videos.results"

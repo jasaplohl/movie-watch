@@ -16,3 +16,11 @@ body {
   max-width: 70%;
   margin: auto;
 }
+
+.font-bold {
+  font-weight: 500;
+}
+
+.font-secondary {
+  color: $color-secondary;
+}

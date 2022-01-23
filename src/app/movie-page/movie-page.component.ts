@@ -65,6 +65,46 @@ export class MoviePageComponent implements OnInit {
     return this.getVideoURL(this.movie.videos.results[0]);
   }
 
+  getMovieDuration() {
+    const hours = Math.floor(this.movie.runtime / 60);
+    const minutes = this.movie.runtime % 60;
+
+    const hoursStr = (hours > 0) ? hours + " h " : "";
+    return hoursStr + minutes + " min";
+  }
+
+  getDirector() {
+    for(let person of this.movie.credits.crew) {
+      if(person.job === "Director") {
+        return person.name;
+      }
+    }
+    return "Unknown";
+  }
+
+  getWriter() {
+    for(let person of this.movie.credits.crew) {
+      if(person.job === "Writer") {
+        return person.name;
+      }
+    }
+    return "Unknown";
+  }
+
+  getActors() {
+    let i = 0;
+    let actors = "";
+    for(let person of this.movie.credits.cast) {
+      actors += person.name;
+      actors += person.character ? (" (" + person.character + "), ") : (", ");
+      i++;
+      if(i>=3) {
+        break;
+      }
+    }
+    return actors.substring(0, actors.length - 2);
+  }
+
   getRecommendedMovies() {
 
   }
