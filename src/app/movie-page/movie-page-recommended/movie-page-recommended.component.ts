@@ -14,9 +14,8 @@ export class MoviePageRecommendedComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(routeParams => {
-      this.getRecommendedMovies(routeParams.id);
-    });
+    const movieId = this.route.snapshot.paramMap.get("id") ? Number(this.route.snapshot.paramMap.get("id")) : -1;
+    this.getRecommendedMovies(movieId);
   }
 
   getRecommendedMovies(movieId: Number) {

@@ -61,7 +61,12 @@
             class="movie-page--section-button" 
             (click)="showSection('reviews')">Reviews</h3>
         </div>
-        <router-outlet></router-outlet>
+        <div [ngSwitch]="chosenSection">
+          <app-movie-page-recommended *ngSwitchCase="''"></app-movie-page-recommended>
+          <app-movie-page-similar *ngSwitchCase="'similar'"></app-movie-page-similar>
+          <app-movie-page-cast *ngSwitchCase="'cast'"></app-movie-page-cast>
+          <app-movie-page-reviews *ngSwitchCase="'reviews'"></app-movie-page-reviews>
+        </div>
       </div>
     </div>
   </div>

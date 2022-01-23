@@ -31,16 +31,7 @@ const appRoutes: Routes = [
       { path: "genre", component: GenrePageComponent }
     ] 
   },
-  { 
-    path: "movie", 
-    component: MoviePageComponent,
-    children: [
-      {path: "", component: MoviePageRecommendedComponent},
-      {path: "similar", component: MoviePageSimilarComponent},
-      {path: "cast", component: MoviePageCastComponent},
-      {path: "reviews", component: MoviePageReviewsComponent}
-    ]
-  }
+  { path: "movie", component: MoviePageComponent }
 ];
 
 @NgModule({

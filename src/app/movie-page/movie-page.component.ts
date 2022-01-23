@@ -22,7 +22,6 @@ export class MoviePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(routeParams => {
-      console.log(routeParams);
       const newMovieId = routeParams.id;
       this.getMovieById(newMovieId);
       window.scroll({
@@ -30,7 +29,6 @@ export class MoviePageComponent implements OnInit {
         left: 0, 
         behavior: 'smooth' 
       });
-      console.log(this.chosenSection);
     });
   }
 
@@ -120,12 +118,6 @@ export class MoviePageComponent implements OnInit {
 
   showSection(path: String) {
     this.chosenSection = path;
-    console.log(path);
-    this.router.navigate(["./" + path, { 
-      id: this.movie.id,
-    }], {
-      relativeTo: this.route
-    });
   }
 
 }
