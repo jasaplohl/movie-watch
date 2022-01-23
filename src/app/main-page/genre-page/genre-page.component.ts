@@ -10,8 +10,11 @@ import { environment } from 'src/environments/environment';
 export class GenrePageComponent implements OnInit {
   genreName!: String;
   movies: any;
+  noResults: boolean;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {
+    this.noResults = false;
+  }
 
   ngOnInit(): void {
     const genreId = this.route.snapshot.paramMap.get("id") ? Number(this.route.snapshot.paramMap.get("id")) : -1;
@@ -31,7 +34,11 @@ export class GenrePageComponent implements OnInit {
       .then(response => response.json())
       .then(response => {
         console.log(response);
-        this.movies = response.results;
+        if(response.total_results == 0) {
+          this.noResults = true;
+        } else {
+          this.movies = response.results;
+        }
       })
       .catch(error => {
         console.log(error);

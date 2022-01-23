@@ -23,4 +23,8 @@ export class HeaderComponent implements OnInit {
     this.menuOpen = !this.menuOpen;
   }
 
+  onSearch() {
+    
+  }
+
 }
