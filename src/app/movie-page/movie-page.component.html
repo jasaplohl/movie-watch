@@ -42,6 +42,17 @@
         </div>
         <img [src]="service.getMovieBackdropPathUrl(movie)" />
       </div>
+      <div *ngIf="movie.belongs_to_collection">
+        <hr>
+        <h2 class="font-secondary">{{collection.name}}</h2>
+        <p>{{collection.overview}}</p>
+        <ul class="movie-page--collection-movies">
+          <app-movie-card
+            *ngFor="let coll_movie of collection.parts"
+            [movie]="coll_movie"></app-movie-card>
+        </ul>
+        <hr>
+      </div>
       <div class="pt-4">
         <div class="d-flex justify-content-between">
           <h3 
@@ -62,10 +73,18 @@
             (click)="showSection('reviews')">Reviews</h3>
         </div>
         <div [ngSwitch]="chosenSection">
-          <app-movie-page-recommended *ngSwitchCase="''"></app-movie-page-recommended>
-          <app-movie-page-similar *ngSwitchCase="'similar'"></app-movie-page-similar>
-          <app-movie-page-cast *ngSwitchCase="'cast'"></app-movie-page-cast>
-          <app-movie-page-reviews *ngSwitchCase="'reviews'"></app-movie-page-reviews>
+          <app-movie-page-recommended 
+            *ngSwitchCase="''" 
+            [movieId]="movie.id"></app-movie-page-recommended>
+          <app-movie-page-similar 
+            *ngSwitchCase="'similar'"
+            [movieId]="movie.id"></app-movie-page-similar>
+          <app-movie-page-cast 
+            *ngSwitchCase="'cast'"
+            [credits]="movie.credits"></app-movie-page-cast>
+          <app-movie-page-reviews 
+            *ngSwitchCase="'reviews'"
+            [movieId]="movie.id"></app-movie-page-reviews>
         </div>
       </div>
     </div>

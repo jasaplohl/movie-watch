@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-movie-page-reviews',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-page-reviews.component.scss']
 })
 export class MoviePageReviewsComponent implements OnInit {
+  @Input() declare movieId: Number;
 
   constructor() { }
 

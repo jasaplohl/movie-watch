@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-movie-page-cast',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-page-cast.component.scss']
 })
 export class MoviePageCastComponent implements OnInit {
+  @Input() declare credits: Number;
 
   constructor() { }
 
