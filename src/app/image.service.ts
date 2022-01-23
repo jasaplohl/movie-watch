@@ -9,7 +9,12 @@ export class ImageService {
 
   constructor() { }
 
-  getMovieImageUrl(movie: any): String {
+  getMoviePosterPathUrl(movie: any): String {
+    const url = environment.IMG_URL + "/" + environment.IMG_SIZE + "/" + movie.poster_path;
+    return url;
+  }
+
+  getMovieBackdropPathUrl(movie: any): String {
     const url = environment.IMG_URL + "/" + environment.IMG_SIZE + "/" + movie.poster_path;
     return url;
   }

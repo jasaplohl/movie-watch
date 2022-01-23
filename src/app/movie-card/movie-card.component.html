@@ -1,7 +1,7 @@
 <li 
   class="movie-card"
   (click)="onMovieCardClick()">
-  <img [src]="service.getMovieImageUrl(movie)"/>
+  <img [src]="service.getMoviePosterPathUrl(movie)"/>
   <div class="movie-card--info">
     <p class="movie-card--rating">
       <fa-icon [icon]="faStarIcon"></fa-icon> 

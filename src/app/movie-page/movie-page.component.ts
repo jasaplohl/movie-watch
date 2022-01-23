@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ImageService } from '../image.service';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
@@ -15,11 +15,18 @@ export class MoviePageComponent implements OnInit {
   error_message!: String;
   faStarIcon = faStar;
 
-  constructor(public service: ImageService, private route: ActivatedRoute) { }
+  constructor(public service: ImageService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     const movieId = this.route.snapshot.paramMap.get("id") ? Number(this.route.snapshot.paramMap.get("id")) : -1;
     this.getMovieById(movieId);
+  }
+
+  onGenreClick(genre: any) {
+    this.router.navigate(["/genre", { 
+      id: genre.id,
+      name: genre.name
+    }]);
   }
 
   getMovieById(movieId: Number) {
@@ -44,9 +51,18 @@ export class MoviePageComponent implements OnInit {
       });
   }
 
-  getVideoURL(video: any) {
+  getVideoURL(video: any): string {
     const url = `https://www.youtube.com/embed/${video.key}`;
     return url;
+  }
+
+  getTrailerURL(): string {
+    for(let video of this.movie.videos.results) {
+      if(video.type === "Trailer") {
+        return this.getVideoURL(video);
+      }
+    };
+    return this.getVideoURL(this.movie.videos.results[0]);
   }
 
   getRecommendedMovies() {

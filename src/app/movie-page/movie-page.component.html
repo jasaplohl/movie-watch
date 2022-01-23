@@ -1,7 +1,7 @@
 <div class="movie-page app-container">
   <div *ngIf="movie; else movie_not_found">
     <h1 class="movie-page--title">{{movie.title}}</h1>
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between align-items-center">
       <div class="d-flex">
         <p>{{movie.release_date | date}}</p>
         <p class="ms-2">{{movie.original_language |uppercase}}</p>
@@ -13,16 +13,41 @@
         ({{movie.vote_count}} votes)
       </p>
     </div>
-    <img />
     <div>
-      
-      <p>{{movie.tagline}}</p>
-      <p>{{movie.overview}}</p>
+      <ul class="movie-page--genres">
+        <li 
+          (click)="onGenreClick(genre)"
+          *ngFor="let genre of movie.genres"
+          class="movie-page--genre">
+          <p>{{genre.name}}</p>
+        </li>
+      </ul>
+    </div>
+    <div 
+      *ngIf="movie.videos.results.length > 0"
+      class="movie-page--trailer-container">
+      <iframe 
+        class="movie-page--trailer"
+        [src]="getTrailerURL() | safe"></iframe>
+    </div>
+    <div class="pt-4">
+      <div class="d-flex">
+        <div>
+          <p>{{movie.tagline}}</p>
+          <p>{{movie.overview}}</p>
+        </div>
+        <img [src]="service.getMovieBackdropPathUrl(movie)" />
+      </div>
       <div>
-        <h2>Videos</h2>
-        <iframe 
+        <div class="d-flex justify-content-between">
+          <h2>Similar videos</h2>
+          <h2>Recommended videos</h2>
+          <h2>Videos</h2>
+          <h2>Images</h2>
+        </div>
+        <!-- <iframe 
           *ngFor="let video of movie.videos.results"
-          [src]="getVideoURL(video) | safe"></iframe>
+          [src]="getVideoURL(video) | safe"></iframe> -->
       </div>
     </div>
   </div>
