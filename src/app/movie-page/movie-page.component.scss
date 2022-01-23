@@ -6,4 +6,19 @@
   &--title {
     color: $color-secondary;
   }
+
+  &--rating {
+    fa-icon {
+      color: $color-secondary;
+    }
+
+    .vote-avg {
+      font-weight: 500;
+    }
+
+    .vote-max {
+      font-weight: 300;
+      color: rgba($color-font, 0.5);
+    }
+  }
 }

@@ -1,14 +1,14 @@
 <div>
-  <div class="header d-flex justify-content-between">
-    <div class="d-flex align-items-center">
+  <div class="header">
+    <div class="header--left">
       <p (click)="openMenu()" class="header--menu-btn">
         <fa-icon [icon]="faBarsIcon"></fa-icon> 
       </p>
     </div>
-    <div>
+    <div class="header--middle">
       <a href="/" class="header--title">MovieWatch</a>
     </div>
-    <form (submit)="onSearch($event)" class="d-flex">
+    <form (submit)="onSearch($event)" class="header--right">
       <input 
         	type="text" 
           name="search-term"

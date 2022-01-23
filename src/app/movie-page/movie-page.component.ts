@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ImageService } from '../image.service';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-movie-page',
@@ -12,6 +13,7 @@ export class MoviePageComponent implements OnInit {
 
   movie: any;
   error_message!: String;
+  faStarIcon = faStar;
 
   constructor(public service: ImageService, private route: ActivatedRoute) { }
 

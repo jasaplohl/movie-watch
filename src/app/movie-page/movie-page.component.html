@@ -1,11 +1,21 @@
-<div class="movie-page">
+<div class="movie-page app-container">
   <div *ngIf="movie; else movie_not_found">
     <h1 class="movie-page--title">{{movie.title}}</h1>
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <p>{{movie.release_date | date}}</p>
+        <p class="ms-2">{{movie.original_language |uppercase}}</p>
+      </div>
+      <p class="movie-page--rating">
+        <fa-icon [icon]="faStarIcon"></fa-icon> 
+        <span class="vote-avg">{{movie.vote_average}}</span>
+        <span class="vote-max">/10</span> 
+        ({{movie.vote_count}} votes)
+      </p>
+    </div>
     <img />
     <div>
-      <p>{{movie.vote_average}}/10 ({{movie.vote_count}})</p>
-      <p>{{movie.release_date | date}}</p>
-      <p>{{movie.original_language |uppercase}}</p>
+      
       <p>{{movie.tagline}}</p>
       <p>{{movie.overview}}</p>
       <div>
