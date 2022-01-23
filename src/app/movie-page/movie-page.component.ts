@@ -12,6 +12,8 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 export class MoviePageComponent implements OnInit {
 
   movie: any;
+  collection: any;
+
   error_message!: String;
   faStarIcon = faStar;
   chosenSection: String;
@@ -54,7 +56,9 @@ export class MoviePageComponent implements OnInit {
           this.error_message = response.status_message;
         } else {
           this.movie = response;
-          this.showSection(this.chosenSection); //Update the data in the bottom section
+          if(this.movie.belongs_to_collection) {
+            this.getCollectionInfo(this.movie.belongs_to_collection.id);
+          }
         }
       })
       .catch(error => {
@@ -114,6 +118,22 @@ export class MoviePageComponent implements OnInit {
       }
     }
     return actors.substring(0, actors.length - 2);
+  }
+
+  getCollectionInfo(collectionId: Number) {
+    const urlParams = new URLSearchParams({
+      api_key: environment.API_KEY
+    });
+    const url = environment.API_URL + "/collection/" + collectionId + "?" + urlParams;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        this.collection = response;
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   showSection(path: String) {

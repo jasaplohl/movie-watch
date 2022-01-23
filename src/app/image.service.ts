@@ -27,4 +27,10 @@ export class ImageService {
       return "https://ischool.illinois.edu/sites/default/files/styles/normal_square/public/images/empty-avatar-01_1.jpg?itok=hAW4etvU";
     }
   }
+
+  getImageUrl(path: String) {
+    const url = environment.IMG_URL + "/" + environment.IMG_SIZE + "/" + path;
+    return url;
+  }
+
 }

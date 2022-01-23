@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -7,15 +6,19 @@ import { environment } from 'src/environments/environment';
   templateUrl: './movie-page-similar.component.html',
   styleUrls: ['./movie-page-similar.component.scss']
 })
-export class MoviePageSimilarComponent implements OnInit {
+export class MoviePageSimilarComponent implements OnInit, OnChanges {
+  @Input() declare movieId: Number;
 
   movies: any;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor() {}
 
   ngOnInit(): void {
-    const movieId = this.route.snapshot.paramMap.get("id") ? Number(this.route.snapshot.paramMap.get("id")) : -1;
-    this.getSimilarMovies(movieId);
+    this.getSimilarMovies(this.movieId);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getSimilarMovies(this.movieId);
   }
 
   getSimilarMovies(movieId: Number) {
