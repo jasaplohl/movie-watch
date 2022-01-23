@@ -1,0 +1,14 @@
+@import "../../variables.scss";
+
+.footer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 10vh;
+  background-color: $color-primary-dark;
+  
+  p {
+    margin: 0;
+    padding: 1rem;
+  }
+}

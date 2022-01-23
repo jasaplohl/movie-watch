@@ -14,6 +14,7 @@ import { MoviePageComponent } from './movie-page/movie-page.component';
 import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
 import { GenrePageComponent } from './main-page/genre-page/genre-page.component';
 import { GeneralPageComponent } from './main-page/general-page/general-page.component';
+import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   { 
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     MoviePageComponent,
     MovieCarouselComponent,
     GenrePageComponent,
-    GeneralPageComponent
+    GeneralPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
