@@ -14,10 +14,23 @@ export class MoviePageComponent implements OnInit {
   movie: any;
   error_message!: String;
   faStarIcon = faStar;
+  chosenSection: String;
 
-  constructor(public service: ImageService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public service: ImageService, private route: ActivatedRoute, private router: Router) {
+    this.chosenSection = "";
+  }
 
   ngOnInit(): void {
+    this.route.params.subscribe(routeParams => {
+      const newMovieId = routeParams.id;
+      this.getMovieById(newMovieId);
+      window.scroll({
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth' 
+      });
+    });
+
     const movieId = this.route.snapshot.paramMap.get("id") ? Number(this.route.snapshot.paramMap.get("id")) : -1;
     this.getMovieById(movieId);
   }
@@ -44,10 +57,11 @@ export class MoviePageComponent implements OnInit {
           this.error_message = response.status_message;
         } else {
           this.movie = response;
+          this.showSection(this.chosenSection); //Update the data in the bottom section
         }
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
   }
 
@@ -105,16 +119,13 @@ export class MoviePageComponent implements OnInit {
     return actors.substring(0, actors.length - 2);
   }
 
-  getRecommendedMovies() {
-
-  }
-
-  getSimilarMovies() {
-
-  }
-
-  getMovieReviews() {
-
+  showSection(path: String) {
+    this.chosenSection = path;
+    this.router.navigate(["./" + path, { 
+      id: this.movie.id,
+    }], {
+      relativeTo: this.route
+    });
   }
 
 }

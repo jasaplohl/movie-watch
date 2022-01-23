@@ -44,15 +44,24 @@
       </div>
       <div class="pt-4">
         <div class="d-flex justify-content-between">
-          <a [routerLink]="['./', { id: movie.id }]">Recommended</a>
-          <a [routerLink]="['./similar', { id: movie.id }]">Similar</a> <!-- Display keywords under similar videos -->
-          <a [routerLink]="['./cast', { id: movie.id }]">Cast</a>
-          <a [routerLink]="['./reviews', { id: movie.id }]">Reviews</a>
+          <h3 
+            [ngClass]="{'selected': chosenSection === '' }"
+            class="movie-page--section-button" 
+            (click)="showSection('')">Recommended</h3>
+          <h3 
+            [ngClass]="{'selected': chosenSection === 'similar' }"
+            class="movie-page--section-button" 
+            (click)="showSection('similar')">Similar</h3> <!-- Display keywords under similar videos -->
+          <h3 
+            [ngClass]="{'selected': chosenSection === 'cast' }"
+            class="movie-page--section-button" 
+            (click)="showSection('cast')">Cast</h3>
+          <h3 
+            [ngClass]="{'selected': chosenSection === 'reviews' }"
+            class="movie-page--section-button" 
+            (click)="showSection('reviews')">Reviews</h3>
         </div>
         <router-outlet></router-outlet>
-        <!-- <iframe 
-          *ngFor="let video of movie.videos.results"
-          [src]="getVideoURL(video) | safe"></iframe> -->
       </div>
     </div>
   </div>
