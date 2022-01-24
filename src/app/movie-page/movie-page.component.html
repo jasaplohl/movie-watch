@@ -42,7 +42,7 @@
         </div>
         <img [src]="service.getMovieBackdropPathUrl(movie)" />
       </div>
-      <div *ngIf="movie.belongs_to_collection">
+      <div *ngIf="movie.belongs_to_collection && collection">
         <hr>
         <h2 class="font-secondary">{{collection.name}}</h2>
         <p>{{collection.overview}}</p>
