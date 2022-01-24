@@ -1,0 +1,11 @@
+@import "../../../variables.scss";
+
+.cast-section {
+  padding-block: 2rem;
+  display: flex;
+  background-color: $color-primary-light;
+
+  &--cast {
+    width: 50%;
+  }
+}

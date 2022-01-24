@@ -13,8 +13,9 @@ body {
 }
 
 .app-container {
-  max-width: 70%;
-  margin: auto;
+  max-width: $container-width;
+  padding-inline: 2rem;
+  margin-inline: auto;
 }
 
 .font-bold {

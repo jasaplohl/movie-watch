@@ -1,7 +1,6 @@
 @import "../../variables.scss";
 
 .movie-page {
-  padding: $padding;
 
   &--title {
     color: $color-secondary;
@@ -87,6 +86,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  &--backdrop {
+    max-width: $container-width;
+    object-fit: cover;
+    padding-inline: 2rem;
   }
   
 }
