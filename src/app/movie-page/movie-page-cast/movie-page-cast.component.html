@@ -1,1 +1,22 @@
-<p>movie-page-cast works!</p>
+<div class="cast-section">
+  <div class="cast-section--cast">
+    <h3 class="text-center">Cast</h3>
+    <ul>
+      <app-cast-member 
+        *ngFor="let castMember of credits.cast"
+        [profile_path]="castMember.profile_path"
+        [name]="castMember.name"
+        [job]="castMember.character"></app-cast-member>
+    </ul>
+  </div>
+  <div class="cast-section--cast">
+    <h3 class="text-center">Crew</h3>
+    <ul>
+      <app-cast-member 
+        *ngFor="let crewMember of credits.crew"
+        [profile_path]="crewMember.profile_path"
+        [name]="crewMember.name"
+        [job]="crewMember.job"></app-cast-member>
+    </ul>
+  </div>
+</div>

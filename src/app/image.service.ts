@@ -15,13 +15,13 @@ export class ImageService {
   }
 
   getMovieBackdropPathUrl(movie: any): String {
-    const url = environment.IMG_URL + "/" + environment.IMG_SIZE + "/" + movie.poster_path;
+    const url = environment.IMG_URL + "/" + environment.IMG_SIZE_LG + "/" + movie.backdrop_path;
     return url;
   }
 
-  getActorProfilePathUrl(actor: any): String {
-    if(actor.profile_path) {
-      const url = environment.IMG_URL + "/" + environment.IMG_SIZE + "/" + actor.profile_path;
+  getActorProfilePathUrl(profile_path: String): String {
+    if(profile_path) {
+      const url = environment.IMG_URL + "/" + environment.IMG_SIZE + "/" + profile_path;
       return url;
     } else {
       return "https://ischool.illinois.edu/sites/default/files/styles/normal_square/public/images/empty-avatar-01_1.jpg?itok=hAW4etvU";

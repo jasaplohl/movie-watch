@@ -40,8 +40,9 @@
           <p><span class="font-bold font-secondary">Writer:</span> {{getWriter()}}</p>
           <p><span class="font-bold font-secondary">Actors:</span> {{getActors()}}</p>
         </div>
-        <img [src]="service.getMovieBackdropPathUrl(movie)" />
+        <img [src]="service.getMoviePosterPathUrl(movie)" />
       </div>
+      <!-- <img class="movie-page--backdrop pt-4" [src]="service.getMovieBackdropPathUrl(movie)" /> -->
       <div *ngIf="movie.belongs_to_collection && collection">
         <hr>
         <h2 class="font-secondary">{{collection.name}}</h2>
