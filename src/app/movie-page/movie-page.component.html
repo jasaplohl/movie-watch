@@ -31,6 +31,9 @@
         class="movie-page--trailer"
         [src]="getTrailerURL() | safe"></iframe>
     </div>
+    <div class="pt-3 d-flex justify-content-center">
+      <img class="movie-page--backdrop" [src]="service.getMovieBackdropPathUrl(movie)" />
+    </div>
     <div class="pt-4">
       <div class="d-flex">
         <div>
@@ -42,7 +45,6 @@
         </div>
         <img [src]="service.getMoviePosterPathUrl(movie)" />
       </div>
-      <!-- <img class="movie-page--backdrop pt-4" [src]="service.getMovieBackdropPathUrl(movie)" /> -->
       <div *ngIf="movie.belongs_to_collection && collection">
         <hr>
         <h2 class="font-secondary">{{collection.name}}</h2>

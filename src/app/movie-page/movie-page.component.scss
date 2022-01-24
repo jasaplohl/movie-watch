@@ -91,6 +91,7 @@
   &--backdrop {
     max-width: $container-width;
     object-fit: cover;
+    padding-inline: 2rem;
   }
   
 }
