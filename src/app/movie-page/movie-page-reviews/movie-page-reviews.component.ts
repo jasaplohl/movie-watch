@@ -9,30 +9,47 @@ import { environment } from 'src/environments/environment';
 export class MoviePageReviewsComponent implements OnInit {
   @Input() declare movieId: Number;
 
+  page: number;
+  total_pages: number;
   reviews: any;
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.fetchMovieReviews(this.movieId);
+  constructor() {
+    this.page = 1;
+    this.total_pages = 1;
+    this.reviews = [];
   }
 
-  fetchMovieReviews(movieId: Number) {
+  ngOnInit(): void {
+    this.fetchMovieReviews();
+  }
+
+  fetchMovieReviews() {
     const urlParams = new URLSearchParams({
       api_key: environment.API_KEY,
-      page: "1"
+      page: this.page.toString()
     });
-    const url = environment.API_URL + "/movie/" + movieId + "/reviews?" + urlParams;
+    const url = environment.API_URL + "/movie/" + this.movieId + "/reviews?" + urlParams;
 
     fetch(url)
       .then(response => response.json())
       .then(response => {
         console.log(response);
-        this.reviews = response.results;
+        this.reviews = this.reviews.concat(response.results);
+        this.total_pages = response.total_pages;
       })
       .catch(error => {
         console.error(error);
       });
+  }
+
+  showMoreReviews() {
+    this.page += 1;
+    this.fetchMovieReviews();
+  }
+
+  displayShowMoreButton() {
+    const display = this.total_pages > this.page;
+    return display;
   }
 
 }

@@ -1,6 +1,9 @@
-<div>
+<div class="reviews">
   <app-review
     *ngFor="let review of reviews"
     [review]="review"></app-review>
-  <button class="w-100 btn btn-primary">Show more...</button>
+  <button
+    *ngIf="displayShowMoreButton()"
+    (click)="showMoreReviews()"
+    class="w-100 btn btn-primary">Show more...</button>
 </div>
