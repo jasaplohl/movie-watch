@@ -1,1 +1,6 @@
-<p>movie-page-reviews works!</p>
+<div>
+  <app-review
+    *ngFor="let review of reviews"
+    [review]="review"></app-review>
+  <button class="w-100 btn btn-primary">Show more...</button>
+</div>

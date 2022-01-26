@@ -1,0 +1,10 @@
+<div>
+  <div class="d-flex">
+    <img [src]="getAuthorAvatarURL()"/>
+    <div>
+      <p>{{review.author}}</p>
+      <p>{{review.created_at | date}}</p>
+    </div>
+  </div>
+  <p>{{review.content}}</p>
+</div>
