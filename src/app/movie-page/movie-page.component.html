@@ -84,7 +84,7 @@
             [movieId]="movie.id"></app-movie-page-similar>
           <app-movie-page-cast 
             *ngSwitchCase="'cast'"
-            [credits]="movie.credits"></app-movie-page-cast>
+            [movieId]="movie.id"></app-movie-page-cast>
           <app-movie-page-reviews 
             *ngSwitchCase="'reviews'"
             [movieId]="movie.id"></app-movie-page-reviews>
