@@ -22,6 +22,7 @@ import { MoviePageSimilarComponent } from './movie-page/movie-page-similar/movie
 import { MoviePageCastComponent } from './movie-page/movie-page-cast/movie-page-cast.component';
 import { MoviePageReviewsComponent } from './movie-page/movie-page-reviews/movie-page-reviews.component';
 import { CastMemberComponent } from './movie-page/movie-page-cast/cast-member/cast-member.component';
+import { ReviewComponent } from './movie-page/movie-page-reviews/review/review.component';
 
 const appRoutes: Routes = [
   { 
@@ -52,7 +53,8 @@ const appRoutes: Routes = [
     MoviePageSimilarComponent,
     MoviePageCastComponent,
     MoviePageReviewsComponent,
-    CastMemberComponent
+    CastMemberComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

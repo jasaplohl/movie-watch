@@ -1,22 +1,32 @@
 <div class="cast-section">
   <div class="cast-section--cast">
     <h3 class="text-center">Cast</h3>
-    <ul>
+    <ul *ngIf="cast && cast.length > 0; else noCast">
       <app-cast-member 
-        *ngFor="let castMember of credits.cast"
+        *ngFor="let castMember of cast"
         [profile_path]="castMember.profile_path"
         [name]="castMember.name"
         [job]="castMember.character"></app-cast-member>
     </ul>
+    <ng-template #noCast>
+      <div class="d-flex justify-content-center">
+        <p>No cast members</p>
+      </div>
+    </ng-template>
   </div>
   <div class="cast-section--cast">
     <h3 class="text-center">Crew</h3>
-    <ul>
+    <ul *ngIf="crew && crew.length > 0; else noCrew">
       <app-cast-member 
-        *ngFor="let crewMember of credits.crew"
+        *ngFor="let crewMember of crew"
         [profile_path]="crewMember.profile_path"
         [name]="crewMember.name"
         [job]="crewMember.job"></app-cast-member>
     </ul>
+    <ng-template #noCrew>
+      <div class="d-flex justify-content-center">
+        <p>No crew members</p>
+      </div>
+    </ng-template>
   </div>
 </div>

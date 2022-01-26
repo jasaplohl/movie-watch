@@ -1,0 +1,12 @@
+<div class="review">
+  <div class="review--details">
+    <img class="review--avatar" [src]="getAuthorAvatarURL()"/>
+    <div>
+      <p class="review--author">{{review.author}}</p>
+      <p class="review--date">{{getReviewDate()}}</p>
+    </div>
+  </div>
+  <div class="review--content">
+    <p>{{review.content}}</p>
+  </div>
+</div>
