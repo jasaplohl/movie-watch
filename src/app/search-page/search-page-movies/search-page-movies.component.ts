@@ -45,19 +45,23 @@ export class SearchPageMoviesComponent implements OnInit {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
-        // this.movies = response.results;
-        this.movies = this.movies.concat(response.results);
+        this.movies = response.results;
         this.total_pages = response.total_pages;
         this.total_results = response.total_results;
       })
       .catch(error => {
         console.error(error);
       });
+
+    window.scroll({
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
   }
 
-  onNextPageClick(): void {
-    this.page++;
+  onPageChange(page_number: number): void {
+    this.page = page_number;
     this.fetchMovies();
   }
 

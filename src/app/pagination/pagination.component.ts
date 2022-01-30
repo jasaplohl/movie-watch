@@ -1,45 +1,36 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit, OnChanges {
+export class PaginationComponent implements OnInit {
   @Input() declare total_pages: number;
   @Input() declare current_page: number;
+  @Output() pageChange = new EventEmitter<number>();
 
   pages: number[];
+  
+  faLeftIcon = faChevronLeft;
+  faRightIcon = faChevronRight;
 
   constructor() {
     this.pages = [];
   }
 
-  ngOnInit(): void {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.total_pages);
+  ngOnInit(): void {
   }
 
-  onPageChange(page: number) {
-    this.current_page = page;
-    console.log(page);
+  pageDecrease() {
+    this.current_page--;
+    this.pageChange.emit(this.current_page);
   }
 
-  displayedPages() {
-    let displayedPages: number[] = [];
-
-    if(this.total_pages <= environment.PAGE_NUMBERS_DISPLAYED) {
-      for(let i=0; i<this.total_pages; i++) {
-        displayedPages.push(i+1);
-      }
-    } else {
-      const page_half = Math.floor(environment.PAGE_NUMBERS_DISPLAYED/2);
-      // this.current_page = 3;
-      // console.log(Math.abs(this.current_page - (this.current_page - page_half)));
-    }
-    return displayedPages;
+  pageIncrease() {
+    this.current_page++;
+    this.pageChange.emit(this.current_page);
   }
 
 }
