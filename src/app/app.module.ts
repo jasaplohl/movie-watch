@@ -30,6 +30,7 @@ import { SearchPageShowsComponent } from './search-page/search-page-shows/search
 import { SearchPagePeopleComponent } from './search-page/search-page-people/search-page-people.component';
 import { SearchPageShowComponent } from './search-page/search-page-shows/search-page-show/search-page-show.component';
 import { SearchPagePersonComponent } from './search-page/search-page-people/search-page-person/search-page-person.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 const appRoutes: Routes = [
   { 
@@ -70,7 +71,8 @@ const appRoutes: Routes = [
     SearchPageShowsComponent,
     SearchPagePeopleComponent,
     SearchPageShowComponent,
-    SearchPagePersonComponent
+    SearchPagePersonComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
