@@ -1,0 +1,41 @@
+@import "../../variables.scss";
+
+.search-result {
+
+  &--title {
+    color: $color-secondary;
+  }
+
+  &--thumbnail {
+    width: 80px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  &--result {
+    transition: $transition-time;
+
+    &:hover {
+      background-color: $color-primary-light;
+      cursor: pointer;
+    }
+  }
+
+  &--genres {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &--genre {
+    margin-inline: 0.5rem;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+}

@@ -10,13 +10,21 @@ export class ImageService {
   constructor() { }
 
   getMoviePosterPathUrl(movie: any): String {
-    const url = environment.IMG_URL + "/" + environment.IMG_SIZE + "/" + movie.poster_path;
-    return url;
+    if(movie.poster_path) {
+      const url = environment.IMG_URL + "/" + environment.IMG_SIZE + "/" + movie.poster_path;
+      return url;
+    } else {
+      return environment.DEFAULT_IMAGE;
+    }
   }
 
   getMovieBackdropPathUrl(movie: any): String {
-    const url = environment.IMG_URL + "/" + environment.IMG_SIZE_LG + "/" + movie.backdrop_path;
-    return url;
+    if(movie.backdrop_path) {
+      const url = environment.IMG_URL + "/" + environment.IMG_SIZE_LG + "/" + movie.backdrop_path;
+      return url;
+    } else {
+      return environment.DEFAULT_IMAGE;
+    }
   }
 
   getActorProfilePathUrl(profile_path: String): String {
@@ -28,7 +36,7 @@ export class ImageService {
     }
   }
 
-  getImageUrl(path: String) {
+  getImageUrl(path: String): String {
     const url = environment.IMG_URL + "/" + environment.IMG_SIZE + "/" + path;
     return url;
   }

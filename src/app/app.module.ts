@@ -24,6 +24,7 @@ import { MoviePageReviewsComponent } from './movie-page/movie-page-reviews/movie
 import { CastMemberComponent } from './movie-page/movie-page-cast/cast-member/cast-member.component';
 import { ReviewComponent } from './movie-page/movie-page-reviews/review/review.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { YearPipe } from './year.pipe';
 
 const appRoutes: Routes = [
   { 
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
     MoviePageReviewsComponent,
     CastMemberComponent,
     ReviewComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    YearPipe
   ],
   imports: [
     BrowserModule,
