@@ -3,6 +3,12 @@
 .search-person {
   display: flex;
   align-items: center;
+  transition: $transition-time;
+
+  &:hover {
+    background-color: $color-primary-light;
+    cursor: pointer;
+  }
 
   &--avatar {
     width: 50px;

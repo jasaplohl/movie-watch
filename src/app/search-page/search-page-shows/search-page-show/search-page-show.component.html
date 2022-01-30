@@ -1,7 +1,12 @@
 <div class="search-show">
   <img [src]="service.getMoviePosterPathUrl(show)" class="search-show--thumbnail"/>
   <div class="search-show--info">
-    <p>{{show.name}}</p>
-    <p><fa-icon [icon]="faStarIcon" class="font-secondary"></fa-icon> {{show.vote_average}}</p>
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <p class="font-bold">{{show.name}}</p>
+        <p *ngIf="show.first_air_date" class="ps-1">({{show.first_air_date | year}})</p>
+      </div>
+      <p><fa-icon [icon]="faStarIcon" class="font-secondary"></fa-icon> {{show.vote_average}}</p>
+    </div>
   </div>
 </div>

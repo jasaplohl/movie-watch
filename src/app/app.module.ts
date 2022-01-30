@@ -28,7 +28,6 @@ import { YearPipe } from './year.pipe';
 import { SearchPageMoviesComponent } from './search-page/search-page-movies/search-page-movies.component';
 import { SearchPageShowsComponent } from './search-page/search-page-shows/search-page-shows.component';
 import { SearchPagePeopleComponent } from './search-page/search-page-people/search-page-people.component';
-import { SearchPageMovieComponent } from './search-page/search-page-movies/search-page-movie/search-page-movie.component';
 import { SearchPageShowComponent } from './search-page/search-page-shows/search-page-show/search-page-show.component';
 import { SearchPagePersonComponent } from './search-page/search-page-people/search-page-person/search-page-person.component';
 
@@ -69,7 +68,6 @@ const appRoutes: Routes = [
     SearchPageMoviesComponent,
     SearchPageShowsComponent,
     SearchPagePeopleComponent,
-    SearchPageMovieComponent,
     SearchPageShowComponent,
     SearchPagePersonComponent
   ],
