@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
-import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
+import { NavigationMenuComponent } from './header/navigation-menu/navigation-menu.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './header/header.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
@@ -23,6 +23,7 @@ import { MoviePageCastComponent } from './movie-page/movie-page-cast/movie-page-
 import { MoviePageReviewsComponent } from './movie-page/movie-page-reviews/movie-page-reviews.component';
 import { CastMemberComponent } from './movie-page/movie-page-cast/cast-member/cast-member.component';
 import { ReviewComponent } from './movie-page/movie-page-reviews/review/review.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 const appRoutes: Routes = [
   { 
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
       { path: "genre", component: GenrePageComponent }
     ] 
   },
-  { path: "movie", component: MoviePageComponent }
+  { path: "movie", component: MoviePageComponent },
+  { path: "search", component: SearchPageComponent }
 ];
 
 @NgModule({
@@ -54,7 +56,8 @@ const appRoutes: Routes = [
     MoviePageCastComponent,
     MoviePageReviewsComponent,
     CastMemberComponent,
-    ReviewComponent
+    ReviewComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,

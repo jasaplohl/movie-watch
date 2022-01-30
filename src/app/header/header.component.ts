@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
   faBarsIcon = faBars;
   faSearchIcon = faSearch;
 
-  constructor() {
+  constructor(private router: Router) {
     this.menuOpen = false;
     this.searchTerm = "";
   }
@@ -27,7 +28,9 @@ export class HeaderComponent implements OnInit {
 
   onSearch(event?: any) {
     if(event) event.preventDefault();
-    console.log(this.searchTerm);
+    this.router.navigate(["/search", { 
+      q: this.searchTerm
+    }]);
   }
 
 }
