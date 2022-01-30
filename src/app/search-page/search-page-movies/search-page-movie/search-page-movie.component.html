@@ -1,0 +1,24 @@
+<div class="search-movie">
+  <img [src]="service.getMoviePosterPathUrl(movie)" class="search-movie--thumbnail"/>
+  <div class="search-movie--info">
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <p class="font-bold">{{movie.title}}</p>
+        <p class="ps-2">({{movie.release_date | year}})</p>
+      </div>
+      <p>
+        <fa-icon [icon]="faStarIcon" class="font-secondary"></fa-icon> {{movie.vote_average}}
+      </p>
+    </div>
+    <!-- <div class="search-result--genres">
+      <div 
+        class="search-result--genre"
+        *ngFor="let genre of movie.genre_ids">
+        <p>{{movieGenres[genre]}}</p>
+      </div>
+    </div> -->
+    <p>
+      <fa-icon [icon]="faFlagIcon" class="font-secondary"></fa-icon> {{movie.original_language | uppercase}}
+    </p>
+  </div>
+</div>

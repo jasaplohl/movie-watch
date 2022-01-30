@@ -1,0 +1,42 @@
+@import "../../../../variables.scss";
+
+.search-movie {
+  display: flex;
+  transition: $transition-time;
+
+  &:hover {
+    background-color: $color-primary-light;
+    cursor: pointer;
+  }
+
+  &--thumbnail {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+  }
+
+  &--info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding-inline: 1rem;
+  }
+
+  // &--genres {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  // }
+
+  // &--genre {
+  //   margin-inline: 0.5rem;
+
+  //   &:first-of-type {
+  //     margin-left: 0;
+  //   }
+
+  //   &:last-of-type {
+  //     margin-right: 0;
+  //   }
+  // }
+}

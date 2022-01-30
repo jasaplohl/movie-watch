@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ImageService } from '../image.service';
-import { faStar, faFlag } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faFlag, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-search-page',
@@ -16,14 +16,15 @@ export class SearchPageComponent implements OnInit {
   tvShows: any;
   people: any;
 
-  movieGenres: any;
+  // movieGenres: any;
   
   faStarIcon = faStar;
   faFlagIcon = faFlag;
+  faRightIcon = faChevronRight;
 
   constructor(private route: ActivatedRoute, public service: ImageService) {
     this.search_term = "";
-    this.movieGenres = {};
+    // this.movieGenres = {};
   }
 
   ngOnInit(): void {
@@ -37,7 +38,7 @@ export class SearchPageComponent implements OnInit {
       }
     });
     
-    this.fetchMovieGenres();
+    // this.fetchMovieGenres();
   }
 
   fetchMovies() {
@@ -52,7 +53,7 @@ export class SearchPageComponent implements OnInit {
       .then(response => {
         console.log("Movies");
         console.log(response);
-        this.movies = response.results;
+        this.movies = response;
       })
       .catch(error => {
         console.error(error);
@@ -71,7 +72,7 @@ export class SearchPageComponent implements OnInit {
       .then(response => {
         console.log("TV shows");
         console.log(response);
-        this.tvShows = response.results;
+        this.tvShows = response;
       })
       .catch(error => {
         console.error(error);
@@ -90,29 +91,29 @@ export class SearchPageComponent implements OnInit {
       .then(response => {
         console.log("People");
         console.log(response);
-        this.people = response.results;
+        this.people = response;
       })
       .catch(error => {
         console.error(error);
       });
   }
 
-  fetchMovieGenres() {
-    const urlParams = new URLSearchParams({
-      api_key: environment.API_KEY
-    });
-    const url = environment.API_URL + "/genre/movie/list?" + urlParams;
+  // fetchMovieGenres() {
+  //   const urlParams = new URLSearchParams({
+  //     api_key: environment.API_KEY
+  //   });
+  //   const url = environment.API_URL + "/genre/movie/list?" + urlParams;
 
-    fetch(url)
-      .then(response => response.json())
-      .then(response => {
-        response.genres.map((genre: any) => {
-          this.movieGenres[genre.id] = genre.name;
-        });
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
+  //   fetch(url)
+  //     .then(response => response.json())
+  //     .then(response => {
+  //       response.genres.map((genre: any) => {
+  //         this.movieGenres[genre.id] = genre.name;
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //     });
+  // }
 
 }

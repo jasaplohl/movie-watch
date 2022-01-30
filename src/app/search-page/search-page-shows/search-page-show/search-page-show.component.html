@@ -1,0 +1,7 @@
+<div class="search-show">
+  <img [src]="service.getMoviePosterPathUrl(show)" class="search-show--thumbnail"/>
+  <div class="search-show--info">
+    <p>{{show.name}}</p>
+    <p><fa-icon [icon]="faStarIcon" class="font-secondary"></fa-icon> {{show.vote_average}}</p>
+  </div>
+</div>
