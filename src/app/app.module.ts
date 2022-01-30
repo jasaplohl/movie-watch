@@ -41,7 +41,8 @@ const appRoutes: Routes = [
     ] 
   },
   { path: "movie", component: MoviePageComponent },
-  { path: "search", component: SearchPageComponent }
+  { path: "search", component: SearchPageComponent },
+  { path: "search/movies", component: SearchPageMoviesComponent }
 ];
 
 @NgModule({

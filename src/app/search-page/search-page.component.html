@@ -1,7 +1,7 @@
 <div class="app-container">
   <div *ngIf="movies && movies.results.length > 0" class="pb-3">
     <h1 class="search-result--title">Movies</h1>
-    <a class="search-result--see-all-link" href="#">
+    <a class="search-result--see-all-link" [routerLink]="['/search/movies', {q: search_term}]">
       See all the movies ({{movies.total_results}}) <fa-icon [icon]="faRightIcon" class="font-secondary"></fa-icon> 
     </a>
     <div class="search-result--movie-container">
@@ -15,7 +15,7 @@
   <div *ngIf="tvShows && tvShows.results.length > 0" class="pb-3">
     <h1 class="search-result--title">TV Shows</h1>
     <a class="search-result--see-all-link" href="#">
-      See all the TV shows ({{tvShows.total_results}}) <fa-icon [icon]="faRightIcon" class="font-secondary"></fa-icon> 
+      See all the TV shows ({{tvShows.total_results}}) <fa-icon [icon]="faRightIcon"></fa-icon> 
     </a>
     <app-search-page-show
       *ngFor="let show of tvShows.results.slice(0, 5)"
