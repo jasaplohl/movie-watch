@@ -31,7 +31,7 @@
         class="movie-page--trailer"
         [src]="getTrailerURL() | safe"></iframe>
     </div>
-    <div class="pt-3 d-flex justify-content-center">
+    <div class="pt-3 d-flex justify-content-center" *ngIf="movie.backdrop_path">
       <img class="movie-page--backdrop" [src]="service.getMovieBackdropPathUrl(movie)" />
     </div>
     <div class="pt-4">
@@ -43,7 +43,7 @@
           <p><span class="font-bold font-secondary">Writer:</span> {{getWriter()}}</p>
           <p><span class="font-bold font-secondary">Actors:</span> {{getActors()}}</p>
         </div>
-        <img [src]="service.getMoviePosterPathUrl(movie)" />
+        <img *ngIf="movie.poster_path" [src]="service.getMoviePosterPathUrl(movie)" />
       </div>
       <div *ngIf="movie.belongs_to_collection && collection">
         <hr>

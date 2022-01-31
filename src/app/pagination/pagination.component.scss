@@ -1,0 +1,23 @@
+@import "../../variables.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  &--button {
+    border: none;
+    background-color: transparent;
+    font-size: $font-size-lg;
+    color: $color-secondary;
+
+    &:disabled {
+      color: $color-primary-light;
+    }
+  }
+
+  &--current-page {
+    font-size: $font-size-lg;
+    color: $color-font;
+  }
+
+}

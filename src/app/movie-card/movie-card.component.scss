@@ -6,6 +6,12 @@
   cursor: pointer;
   transition: $transition-time;
 
+  &--img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+  }
+
   &--rating {
     font-weight: 600;
     margin: 0;

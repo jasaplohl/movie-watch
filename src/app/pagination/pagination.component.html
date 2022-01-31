@@ -1,0 +1,15 @@
+<div class="pagination">
+  <button 
+    class="pagination--button"
+    [disabled]="current_page === 1"
+    (click)="pageDecrease()">
+    <fa-icon [icon]="faLeftIcon"></fa-icon>
+  </button>
+  <p class="pagination--current-page">{{current_page}}</p>
+  <button 
+      class="pagination--button"
+      [disabled]="current_page === total_pages"
+      (click)="pageIncrease()">
+    <fa-icon [icon]="faRightIcon"></fa-icon>
+  </button>
+</div>

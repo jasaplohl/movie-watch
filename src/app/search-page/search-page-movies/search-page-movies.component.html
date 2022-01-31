@@ -1,0 +1,13 @@
+<div class="search-movies app-container">
+  <h3>Searching for: {{search_term}}</h3>
+  <p>Showing {{page * movies.length}} of {{total_results}} results</p>
+  <div class="search-movies--movies" *ngIf="movies">
+    <app-movie-card
+      *ngFor="let movie of movies"
+      [movie]="movie"></app-movie-card>
+  </div>
+  <app-pagination
+    [current_page]="page"
+    [total_pages]="total_pages"
+    (pageChange)="onPageChange($event)"></app-pagination>
+</div>

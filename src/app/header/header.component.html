@@ -10,10 +10,11 @@
     </div>
     <form (submit)="onSearch($event)" class="header--right">
       <input 
+          autocomplete="off"
         	type="text" 
           name="search-term"
           class="form-control" 
-          placeholder="Search Movies" 
+          placeholder="Search" 
           [(ngModel)]="searchTerm"/>
       <button (click)="onSearch()" type="button" class="btn btn-secondary">
         <fa-icon [icon]="faSearchIcon"></fa-icon> 

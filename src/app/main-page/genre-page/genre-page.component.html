@@ -1,10 +1,26 @@
 <div class="genre-page">
-  <h1 class="genre-page--title">{{genreName}}</h1>
-  <ul class="genre-page--list" *ngIf="!noResults; else noMovies">
-    <app-movie-card
-      *ngFor="let movie of movies"
-      [movie]="movie"></app-movie-card>
-  </ul>
+  <div *ngIf="!noResults; else noMovies">
+    <h1 class="genre-page--title">{{genreName}}</h1>
+    <div>
+      <form [formGroup]="sortByForm" (submit)="onSortBySelect()">
+        <label for="select-sort-by">Sort by</label>
+        <select name="select-sort-by" (change)="onSortBySelect()" formControlName="sortBySelect">
+          <option
+            *ngFor="let opt of selectSortByOptions"
+            [value]="opt.key">{{opt.value}}</option>
+        </select>
+      </form>
+    </div>
+    <ul class="genre-page--list">
+      <app-movie-card
+        *ngFor="let movie of movies"
+        [movie]="movie"></app-movie-card>
+    </ul>
+    <app-pagination
+      (pageChange)="onPageChange($event)"
+      [current_page]="current_page"
+      [total_pages]="total_pages"></app-pagination>
+  </div>
   <ng-template #noMovies>
     <div class="d-flex justify-content-center align-items-center">
       <p>We could not find any movies matching the given category.</p>
