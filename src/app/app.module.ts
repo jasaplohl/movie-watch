@@ -31,6 +31,7 @@ import { SearchPagePeopleComponent } from './search-page/search-page-people/sear
 import { SearchPagePersonComponent } from './search-page/search-page-people/search-page-person/search-page-person.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { TvShowCardComponent } from './tv-show-card/tv-show-card.component';
+import { TvShowPageComponent } from './tv-show-page/tv-show-page.component';
 
 const appRoutes: Routes = [
   { 
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
     ] 
   },
   { path: "movie", component: MoviePageComponent },
+  { path: "show", component: TvShowPageComponent },
   { path: "search", component: SearchPageComponent },
   { path: "search/movies", component: SearchPageMoviesComponent }
 ];
@@ -72,7 +74,8 @@ const appRoutes: Routes = [
     SearchPagePeopleComponent,
     SearchPagePersonComponent,
     PaginationComponent,
-    TvShowCardComponent
+    TvShowCardComponent,
+    TvShowPageComponent
   ],
   imports: [
     BrowserModule,

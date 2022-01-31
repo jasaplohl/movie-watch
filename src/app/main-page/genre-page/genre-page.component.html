@@ -2,9 +2,15 @@
   <div *ngIf="!noResults; else noMovies">
     <h1 class="genre-page--title">{{genreName}}</h1>
     <div>
-      <form [formGroup]="sortByForm" (submit)="onSortBySelect()">
+      <form 
+        [formGroup]="sortByForm" 
+        (submit)="onSortBySelect()">
         <label for="select-sort-by">Sort by</label>
-        <select name="select-sort-by" (change)="onSortBySelect()" formControlName="sortBySelect">
+        <select 
+          name="select-sort-by"
+          class="form-select w-auto"
+          (change)="onSortBySelect()"
+          formControlName="sortBySelect">
           <option
             *ngFor="let opt of selectSortByOptions"
             [value]="opt.key">{{opt.value}}</option>
