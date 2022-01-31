@@ -51,8 +51,6 @@ export class SearchPageComponent implements OnInit {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        console.log("Movies");
-        console.log(response);
         this.movies = response;
       })
       .catch(error => {

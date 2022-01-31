@@ -27,7 +27,6 @@ export class MoviePageCastComponent implements OnInit {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         this.cast = response.cast;
         this.crew = response.crew;
       })

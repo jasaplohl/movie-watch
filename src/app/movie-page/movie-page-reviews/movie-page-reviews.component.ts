@@ -33,7 +33,6 @@ export class MoviePageReviewsComponent implements OnInit {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         this.reviews = this.reviews.concat(response.results);
         this.total_pages = response.total_pages;
       })

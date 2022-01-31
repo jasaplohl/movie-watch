@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -77,6 +77,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     FontAwesomeModule,
     RouterModule.forRoot(appRoutes)
   ],
