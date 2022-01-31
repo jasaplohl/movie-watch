@@ -44,7 +44,7 @@ export class MoviePageComponent implements OnInit {
   getMovieById(movieId: Number) {
     const urlParams = new URLSearchParams({
       api_key: environment.API_KEY,
-      append_to_response: "videos,credits,keywords"
+      append_to_response: "videos,credits"
     });
     const url = environment.API_URL + "/movie/" + movieId + "?" + urlParams;
 

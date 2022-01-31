@@ -1,1 +1,69 @@
-<p>tv-show-page works!</p>
+<div
+  class="show-page app-container"
+  *ngIf="!error_message; else notFound">
+  <div *ngIf="show">
+    <!-- Basic info -->
+    <h1 class="show-page--title">{{show.name}}</h1>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex">
+        <p>{{show.first_air_date | date}}</p>
+        <p class="ms-2">{{show.original_language |uppercase}}</p>
+        <p class="ms-2">Seasons: {{show.number_of_seasons}} Episodes: {{show.number_of_episodes}}</p>
+      </div>
+      <p class="show-page--rating">
+        <fa-icon [icon]="faStarIcon"></fa-icon> 
+        <span class="vote-avg">{{show.vote_average}}</span>
+        <span class="vote-max">/10</span> 
+        ({{show.vote_count}} votes)
+      </p>
+    </div>
+    <!-- Genres -->
+    <div>
+      <ul class="show-page--genres">
+        <li 
+          (click)="onGenreClick(genre)"
+          *ngFor="let genre of show.genres"
+          class="show-page--genre">
+          <p>{{genre.name}}</p>
+        </li>
+      </ul>
+    </div>
+    <!-- Networks -->
+    <div>
+      <!-- TODO: Networks -->
+    </div>
+    <!-- Trailer -->
+    <div 
+      *ngIf="show.videos.results.length > 0"
+      class="show-page--trailer-container">
+      <iframe 
+        class="show-page--trailer"
+        [src]="getTrailerURL() | safe"></iframe>
+    </div>
+    <!-- Backdrop -->
+    <div class="pt-3 d-flex justify-content-center" *ngIf="show.backdrop_path">
+      <img class="show-page--backdrop" [src]="service.getMovieBackdropPathUrl(show)" />
+    </div>
+    <!-- Details -->
+    <div class="pt-4 d-flex">
+      <!-- TODO - replace director/writer with created by -->
+      <div>
+        <p class="font-bold">{{show.tagline}}</p>
+        <p>{{show.overview}}</p>
+        <p><span class="font-bold font-secondary">Director:</span> {{getDirector()}}</p>
+        <p><span class="font-bold font-secondary">Writer:</span> {{getWriter()}}</p>
+        <p><span class="font-bold font-secondary">Actors:</span> {{getActors()}}</p>
+      </div>
+      <img *ngIf="show.poster_path" [src]="service.getMoviePosterPathUrl(show)" />
+    </div>
+    <!-- Seasons -->
+    <div>
+      <!-- TODO: Clickable seasons and episodes for chosen season -->
+    </div>
+  </div>
+</div>
+<ng-template #notFound>
+  <div class="d-flex justify-content-center">
+    <p>{{error_message}}</p>
+  </div>
+</ng-template>
