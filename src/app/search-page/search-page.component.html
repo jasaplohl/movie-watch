@@ -17,10 +17,11 @@
     <a class="search-result--see-all-link" href="#">
       See all the TV shows ({{tvShows.total_results}}) <fa-icon [icon]="faRightIcon"></fa-icon> 
     </a>
-    <app-search-page-show
-      *ngFor="let show of tvShows.results.slice(0, 5)"
-      [show]="show">
-    </app-search-page-show>
+    <div class="search-result--movie-container">
+      <app-tv-show-card
+        *ngFor="let show of tvShows.results.slice(0, 10)"
+        [tvShow]="show"></app-tv-show-card>
+    </div>
   </div>
 
   <div *ngIf="people && people.results.length > 0" class="pb-3">

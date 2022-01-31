@@ -28,9 +28,9 @@ import { YearPipe } from './year.pipe';
 import { SearchPageMoviesComponent } from './search-page/search-page-movies/search-page-movies.component';
 import { SearchPageShowsComponent } from './search-page/search-page-shows/search-page-shows.component';
 import { SearchPagePeopleComponent } from './search-page/search-page-people/search-page-people.component';
-import { SearchPageShowComponent } from './search-page/search-page-shows/search-page-show/search-page-show.component';
 import { SearchPagePersonComponent } from './search-page/search-page-people/search-page-person/search-page-person.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { TvShowCardComponent } from './tv-show-card/tv-show-card.component';
 
 const appRoutes: Routes = [
   { 
@@ -70,9 +70,9 @@ const appRoutes: Routes = [
     SearchPageMoviesComponent,
     SearchPageShowsComponent,
     SearchPagePeopleComponent,
-    SearchPageShowComponent,
     SearchPagePersonComponent,
-    PaginationComponent
+    PaginationComponent,
+    TvShowCardComponent
   ],
   imports: [
     BrowserModule,
