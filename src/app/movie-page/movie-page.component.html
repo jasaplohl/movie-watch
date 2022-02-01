@@ -67,11 +67,11 @@
         <h3 
           [ngClass]="{'selected': chosenSection === '' }"
           class="movie-page--section-button" 
-          (click)="showSection('')">Recommended</h3>
+          (click)="showSection('')">Similar</h3> <!-- Display keywords under similar videos -->
         <h3 
-          [ngClass]="{'selected': chosenSection === 'similar' }"
+          [ngClass]="{'selected': chosenSection === 'recommended' }"
           class="movie-page--section-button" 
-          (click)="showSection('similar')">Similar</h3> <!-- Display keywords under similar videos -->
+          (click)="showSection('recommended')">Recommended</h3>
         <h3 
           [ngClass]="{'selected': chosenSection === 'cast' }"
           class="movie-page--section-button" 
@@ -82,12 +82,12 @@
           (click)="showSection('reviews')">Reviews</h3>
       </div>
       <div [ngSwitch]="chosenSection">
-        <app-movie-page-recommended 
-          *ngSwitchCase="''" 
-          [movieId]="movie.id"></app-movie-page-recommended>
         <app-movie-page-similar 
-          *ngSwitchCase="'similar'"
+          *ngSwitchCase="''"
           [movieId]="movie.id"></app-movie-page-similar>
+        <app-movie-page-recommended 
+          *ngSwitchCase="'recommended'" 
+          [movieId]="movie.id"></app-movie-page-recommended>
         <app-movie-page-cast 
           *ngSwitchCase="'cast'"
           [movieId]="movie.id"></app-movie-page-cast>
