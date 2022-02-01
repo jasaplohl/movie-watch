@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ImageService } from '../../../services/image.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-season-card',

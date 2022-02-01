@@ -34,6 +34,7 @@ import { TvShowCardComponent } from './tv-show-card/tv-show-card.component';
 import { TvShowPageComponent } from './tv-show-page/tv-show-page.component';
 import { TvShowSeasonCardComponent } from './tv-show-page/seasons/season-card/season-card.component';
 import { SeasonsComponent } from './tv-show-page/seasons/seasons.component';
+import { EpisodesComponent } from './tv-show-page/seasons/episodes/episodes.component';
 
 const appRoutes: Routes = [
   { 
@@ -79,7 +80,8 @@ const appRoutes: Routes = [
     TvShowCardComponent,
     TvShowPageComponent,
     TvShowSeasonCardComponent,
-    SeasonsComponent
+    SeasonsComponent,
+    EpisodesComponent
   ],
   imports: [
     BrowserModule,
