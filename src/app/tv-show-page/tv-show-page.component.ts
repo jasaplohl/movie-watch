@@ -10,11 +10,15 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./tv-show-page.component.scss']
 })
 export class TvShowPageComponent implements OnInit {
-  error_message!: string;
-  show: any;
   faStarIcon = faStar;
+  error_message!: string;
 
-  constructor(public service: ImageService, private route: ActivatedRoute, private router: Router) { }
+  show: any;
+  created_by: any;
+
+  constructor(public service: ImageService, private route: ActivatedRoute, private router: Router) {
+    this.created_by = [];
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(routeParams => {
@@ -45,6 +49,7 @@ export class TvShowPageComponent implements OnInit {
           this.error_message = response.status_message;
         } else {
           this.show = response;
+          this.getCredits();
         }
       })
       .catch(error => {
@@ -73,24 +78,6 @@ export class TvShowPageComponent implements OnInit {
     return this.getVideoURL(this.show.videos.results[0]);
   }
 
-  getDirector() {
-    for(let person of this.show.credits.crew) {
-      if(person.job === "Director") {
-        return person.name;
-      }
-    }
-    return "Unknown";
-  }
-
-  getWriter() {
-    for(let person of this.show.credits.crew) {
-      if(person.job === "Writer") {
-        return person.name;
-      }
-    }
-    return "Unknown";
-  }
-
   getActors() {
     let i = 0;
     let actors = "";
@@ -103,6 +90,27 @@ export class TvShowPageComponent implements OnInit {
       }
     }
     return actors.substring(0, actors.length - 2);
+  }
+
+  getCredits() {
+    const urlParams = new URLSearchParams({
+      api_key: environment.API_KEY
+    });
+
+    for(let creator of this.show.created_by) {
+      const url = environment.API_URL + "/credit/" + creator.credit_id + "?" + urlParams;
+      fetch(url)
+        .then(response => response.json())
+        .then(response => {
+          this.created_by.push({ 
+            credit: response.job,
+            name: creator.name
+          });
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
   }
 
 }

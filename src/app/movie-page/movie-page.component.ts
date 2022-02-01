@@ -94,7 +94,7 @@ export class MoviePageComponent implements OnInit {
         return person.name;
       }
     }
-    return "Unknown";
+    return undefined;
   }
 
   getWriter() {
@@ -103,7 +103,7 @@ export class MoviePageComponent implements OnInit {
         return person.name;
       }
     }
-    return "Unknown";
+    return undefined;
   }
 
   getActors() {

@@ -6,7 +6,6 @@
     <h1 class="show-page--title">{{show.name}}</h1>
     <div class="d-flex justify-content-between align-items-center">
       <div class="d-flex">
-        <p>{{show.first_air_date | date}}</p>
         <p class="ms-2">{{show.original_language |uppercase}}</p>
         <p class="ms-2">Seasons: {{show.number_of_seasons}} Episodes: {{show.number_of_episodes}}</p>
       </div>
@@ -28,10 +27,6 @@
         </li>
       </ul>
     </div>
-    <!-- Networks -->
-    <div>
-      <!-- TODO: Networks -->
-    </div>
     <!-- Trailer -->
     <div 
       *ngIf="show.videos.results.length > 0"
@@ -45,18 +40,36 @@
       <img class="show-page--backdrop" [src]="service.getMovieBackdropPathUrl(show)" />
     </div>
     <!-- Details -->
-    <div class="pt-4 d-flex">
+    <div class="pt-4 justify-content-between d-flex">
       <!-- TODO - replace director/writer with created by -->
-      <div>
+      <div class="pe-2">
         <p class="font-bold">{{show.tagline}}</p>
         <p>{{show.overview}}</p>
-        <p><span class="font-bold font-secondary">Director:</span> {{getDirector()}}</p>
-        <p><span class="font-bold font-secondary">Writer:</span> {{getWriter()}}</p>
+        <hr>
+        <div *ngFor="let creator of created_by" class="d-flex">
+          <p><span class="font-bold font-secondary">{{creator.credit}}:</span> {{creator.name}}</p>
+        </div>
         <p><span class="font-bold font-secondary">Actors:</span> {{getActors()}}</p>
+        <p><span class="font-bold font-secondary">Duration:</span> {{show.first_air_date | date}} - {{show.last_air_date | date}}</p>
+        <!-- Networks -->
+        <div *ngIf="show.networks && show.networks.length > 0" class="d-flex align-items-center">
+          <p class="font-bold font-secondary pe-2">{{ show.networks.length > 1 ? "Production companies:" : "Production company:"}}</p>
+          <div 
+            *ngFor="let network of show.networks"
+            class="show-page--network-logo-container">
+            <img 
+              *ngIf="network.logo_path"
+              [src]="service.getImageUrl(network.logo_path)" 
+              [alt]="network.name" 
+              class="show-page--network-logo"
+              [title]="network.name"  />
+          </div>
+        </div>
       </div>
-      <img *ngIf="show.poster_path" [src]="service.getMoviePosterPathUrl(show)" />
+      <img *ngIf="show.poster_path" [src]="service.getMoviePosterPathUrl(show)" title="Poster image" />
     </div>
     <!-- Seasons -->
+    <hr>
     <div>
       <!-- TODO: Clickable seasons and episodes for chosen season -->
     </div>
