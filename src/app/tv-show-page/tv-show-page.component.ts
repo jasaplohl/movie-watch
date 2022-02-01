@@ -15,9 +15,11 @@ export class TvShowPageComponent implements OnInit {
 
   show: any;
   created_by: any;
+  chosenSection: String;
 
   constructor(public service: ImageService, private route: ActivatedRoute, private router: Router) {
     this.created_by = [];
+    this.chosenSection = "";
   }
 
   ngOnInit(): void {
@@ -111,6 +113,10 @@ export class TvShowPageComponent implements OnInit {
           console.error(error);
         });
     }
+  }
+
+  showSection(path: String) {
+    this.chosenSection = path;
   }
 
 }

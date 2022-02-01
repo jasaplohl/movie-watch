@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -17,7 +17,7 @@ export class MoviePageSimilarComponent implements OnInit, OnChanges {
     this.getSimilarMovies(this.movieId);
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.getSimilarMovies(this.movieId);
   }
 

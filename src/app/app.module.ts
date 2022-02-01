@@ -35,6 +35,8 @@ import { TvShowPageComponent } from './tv-show-page/tv-show-page.component';
 import { TvShowSeasonCardComponent } from './tv-show-page/seasons/season-card/season-card.component';
 import { SeasonsComponent } from './tv-show-page/seasons/seasons.component';
 import { EpisodesComponent } from './tv-show-page/seasons/episodes/episodes.component';
+import { TvShowsPageSimilarComponent } from './tv-show-page/tv-shows-page-similar/tv-shows-page-similar.component';
+import { TvShowsPageRecommendedComponent } from './tv-show-page/tv-shows-page-recommended/tv-shows-page-recommended.component'; 
 
 const appRoutes: Routes = [
   { 
@@ -81,7 +83,9 @@ const appRoutes: Routes = [
     TvShowPageComponent,
     TvShowSeasonCardComponent,
     SeasonsComponent,
-    EpisodesComponent
+    EpisodesComponent,
+    TvShowsPageSimilarComponent,
+    TvShowsPageRecommendedComponent
   ],
   imports: [
     BrowserModule,

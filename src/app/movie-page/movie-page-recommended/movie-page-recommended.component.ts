@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -17,7 +17,7 @@ export class MoviePageRecommendedComponent implements OnInit, OnChanges {
     this.getRecommendedMovies(this.movieId);
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.getRecommendedMovies(this.movieId);
   }
 

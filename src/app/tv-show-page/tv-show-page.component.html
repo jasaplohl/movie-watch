@@ -80,6 +80,42 @@
       [showID]="show.id"
       [seasons]="show.seasons"></app-seasons>
     <hr>
+
+    <!-- Recommended, Similar, Reviews, Cast -->
+    <div class="pt-4 mb-4">
+      <div class="d-flex justify-content-between">
+        <h3 
+          [ngClass]="{'selected': chosenSection === '' }"
+          class="show-page--section-button" 
+          (click)="showSection('')">Recommended</h3>
+        <h3 
+          [ngClass]="{'selected': chosenSection === 'similar' }"
+          class="show-page--section-button" 
+          (click)="showSection('similar')">Similar</h3>
+        <!-- <h3 
+          [ngClass]="{'selected': chosenSection === 'cast' }"
+          class="show-page--section-button" 
+          (click)="showSection('cast')">Cast</h3>
+        <h3 
+          [ngClass]="{'selected': chosenSection === 'reviews' }"
+          class="show-page--section-button" 
+          (click)="showSection('reviews')">Reviews</h3> -->
+      </div>
+      <div [ngSwitch]="chosenSection">
+        <app-tv-shows-page-recommended 
+          *ngSwitchCase="''" 
+          [showId]="show.id"></app-tv-shows-page-recommended>
+        <app-tv-shows-page-similar 
+          *ngSwitchCase="'similar'"
+          [showId]="show.id"></app-tv-shows-page-similar >
+        <!-- <app-movie-page-cast 
+          *ngSwitchCase="'cast'"
+          [movieId]="movie.id"></app-movie-page-cast>
+        <app-movie-page-reviews 
+          *ngSwitchCase="'reviews'"
+          [movieId]="movie.id"></app-movie-page-reviews> -->
+      </div>
+    </div>
   </div>
 </div>
 <ng-template #notFound>
