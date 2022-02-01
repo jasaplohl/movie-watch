@@ -1,0 +1,10 @@
+.seasons {
+  &--seasons-container {
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    padding-inline: 0;
+    margin-inline: 0.5rem;
+    scroll-behavior: smooth;
+  }
+}

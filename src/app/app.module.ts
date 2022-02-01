@@ -32,7 +32,8 @@ import { SearchPagePersonComponent } from './search-page/search-page-people/sear
 import { PaginationComponent } from './pagination/pagination.component';
 import { TvShowCardComponent } from './tv-show-card/tv-show-card.component';
 import { TvShowPageComponent } from './tv-show-page/tv-show-page.component';
-import { TvShowSeasonCardComponent } from './tv-show-page/tv-show-season-card/tv-show-season-card.component';
+import { TvShowSeasonCardComponent } from './tv-show-page/seasons/season-card/season-card.component';
+import { SeasonsComponent } from './tv-show-page/seasons/seasons.component';
 
 const appRoutes: Routes = [
   { 
@@ -77,7 +78,8 @@ const appRoutes: Routes = [
     PaginationComponent,
     TvShowCardComponent,
     TvShowPageComponent,
-    TvShowSeasonCardComponent
+    TvShowSeasonCardComponent,
+    SeasonsComponent
   ],
   imports: [
     BrowserModule,

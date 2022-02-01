@@ -1,0 +1,15 @@
+<div class="seasons">
+  <h2 class="font-secondary">Seasons</h2>
+  <ul class="seasons--seasons-container">
+    <!-- TODO: Clickable seasons and episodes for chosen season -->
+    <app-season-card
+      *ngFor="let season of seasons"
+      [season]="season"
+      (click)="fetchSeasonDetails(season)"></app-season-card>
+  </ul>
+  <div *ngIf="chosen_season">
+    <h3 class="font-secondary">{{chosen_season.name}}</h3>
+    <p *ngIf="chosen_season.air_date">Aired on {{chosen_season.air_date | date}}</p>
+    <p *ngIf="chosen_season.overview">{{chosen_season.overview}}</p>
+  </div>
+</div>

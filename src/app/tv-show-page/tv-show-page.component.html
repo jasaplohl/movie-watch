@@ -76,18 +76,9 @@
     <hr>
 
     <!-- Seasons -->
-    <div>
-      <h2 class="font-secondary">Seasons</h2>
-      <ul class="show-page--seasons-container">
-        <!-- TODO: Clickable seasons and episodes for chosen season -->
-        <app-tv-show-season-card
-          *ngFor="let season of show.seasons"
-          [season]="season"></app-tv-show-season-card>
-      </ul>
-      <div>
-        <h3 class="font-secondary">Season x episodes</h3>
-      </div>
-    </div>
+    <app-seasons
+      [showID]="show.id"
+      [seasons]="show.seasons"></app-seasons>
     <hr>
   </div>
 </div>
