@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import * as moment from 'moment';
-import { ImageService } from 'src/app/image.service';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-review',

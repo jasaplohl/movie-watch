@@ -50,6 +50,7 @@
       </div>
       <img *ngIf="movie.poster_path" [src]="service.getMoviePosterPathUrl(movie)" />
     </div>
+    <!-- Collection -->
     <div *ngIf="movie.belongs_to_collection && collection">
       <hr>
       <h2 class="font-secondary">{{collection.name}}</h2>

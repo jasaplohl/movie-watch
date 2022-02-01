@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { ImageService } from '../image.service';
+import { ImageService } from '../services/image.service';
 import { Router } from '@angular/router';
 
 @Component({

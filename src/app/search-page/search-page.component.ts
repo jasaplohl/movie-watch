@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { ImageService } from '../image.service';
+import { ImageService } from '../services/image.service';
 import { faStar, faFlag, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
