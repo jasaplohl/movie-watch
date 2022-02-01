@@ -37,8 +37,12 @@ export class ImageService {
   }
 
   getImageUrl(path: String): String {
-    const url = environment.IMG_URL + "/" + environment.IMG_SIZE + "/" + path;
-    return url;
+    if(path) {
+      const url = environment.IMG_URL + "/" + environment.IMG_SIZE + "/" + path;
+      return url;
+    } else {
+      return environment.DEFAULT_IMAGE;
+    }
   }
 
 }

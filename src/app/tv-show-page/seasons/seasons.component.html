@@ -8,8 +8,10 @@
   </ul>
   <div *ngIf="chosen_season">
     <h3 class="font-secondary">{{chosen_season.name}}</h3>
-    <p *ngIf="chosen_season.air_date">Aired on {{chosen_season.air_date | date}}</p>
+    <p *ngIf="chosen_season.air_date"><span class="font-secondary">Aired on:</span> {{chosen_season.air_date | date}}</p>
+    <p><span class="font-secondary">Episodes:</span> {{chosen_season.episodes.length}}</p>
     <p *ngIf="chosen_season.overview">{{chosen_season.overview}}</p>
-    <app-episodes></app-episodes>
+    <app-episodes
+      [episodes]="chosen_season.episodes"></app-episodes>
   </div>
 </div>

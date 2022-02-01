@@ -27,7 +27,6 @@ export class SeasonsComponent implements OnInit {
     fetch(url)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         this.chosen_season = response;
       })
       .catch(error => {
