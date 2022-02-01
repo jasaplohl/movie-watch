@@ -16,37 +16,20 @@ export class CastSectionComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.movieId);
-    console.log(this.showId);
+    this.fetchCastAndCrewMembers();
+  }
+
+  fetchCastAndCrewMembers() {
+    const urlParams = new URLSearchParams({
+      api_key: environment.API_KEY
+    });
+
+    let url = "";
     if(this.movieId) {
-      this.fetchMovieCastAndCrewMembers();
-    } else if(this.showId) {
-      this.fetchShowCastAndCrewMembers();
+      url = environment.API_URL + "/movie/" + this.movieId + "/credits?" + urlParams;
+    } else {
+      url = environment.API_URL + "/tv/" + this.showId + "/credits?" + urlParams;
     }
-  }
-
-  fetchMovieCastAndCrewMembers() {
-    const urlParams = new URLSearchParams({
-      api_key: environment.API_KEY
-    });
-    const url = environment.API_URL + "/movie/" + this.movieId + "/credits?" + urlParams;
-
-    fetch(url)
-      .then(response => response.json())
-      .then(response => {
-        this.cast = response.cast;
-        this.crew = response.crew;
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
-
-  fetchShowCastAndCrewMembers() {
-    const urlParams = new URLSearchParams({
-      api_key: environment.API_KEY
-    });
-    const url = environment.API_URL + "/tv/" + this.showId + "/credits?" + urlParams;
 
     fetch(url)
       .then(response => response.json())

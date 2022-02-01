@@ -2,12 +2,13 @@ import { Component, Input, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-movie-page-reviews',
-  templateUrl: './movie-page-reviews.component.html',
-  styleUrls: ['./movie-page-reviews.component.scss']
+  selector: 'app-reviews-section',
+  templateUrl: './reviews-section.component.html',
+  styleUrls: ['./reviews-section.component.scss']
 })
-export class MoviePageReviewsComponent implements OnInit {
+export class ReviewsSectionComponent implements OnInit {
   @Input() declare movieId: Number;
+  @Input() declare showId: Number;
 
   page: number;
   total_pages: number;
@@ -20,19 +21,25 @@ export class MoviePageReviewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchMovieReviews();
+    this.fetchReviews();
   }
 
-  fetchMovieReviews() {
+  fetchReviews() {
     const urlParams = new URLSearchParams({
       api_key: environment.API_KEY,
       page: this.page.toString()
     });
-    const url = environment.API_URL + "/movie/" + this.movieId + "/reviews?" + urlParams;
+    let url = "";
+    if(this.movieId) {
+      url = environment.API_URL + "/movie/" + this.movieId + "/reviews?" + urlParams;
+    } else {
+      url = environment.API_URL + "/tv/" + this.showId + "/reviews?" + urlParams;
+    }
 
     fetch(url)
       .then(response => response.json())
       .then(response => {
+        console.log(response);
         this.reviews = this.reviews.concat(response.results);
         this.total_pages = response.total_pages;
       })
@@ -43,7 +50,7 @@ export class MoviePageReviewsComponent implements OnInit {
 
   showMoreReviews() {
     this.page += 1;
-    this.fetchMovieReviews();
+    this.fetchReviews();
   }
 
   displayShowMoreButton() {

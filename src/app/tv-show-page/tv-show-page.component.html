@@ -96,10 +96,10 @@
           [ngClass]="{'selected': chosenSection === 'cast' }"
           class="show-page--section-button" 
           (click)="showSection('cast')">Cast</h3>
-        <!--<h3 
+        <h3 
           [ngClass]="{'selected': chosenSection === 'reviews' }"
           class="show-page--section-button" 
-          (click)="showSection('reviews')">Reviews</h3> -->
+          (click)="showSection('reviews')">Reviews</h3>
       </div>
       <div [ngSwitch]="chosenSection">
         <app-similar-section
@@ -111,9 +111,9 @@
         <app-cast-section
           *ngSwitchCase="'cast'"
           [showId]="show.id"></app-cast-section>
-        <!--<app-movie-page-reviews 
+        <app-reviews-section
           *ngSwitchCase="'reviews'"
-          [movieId]="movie.id"></app-movie-page-reviews> -->
+          [showId]="show.id"></app-reviews-section>
       </div>
     </div>
   </div>

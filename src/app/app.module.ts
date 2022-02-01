@@ -28,9 +28,9 @@ import { MoviePageComponent } from './movie-page/movie-page.component';
 import { RecommendedSectionComponent } from './sections/recommended-section/recommended-section.component';
 import { SimilarSectionComponent } from './sections/similar-section/similar-section.component';
 import { CastSectionComponent } from './sections/cast-section/cast-section.component';
-import { MoviePageReviewsComponent } from './movie-page/movie-page-reviews/movie-page-reviews.component';
 import { CastMemberComponent } from './sections/cast-section/cast-member/cast-member.component';
-import { ReviewComponent } from './movie-page/movie-page-reviews/review/review.component';
+import { ReviewsSectionComponent } from './sections/reviews-section/reviews-section.component';
+import { ReviewComponent } from './sections/reviews-section/review/review.component';
 
 import { SearchPageComponent } from './search-page/search-page.component';
 import { SearchPageMoviesComponent } from './search-page/search-page-movies/search-page-movies.component';
@@ -75,7 +75,7 @@ const appRoutes: Routes = [
     RecommendedSectionComponent,
     SimilarSectionComponent,
     CastSectionComponent,
-    MoviePageReviewsComponent,
+    ReviewsSectionComponent,
     CastMemberComponent,
     ReviewComponent,
     SearchPageComponent,

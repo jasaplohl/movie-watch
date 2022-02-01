@@ -91,9 +91,9 @@
         <app-cast-section
           *ngSwitchCase="'cast'"
           [movieId]="movie.id"></app-cast-section>
-        <app-movie-page-reviews 
+        <app-reviews-section
           *ngSwitchCase="'reviews'"
-          [movieId]="movie.id"></app-movie-page-reviews>
+          [movieId]="movie.id"></app-reviews-section>
       </div>
     </div>
   </div>
