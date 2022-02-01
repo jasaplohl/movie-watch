@@ -7,6 +7,7 @@ import { ImageService } from '../../../services/image.service';
   styleUrls: ['./season-card.component.scss']
 })
 export class TvShowSeasonCardComponent implements OnInit {
+  @Input() declare isChosen: boolean;
   @Input() declare season: any;
 
   constructor(public service: ImageService) { }

@@ -15,7 +15,17 @@ export class SeasonsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.fetchSeasonDetails(this.seasons[0]);
+    const firstSeason = this.getFirstSeason();
+    this.fetchSeasonDetails(firstSeason);
+  }
+
+  getFirstSeason(): any {
+    for(let season of this.seasons){
+      if(season.season_number === 1) {
+        return season;
+      }
+    }
+    return this.seasons[0];
   }
 
   fetchSeasonDetails(season: any) {

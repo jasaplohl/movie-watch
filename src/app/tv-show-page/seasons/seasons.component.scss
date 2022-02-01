@@ -1,10 +1,12 @@
+@import "../../../variables.scss";
+
 .seasons {
   &--seasons-container {
-    display: flex;
-    align-items: center;
-    overflow-x: scroll;
     padding-inline: 0;
     margin-inline: 0.5rem;
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
     scroll-behavior: smooth;
   }
 }

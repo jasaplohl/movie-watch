@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-episodes',
@@ -9,6 +10,8 @@ import { ImageService } from 'src/app/services/image.service';
 
 export class EpisodesComponent implements OnInit, OnChanges {
   @Input() declare episodes: any;
+
+  faStarIcon = faStar;
 
   current_page: number;
   total_pages: number;
@@ -25,7 +28,7 @@ export class EpisodesComponent implements OnInit, OnChanges {
     this.getEpisodesForCurrentPage();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.current_page = 1;
     this.total_pages = this.getTotalPages();
     this.getEpisodesForCurrentPage();

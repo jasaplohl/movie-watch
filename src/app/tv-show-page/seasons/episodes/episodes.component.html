@@ -11,7 +11,13 @@
           [title]="episode.name"/>
       </div>
       <div class="episode--info">
-        <p><span class="font-bold">{{episode.name}}</span> (#{{episode.episode_number}})</p>
+        <div class="w-100 d-flex justify-content-between">
+          <p><span class="font-bold">{{episode.name}}</span> (#{{episode.episode_number}})</p>
+          <p>
+            <fa-icon class="font-secondary" [icon]="faStarIcon"></fa-icon>
+            {{" " + episode.vote_average.toFixed(1)}}
+          </p>
+        </div>
         <p>{{episode.overview}}</p>
       </div>
     </div>

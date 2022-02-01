@@ -1,12 +1,14 @@
 <div class="seasons">
   <h2 class="font-secondary">Seasons</h2>
-  <ul class="seasons--seasons-container">
-    <app-season-card
-      *ngFor="let season of seasons"
-      [season]="season"
-      (click)="fetchSeasonDetails(season)"></app-season-card>
-  </ul>
   <div *ngIf="chosen_season">
+    <ul class="seasons--seasons-container">
+      <app-season-card
+        *ngFor="let season of seasons"
+        [isChosen]="season.season_number === chosen_season.season_number"
+        [season]="season"
+        (click)="fetchSeasonDetails(season)"></app-season-card>
+    </ul>
+
     <h3 class="font-secondary">{{chosen_season.name}}</h3>
     <p *ngIf="chosen_season.air_date"><span class="font-secondary">Aired on:</span> {{chosen_season.air_date | date}}</p>
     <p><span class="font-secondary">Episodes:</span> {{chosen_season.episodes.length}}</p>

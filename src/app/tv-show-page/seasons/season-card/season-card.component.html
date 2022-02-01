@@ -1,5 +1,6 @@
 <li
-  class="season-card">
+  class="season-card"
+  [ngClass]="{ 'active': isChosen }">
   <img 
     [src]="service.getMoviePosterPathUrl(season)" 
     [title]="season.name" 
