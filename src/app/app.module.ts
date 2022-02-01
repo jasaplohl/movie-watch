@@ -20,6 +20,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { GenrePageComponent } from './main-page/genre-page/genre-page.component';
 import { GeneralPageComponent } from './main-page/general-page/general-page.component';
+import { GeneralShowPageComponent } from './main-page/general-show-page/general-show-page.component';
 
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
     component: MainPageComponent,
     children: [
       { path: "", component: GeneralPageComponent },
+      { path: "tv", component: GeneralShowPageComponent },
       { path: "genre", component: GenrePageComponent }
     ] 
   },
@@ -89,7 +91,8 @@ const appRoutes: Routes = [
     TvShowPageComponent,
     TvShowSeasonCardComponent,
     SeasonsComponent,
-    EpisodesComponent
+    EpisodesComponent,
+    GeneralShowPageComponent
   ],
   imports: [
     BrowserModule,
