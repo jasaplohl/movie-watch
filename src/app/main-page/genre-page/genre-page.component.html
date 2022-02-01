@@ -12,15 +12,20 @@
           (change)="onSortBySelect()"
           formControlName="sortBySelect">
           <option
-            *ngFor="let opt of selectSortByOptions"
+            *ngFor="let opt of sortByOptions"
             [value]="opt.key">{{opt.value}}</option>
         </select>
       </form>
     </div>
-    <ul class="genre-page--list">
+    <ul class="genre-page--list" *ngIf="type === 'movies'">
       <app-movie-card
-        *ngFor="let movie of movies"
+        *ngFor="let movie of result"
         [movie]="movie"></app-movie-card>
+    </ul>
+    <ul class="genre-page--list" *ngIf="type === 'tv'">
+      <app-tv-show-card
+        *ngFor="let show of result"
+        [tvShow]="show"></app-tv-show-card>
     </ul>
     <app-pagination
       (pageChange)="onPageChange($event)"

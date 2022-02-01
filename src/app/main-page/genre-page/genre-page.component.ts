@@ -15,27 +15,42 @@ export class GenrePageComponent implements OnInit {
 
   genreId!: number;
   genreName!: String;
-  movies: any;
+  type: string;
+
+  result: any; // Movies or tv shows
   noResults: boolean;
 
   sortByForm: FormGroup;
   sortByValue: string;
 
-  selectSortByOptions = [
-    { key: "popularity.asc", value: "Popularity Asc." },
+  sortByOptions: any;
+
+  moviesOptions = [
     { key: "popularity.desc", value: "Popularity Desc." },
+    { key: "popularity.asc", value: "Popularity Asc." },
 
-    { key: "release_date.asc", value: "Release Date Asc." },
     { key: "release_date.desc", value: "Release Date Desc." },
+    { key: "release_date.asc", value: "Release Date Asc." },
 
-    { key: "original_title.asc", value: "Alphabetically Asc." },
     { key: "original_title.desc", value: "Alphabetically Desc." },
+    { key: "original_title.asc", value: "Alphabetically Asc." },
 
-    { key: "vote_average.asc", value: "Vote Average Asc." },
     { key: "vote_average.desc", value: "Vote Average Desc." },
+    { key: "vote_average.asc", value: "Vote Average Asc." },
 
-    { key: "vote_count.asc", value: "Vote Count Asc." },
-    { key: "vote_count.desc", value: "Vote Count Desc." }
+    { key: "vote_count.desc", value: "Vote Count Desc." },
+    { key: "vote_count.asc", value: "Vote Count Asc." }
+  ];
+
+  tvOptions = [
+    { key: "popularity.desc", value: "Popularity Desc." },
+    { key: "popularity.asc", value: "Popularity Asc." },
+    
+    { key: "vote_average.desc", value: "Vote Average Desc." },
+    { key: "vote_average.asc", value: "Vote Average Asc." },
+    
+    { key: "first_air_date.desc", value: "First Air Date Desc." },
+    { key: "first_air_date.asc", value: "First Air Date Asc." },
   ];
 
   constructor(private route: ActivatedRoute) {
@@ -44,17 +59,40 @@ export class GenrePageComponent implements OnInit {
     this.total_pages = 1;
     this.total_results = 1;
 
+    this.type = "movies";
+    this.sortByOptions = this.moviesOptions;
+
     this.sortByForm = new FormGroup({
-      sortBySelect: new FormControl(this.selectSortByOptions[1].key)
+      sortBySelect: new FormControl(this.sortByOptions[0].key)
     });
     this.sortByValue = this.sortByForm.value.sortBySelect;
   }
 
   ngOnInit(): void {
-    this.genreId = this.route.snapshot.paramMap.get("id") ? Number(this.route.snapshot.paramMap.get("id")) : -1;
-    this.genreName = this.route.snapshot.paramMap.get("name") ? this.route.snapshot.paramMap.get("name")! : undefined!;
+    this.route.params.subscribe(routeParams => {
+      this.genreId = routeParams.id;
+      this.genreName = routeParams.name;
+      if(routeParams.type === undefined) {
+        this.type = "movies";
+      } else {
+        this.type = routeParams.type;
+      }
 
-    this.fetchMoviesByGenre();
+      this.sortByOptions = (this.type === "movies") ? this.moviesOptions : this.tvOptions;
+
+      this.sortByForm = new FormGroup({
+        sortBySelect: new FormControl(this.sortByOptions[0].key)
+      });
+      this.sortByValue = this.sortByForm.value.sortBySelect;
+
+      this.fetchMoviesByGenre();
+
+      window.scroll({
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth' 
+      });
+    });
   }
 
   fetchMoviesByGenre(): void {
@@ -64,7 +102,13 @@ export class GenrePageComponent implements OnInit {
       page: this.current_page.toString(),
       sort_by: this.sortByValue
     });
-    const url = environment.API_URL + "/discover/movie?" + urlParams;
+
+    let url;
+    if(this.type === "movies") {
+      url = environment.API_URL + "/discover/movie?" + urlParams;
+    } else {
+      url = environment.API_URL + "/discover/tv?" + urlParams;
+    }
 
     fetch(url)
       .then(response => response.json())
@@ -73,7 +117,7 @@ export class GenrePageComponent implements OnInit {
         if(response.total_results == 0) {
           this.noResults = true;
         } else {
-          this.movies = response.results;
+          this.result = response.results;
         }
       })
       .catch(error => {
