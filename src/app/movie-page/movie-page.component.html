@@ -82,15 +82,15 @@
           (click)="showSection('reviews')">Reviews</h3>
       </div>
       <div [ngSwitch]="chosenSection">
-        <app-movie-page-similar 
+        <app-similar-section
           *ngSwitchCase="''"
-          [movieId]="movie.id"></app-movie-page-similar>
-        <app-movie-page-recommended 
+          [movieId]="movie.id"></app-similar-section>
+        <app-recommended-section
           *ngSwitchCase="'recommended'" 
-          [movieId]="movie.id"></app-movie-page-recommended>
-        <app-movie-page-cast 
+          [movieId]="movie.id"></app-recommended-section>
+        <app-cast-section
           *ngSwitchCase="'cast'"
-          [movieId]="movie.id"></app-movie-page-cast>
+          [movieId]="movie.id"></app-cast-section>
         <app-movie-page-reviews 
           *ngSwitchCase="'reviews'"
           [movieId]="movie.id"></app-movie-page-reviews>

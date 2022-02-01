@@ -92,26 +92,26 @@
           [ngClass]="{'selected': chosenSection === 'recommended' }"
           class="show-page--section-button" 
           (click)="showSection('recommended')">Recommended</h3>
-        <!-- <h3 
+         <h3 
           [ngClass]="{'selected': chosenSection === 'cast' }"
           class="show-page--section-button" 
           (click)="showSection('cast')">Cast</h3>
-        <h3 
+        <!--<h3 
           [ngClass]="{'selected': chosenSection === 'reviews' }"
           class="show-page--section-button" 
           (click)="showSection('reviews')">Reviews</h3> -->
       </div>
       <div [ngSwitch]="chosenSection">
-        <app-tv-shows-page-similar 
+        <app-similar-section
           *ngSwitchCase="''"
-          [showId]="show.id"></app-tv-shows-page-similar>
-        <app-tv-shows-page-recommended 
+          [showId]="show.id"></app-similar-section>
+        <app-recommended-section
           *ngSwitchCase="'recommended'" 
-          [showId]="show.id"></app-tv-shows-page-recommended>
-        <!-- <app-movie-page-cast 
+          [showId]="show.id"></app-recommended-section>
+        <app-cast-section
           *ngSwitchCase="'cast'"
-          [movieId]="movie.id"></app-movie-page-cast>
-        <app-movie-page-reviews 
+          [showId]="show.id"></app-cast-section>
+        <!--<app-movie-page-reviews 
           *ngSwitchCase="'reviews'"
           [movieId]="movie.id"></app-movie-page-reviews> -->
       </div>
