@@ -56,7 +56,7 @@
             {{writer.name}}
           </a>
         </p>
-        <div *ngIf="actors.length > 0">
+        <div *ngIf="actors && actors.length > 0">
           <p class="font-bold font-secondary">Actors:</p>
           <div class="movie-page--actors">
             <a 
@@ -67,7 +67,6 @@
             </a>
           </div>
         </div>
-        <!-- <p><span class="font-bold font-secondary">Actors:</span> {{getActors()}}</p> -->
       </div>
       <img *ngIf="movie.poster_path" [src]="service.getMoviePosterPathUrl(movie)" />
     </div>
