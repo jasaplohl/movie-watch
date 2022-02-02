@@ -1,0 +1,33 @@
+<div class="search-movies app-container">
+  <h3>Searching for: {{search_term}}</h3>
+  <p>Showing {{page * data.length}} of {{total_results}} results</p>
+  <div *ngIf="data">
+    <div [ngSwitch]="type">
+        <div 
+          class="search-movies--movies"
+          *ngSwitchCase="'movie'">
+          <app-movie-card
+            *ngFor="let movie of data"
+            [movie]="movie"></app-movie-card>
+        </div>
+        <div 
+          class="search-movies--movies"
+          *ngSwitchCase="'tv'">
+          <app-tv-show-card
+            *ngFor="let show of data"
+            [tvShow]="show"></app-tv-show-card>
+        </div>
+        <div 
+          class="search-movies--movies"
+          *ngSwitchCase="'person'">
+          <app-person-card
+            *ngFor="let person of data"
+            [person]="person"></app-person-card>
+        </div>
+      </div>
+  </div>
+  <app-pagination
+    [current_page]="page"
+    [total_pages]="total_pages"
+    (pageChange)="onPageChange($event)"></app-pagination>
+</div>

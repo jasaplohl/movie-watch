@@ -1,7 +1,15 @@
+@import "../../../../variables.scss";
+
 .cast-member {
   list-style: none;
   display: flex;
   padding: 0.5rem;
+  transition: $transition-time;
+
+  &:hover {
+    background-color: $color-primary;
+    cursor: pointer;
+  }
 
   &--img {
     width: 80px;

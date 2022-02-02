@@ -52,9 +52,25 @@
         <p>{{show.overview}}</p>
         <hr>
         <div *ngFor="let creator of created_by" class="d-flex">
-          <p><span class="font-bold font-secondary">{{creator.credit}}:</span> {{creator.name}}</p>
+          <p>
+            <span class="font-bold font-secondary">{{creator.credit}}:</span> 
+            <a class="show-page--person-link" [routerLink]="['/person', {id: creator.id}]">
+              {{creator.name}}
+            </a>
+          </p>
         </div>
-        <p><span class="font-bold font-secondary">Actors:</span> {{getActors()}}</p>
+        <!-- <p><span class="font-bold font-secondary">Actors:</span> {{getActors()}}</p> -->
+        <div *ngIf="actors.length > 0">
+          <p class="font-bold font-secondary">Actors:</p>
+          <div class="show-page--actors">
+            <a 
+              *ngFor="let actor of actors"
+              class="show-page--person-link" 
+              [routerLink]="['/person', {id: actor.id}]">
+              {{actor.name}} ({{actor.character}})
+            </a>
+          </div>
+        </div>
         <p><span class="font-bold font-secondary">Duration:</span> {{show.first_air_date | date}} - {{show.last_air_date | date}}</p>
         <!-- Networks -->
         <div *ngIf="show.networks && show.networks.length > 0" class="d-flex align-items-center">

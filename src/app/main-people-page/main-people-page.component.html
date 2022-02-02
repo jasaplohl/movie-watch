@@ -1,0 +1,12 @@
+<div class="app-container">
+  <h1 class="font-secondary">Popular People</h1>
+  <ul class="people-container">
+    <app-person-card
+      *ngFor="let person of people"
+      [person]="person"></app-person-card>
+  </ul>
+  <app-pagination
+    [current_page]="current_page"
+    [total_pages]="total_pages"
+    (pageChange)="onPageChange($event)"></app-pagination>
+</div>

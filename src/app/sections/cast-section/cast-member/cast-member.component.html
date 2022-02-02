@@ -1,13 +1,15 @@
-<li class="cast-member">
+<li 
+  class="cast-member"
+  (click)="onPersonClick()">
   <img 
     class="cast-member--img" 
-    [src]="service.getActorProfilePathUrl(profile_path)"/>
+    [src]="service.getActorProfilePathUrl(person.profile_path)"/>
   <div class="cast-member--info">
     <div class="cast-member--name">
-      <p>{{name}}</p>
+      <p>{{person.name}}</p>
     </div>
     <div class="cast-member--job">
-      <p>{{job}}</p>
+      <p>{{person.job}}</p>
     </div>
   </div>
 </li>

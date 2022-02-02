@@ -1,0 +1,21 @@
+<li 
+  class="cast-credit"
+  (click)="onItemClick()">
+  <div class="d-flex">
+    <img class="cast-credit--img" [src]="service.getMoviePosterPathUrl(credit)"/>
+    <div class="cast-credit--info">
+      <div class="d-flex justify-content-between">
+        <p>
+          <span class="font-bold">{{credit.original_title ? credit.original_title : credit.name}} </span>
+          <span *ngIf="getReleaseDate()">({{getReleaseDate() | year}})</span>
+        </p>
+        <p class="cast-credit--rating">
+          <fa-icon [icon]="faStarIcon"></fa-icon> 
+          {{credit.vote_average}}
+        </p>
+      </div>
+      <p>Character: {{credit.character}}</p>
+      <p *ngIf="credit.episode_count">Episodes: {{credit.episode_count}}</p>
+    </div>
+  </div>
+</li>
