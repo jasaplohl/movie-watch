@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-other-page',
-  templateUrl: './other-page.component.html',
-  styleUrls: ['./other-page.component.scss']
+  selector: 'app-other-shows-page',
+  templateUrl: './other-shows-page.component.html',
+  styleUrls: ['./other-shows-page.component.scss']
 })
-export class OtherPageComponent implements OnInit {
+export class OtherShowsPageComponent implements OnInit {
 
   error_message!: string;
 
@@ -15,7 +15,7 @@ export class OtherPageComponent implements OnInit {
   current_page: number;
   total_pages: number;
 
-  movies: any;
+  shows: any;
 
   constructor(private route: ActivatedRoute) {
     this.title = 'popular';
@@ -29,7 +29,7 @@ export class OtherPageComponent implements OnInit {
         this.title = routeParams.type;
       }
 
-      this.fetchMovies();
+      this.fetchShows();
 
       window.scroll({
         top: 0, 
@@ -39,12 +39,12 @@ export class OtherPageComponent implements OnInit {
     });
   }
 
-  fetchMovies(): void {
+  fetchShows(): void {
     const urlParams = new URLSearchParams({
       api_key: environment.API_KEY,
       page: this.current_page.toString()
     });
-    const url = environment.API_URL + "/movie/" + this.title + "?" + urlParams;
+    const url = environment.API_URL + "/tv/" + this.title + "?" + urlParams;
 
     fetch(url)
       .then(response => response.json())
@@ -52,7 +52,7 @@ export class OtherPageComponent implements OnInit {
         if(response.status_message) {
           this.error_message = response.status_message;
         } else {
-          this.movies = response.results;
+          this.shows = response.results;
           this.total_pages = response.total_pages;
         }
       })
@@ -69,7 +69,7 @@ export class OtherPageComponent implements OnInit {
 
   onPageChange(newPage: number): void {
     this.current_page = newPage;
-    this.fetchMovies();
+    this.fetchShows();
   }
 
 }
