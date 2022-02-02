@@ -18,9 +18,9 @@
       </form>
     </div>
     <ul class="genre-page--list">
-      <app-movie-card
-        *ngFor="let movie of movies"
-        [movie]="movie"></app-movie-card>
+      <app-tv-show-card
+        *ngFor="let show of shows"
+        [tvShow]="show"></app-tv-show-card>
     </ul>
     <app-pagination
       (pageChange)="onPageChange($event)"

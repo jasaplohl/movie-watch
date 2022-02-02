@@ -18,9 +18,12 @@ import { FooterComponent } from './footer/footer.component';
 import { PaginationComponent } from './pagination/pagination.component';
 
 import { MainPageComponent } from './main-page/main-page.component';
-import { GenrePageComponent } from './main-page/genre-page/genre-page.component';
 import { GeneralPageComponent } from './main-page/general-page/general-page.component';
-import { GeneralShowPageComponent } from './main-page/general-show-page/general-show-page.component';
+import { GenrePageComponent } from './main-page/genre-page/genre-page.component';
+
+import { MainShowsPageComponent } from './main-shows-page/main-shows-page.component';
+import { GeneralShowPageComponent } from './main-shows-page/general-show-page/general-show-page.component';
+import { GenreShowsPageComponent } from './main-shows-page/genre-shows-page/genre-shows-page.component';
 
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
@@ -51,9 +54,16 @@ const appRoutes: Routes = [
     component: MainPageComponent,
     children: [
       { path: "", component: GeneralPageComponent },
-      { path: "tv", component: GeneralShowPageComponent },
       { path: "genre", component: GenrePageComponent }
     ] 
+  },
+  {
+    path: "tv",
+    component: MainShowsPageComponent,
+    children: [
+      { path: "", component: GeneralShowPageComponent },
+      { path: "genre", component: GenreShowsPageComponent }
+    ]
   },
   { path: "movie", component: MoviePageComponent },
   { path: "show", component: TvShowPageComponent },
@@ -92,7 +102,9 @@ const appRoutes: Routes = [
     TvShowSeasonCardComponent,
     SeasonsComponent,
     EpisodesComponent,
-    GeneralShowPageComponent
+    GeneralShowPageComponent,
+    MainShowsPageComponent,
+    GenreShowsPageComponent
   ],
   imports: [
     BrowserModule,

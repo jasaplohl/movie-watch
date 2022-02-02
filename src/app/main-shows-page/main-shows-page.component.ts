@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss']
+  selector: 'app-main-shows-page',
+  templateUrl: './main-shows-page.component.html',
+  styleUrls: ['./main-shows-page.component.scss']
 })
-export class MainPageComponent implements OnInit {
+export class MainShowsPageComponent implements OnInit {
 
   constructor(private router: Router) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -20,7 +20,7 @@ export class MainPageComponent implements OnInit {
   }
 
   onGenreClick(genre: any) {
-    this.router.navigate(["/genre", { 
+    this.router.navigate(["/tv/genre", { 
       id: genre.id,
       name: genre.name
     }]);
@@ -31,7 +31,7 @@ export class MainPageComponent implements OnInit {
       api_key: environment.API_KEY
     });
 
-    const url = environment.API_URL + "/genre/movie/list?" + urlParams;
+    const url = environment.API_URL + "/genre/tv/list?" + urlParams;
 
     fetch(url)
       .then(response => response.json())
