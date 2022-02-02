@@ -1,19 +1,22 @@
 <li
   (click)="onItemClick()"
   class="crew-credit">
-  <div class="d-flex justify-content-between">
-    <div class="d-flex">
-      <img class="crew-credit--img" [src]="service.getMoviePosterPathUrl(credit)"/>
-      <div>
-        <p class="font-bold">
-          {{credit.original_title ? credit.original_title : credit.name}} 
+  <div class="d-flex">
+    <img class="crew-credit--img" [src]="service.getMoviePosterPathUrl(credit)"/>
+    <div class="crew-credit--info">
+      <div class="d-flex justify-content-between">
+        <p>
+          <span class="font-bold">{{credit.original_title ? credit.original_title : credit.name}} </span>
           <span *ngIf="getReleaseDate()">({{getReleaseDate() | year}})</span>
         </p>
-        <p>Department: {{credit.department}}</p>
-        <p>Job: {{credit.job}}</p>
-        <p *ngIf="credit.episode_count">Episodes: {{credit.episode_count}}</p>
+        <p class="crew-credit--rating">
+          <fa-icon [icon]="faStarIcon"></fa-icon> 
+          {{credit.vote_average}}
+        </p>
       </div>
+      <p>Department: {{credit.department}}</p>
+      <p>Job: {{credit.job}}</p>
+      <p *ngIf="credit.episode_count">Episodes: {{credit.episode_count}}</p>
     </div>
-    <p>{{credit.vote_average}}</p>
   </div>
 </li>

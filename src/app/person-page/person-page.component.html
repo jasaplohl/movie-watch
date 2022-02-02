@@ -1,40 +1,28 @@
-<div class="app-container" *ngIf="!error_message; else error">
+<div class="app-container pt-4 pb-4" *ngIf="!error_message; else error">
   <div *ngIf="person">
-    <h1>{{person.name}}</h1>
-    <p>{{person.known_for_department}}</p> <!-- TODO: pill -->
-    <div class="d-flex">
-      <img [src]="service.getActorProfilePathUrl(person.profile_path)" [title]="person.name" />
-      <div>
+    <h1 class="font-secondary">{{person.name}}</h1>
+    <div class="pill">
+      <p>{{person.known_for_department}}</p>
+    </div>
+    <div class="d-flex pt-4 justify-content-between">
+      <div class="info">
         <p>Born {{person.birthday | date}} in {{person.place_of_birth}}</p>
         <p *ngIf="person.deathday">Death: {{person.deathday | date}}</p>
+        <p class="pt-4">{{person.biography}}</p>
       </div>
+      <img [src]="service.getActorProfilePathUrl(person.profile_path)" [title]="person.name" />
     </div>
-    <p>{{person.biography}}</p>
-
-    <hr>
 
     <!-- Movie credits -->
     <app-person-credits
       type="movies"
       [personId]="person.id"></app-person-credits>
 
-    <hr>
-
     <!-- TV show credits -->
     <app-person-credits
       type="tv"
       [personId]="person.id"></app-person-credits>
 
-    <!-- <div>
-      <img
-        *ngFor="let image of person.images.profiles" 
-        [src]="service.getImageUrl(image.file_path)"/>
-    </div>
-    <div>
-      <img
-        *ngFor="let image of person.tagged_images.results" 
-        [src]="service.getImageUrl(image.file_path)"/>
-    </div> -->
   </div>
 </div>
 

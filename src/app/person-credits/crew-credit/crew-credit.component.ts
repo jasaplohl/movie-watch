@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ImageService } from 'src/app/services/image.service';
 import { Router } from '@angular/router';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-crew-credit',
@@ -11,6 +12,8 @@ export class CrewCreditComponent implements OnInit {
   @Input() declare type: String;
   @Input() declare credit: any;
 
+  faStarIcon = faStar;
+  
   constructor(public service: ImageService, private router: Router) { }
 
   ngOnInit(): void {

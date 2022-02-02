@@ -1,8 +1,15 @@
 @import "../../variables.scss";
 
 .credits-section {
-  // background-color: $color-primary-light;
-  // border-radius: 1rem;
-  padding-left: 2rem;
+  padding-left: 1rem;
   padding-top: 1rem;
+
+  &--subsection {
+    border: solid;
+    border-color: $color-primary-light;
+    border-radius: 1rem;
+    border-width: 1px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
 }

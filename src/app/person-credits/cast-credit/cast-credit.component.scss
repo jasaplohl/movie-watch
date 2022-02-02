@@ -14,4 +14,18 @@
     width: 80px;
     object-fit: cover;
   }
+
+  &--info {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  &--rating {
+    font-weight: 600;
+    margin: 0;
+
+    fa-icon {
+      color: $color-secondary;
+    }
+  }
 }

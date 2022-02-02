@@ -1,10 +1,11 @@
 <div 
-  *ngIf="credits">
+  *ngIf="credits"
+  class="pt-3">
   <h2 class="font-secondary">{{(type === 'movies') ? 'Movie credits' : 'TV show credits'}}</h2>
 
   <div class="credits-section">
     <!-- Cast -->
-    <div *ngIf="credits.cast.length > 0">
+    <div *ngIf="credits.cast.length > 0" class="credits-section--subsection">
       <h3 #castScrollAnchor class="font-secondary">Cast ({{credits.cast.length}} results)</h3>
       <ul>
         <app-cast-credit
@@ -20,7 +21,7 @@
     </div>
 
     <!-- Crew -->
-    <div *ngIf="credits.crew.length > 0">
+    <div *ngIf="credits.crew.length > 0" class="credits-section--subsection">
       <h3 #crewScrollAnchor class="font-secondary">Crew ({{credits.crew.length}} results)</h3>
       <ul>
         <app-crew-credit
