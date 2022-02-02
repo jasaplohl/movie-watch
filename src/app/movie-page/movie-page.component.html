@@ -44,9 +44,30 @@
         <p class="font-bold">{{movie.tagline}}</p>
         <p>{{movie.overview}}</p>
         <hr>
-        <p *ngIf="getDirector()"><span class="font-bold font-secondary">Director:</span> {{getDirector()}}</p>
-        <p *ngIf="getWriter()"><span class="font-bold font-secondary">Writer:</span> {{getWriter()}}</p>
-        <p><span class="font-bold font-secondary">Actors:</span> {{getActors()}}</p>
+        <p *ngIf="director">
+          <span class="font-bold font-secondary">Director:</span> 
+          <a class="movie-page--person-link" [routerLink]="['/person', {id: director.id}]">
+            {{director.name}}
+          </a>
+        </p>
+        <p *ngIf="writer">
+          <span class="font-bold font-secondary">Writer:</span> 
+          <a class="movie-page--person-link" [routerLink]="['/person', {id: writer.id}]">
+            {{writer.name}}
+          </a>
+        </p>
+        <div *ngIf="actors.length > 0">
+          <p class="font-bold font-secondary">Actors:</p>
+          <div class="movie-page--actors">
+            <a 
+              *ngFor="let actor of actors"
+              class="movie-page--person-link" 
+              [routerLink]="['/person', {id: actor.id}]">
+              {{actor.name}} ({{actor.character}})
+            </a>
+          </div>
+        </div>
+        <!-- <p><span class="font-bold font-secondary">Actors:</span> {{getActors()}}</p> -->
       </div>
       <img *ngIf="movie.poster_path" [src]="service.getMoviePosterPathUrl(movie)" />
     </div>

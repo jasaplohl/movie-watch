@@ -93,6 +93,22 @@
     object-fit: cover;
     padding-inline: 2rem;
   }
+
+  &--person-link {
+    text-decoration: none;
+    color: $color-font;
+    transition: $transition-time;
+
+    &:hover {
+      color: $color-primary-light;
+    }
+  }
+
+  &--actors {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+  }
   
 }
 

@@ -15,6 +15,7 @@ export class TvShowPageComponent implements OnInit {
 
   show: any;
   created_by: any;
+  actors: any;
   chosenSection: String;
 
   constructor(public service: ImageService, private route: ActivatedRoute, private router: Router) {
@@ -52,6 +53,7 @@ export class TvShowPageComponent implements OnInit {
         } else {
           this.show = response;
           this.getCredits();
+          this.getActors();
         }
       })
       .catch(error => {
@@ -82,16 +84,14 @@ export class TvShowPageComponent implements OnInit {
 
   getActors() {
     let i = 0;
-    let actors = "";
+    this.actors = [];
     for(let person of this.show.credits.cast) {
-      actors += person.name;
-      actors += person.character ? (" (" + person.character + "), ") : (", ");
+      this.actors.push({ id: person.id, name: person.name, character: person.character });
       i++;
       if(i>=3) {
         break;
       }
     }
-    return actors.substring(0, actors.length - 2);
   }
 
   getCredits() {
@@ -106,7 +106,8 @@ export class TvShowPageComponent implements OnInit {
         .then(response => {
           this.created_by.push({ 
             credit: response.job,
-            name: creator.name
+            name: creator.name,
+            id: creator.id
           });
         })
         .catch(error => {

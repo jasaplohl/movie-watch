@@ -13,6 +13,9 @@ export class MoviePageComponent implements OnInit {
 
   movie: any;
   collection: any;
+  director: any;
+  writer: any;
+  actors: any;
 
   error_message!: String;
   faStarIcon = faStar;
@@ -58,6 +61,9 @@ export class MoviePageComponent implements OnInit {
           this.movie = response;
           if(this.movie.belongs_to_collection) {
             this.getCollectionInfo(this.movie.belongs_to_collection.id);
+            this.getDirector();
+            this.getWriter();
+            this.getActors();
           }
         }
       })
@@ -91,33 +97,29 @@ export class MoviePageComponent implements OnInit {
   getDirector() {
     for(let person of this.movie.credits.crew) {
       if(person.job === "Director") {
-        return person.name;
+        this.director = { name: person.name, id: person.id };
       }
     }
-    return undefined;
   }
 
   getWriter() {
     for(let person of this.movie.credits.crew) {
       if(person.job === "Writer") {
-        return person.name;
+        this.writer = { name: person.name, id: person.id };
       }
     }
-    return undefined;
   }
 
   getActors() {
     let i = 0;
-    let actors = "";
+    this.actors = [];
     for(let person of this.movie.credits.cast) {
-      actors += person.name;
-      actors += person.character ? (" (" + person.character + "), ") : (", ");
+      this.actors.push({ id: person.id, name: person.name, character: person.character });
       i++;
       if(i>=3) {
         break;
       }
     }
-    return actors.substring(0, actors.length - 2);
   }
 
   getCollectionInfo(collectionId: Number) {

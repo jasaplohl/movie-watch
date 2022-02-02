@@ -98,6 +98,23 @@
       cursor: pointer;
     }
   }
+
+  &--person-link {
+    text-decoration: none;
+    color: $color-font;
+    transition: $transition-time;
+
+    &:hover {
+      color: $color-primary-light;
+    }
+  }
+
+  &--actors {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
   
 }
 
