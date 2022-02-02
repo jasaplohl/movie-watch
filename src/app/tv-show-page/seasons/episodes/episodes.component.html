@@ -1,0 +1,30 @@
+<div>
+  <h4 class="font-secondary" #scrollAnchor>Episodes</h4>
+  <div>
+    <div 
+      *ngFor="let episode of displayedEpisodes"
+      class="episode">
+      <div class="episode--img-container">
+        <img 
+          class="episode--img"
+          [src]="service.getImageUrl(episode.still_path)"
+          [title]="episode.name"/>
+      </div>
+      <div class="episode--info">
+        <div class="w-100 d-flex justify-content-between">
+          <p><span class="font-bold">{{episode.name}}</span> (#{{episode.episode_number}})</p>
+          <p>
+            <fa-icon class="font-secondary" [icon]="faStarIcon"></fa-icon>
+            {{" " + episode.vote_average.toFixed(1)}}
+          </p>
+        </div>
+        <p>{{episode.overview}}</p>
+      </div>
+    </div>
+  </div>
+  <app-pagination
+    *ngIf="total_pages > 1"
+    [current_page]="current_page"
+    [total_pages]="total_pages"
+    (pageChange)="onPageChange($event, scrollAnchor)"></app-pagination>
+</div>

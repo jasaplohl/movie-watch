@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { ImageService } from '../image.service';
+import { ImageService } from '../services/image.service';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -44,7 +44,7 @@ export class MoviePageComponent implements OnInit {
   getMovieById(movieId: Number) {
     const urlParams = new URLSearchParams({
       api_key: environment.API_KEY,
-      append_to_response: "videos,credits,keywords"
+      append_to_response: "videos,credits"
     });
     const url = environment.API_URL + "/movie/" + movieId + "?" + urlParams;
 
@@ -94,7 +94,7 @@ export class MoviePageComponent implements OnInit {
         return person.name;
       }
     }
-    return "Unknown";
+    return undefined;
   }
 
   getWriter() {
@@ -103,7 +103,7 @@ export class MoviePageComponent implements OnInit {
         return person.name;
       }
     }
-    return "Unknown";
+    return undefined;
   }
 
   getActors() {

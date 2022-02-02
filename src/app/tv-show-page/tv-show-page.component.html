@@ -1,0 +1,125 @@
+<div
+  class="show-page app-container"
+  *ngIf="!error_message; else notFound">
+  <div *ngIf="show">
+
+    <!-- Basic info -->
+    <h1 class="show-page--title">{{show.name}}</h1>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex">
+        <p class="ms-2">{{show.original_language |uppercase}}</p>
+        <p class="ms-2">Seasons: {{show.number_of_seasons}} Episodes: {{show.number_of_episodes}}</p>
+      </div>
+      <p class="show-page--rating">
+        <fa-icon [icon]="faStarIcon"></fa-icon> 
+        <span class="vote-avg">{{show.vote_average}}</span>
+        <span class="vote-max">/10</span> 
+        ({{show.vote_count}} votes)
+      </p>
+    </div>
+
+    <!-- Genres -->
+    <div>
+      <ul class="show-page--genres">
+        <li 
+          (click)="onGenreClick(genre)"
+          *ngFor="let genre of show.genres"
+          class="show-page--genre">
+          <p>{{genre.name}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Trailer -->
+    <div 
+      *ngIf="show.videos.results.length > 0"
+      class="show-page--trailer-container">
+      <iframe 
+        class="show-page--trailer"
+        [src]="getTrailerURL() | safe"></iframe>
+    </div>
+
+    <!-- Backdrop -->
+    <div class="pt-3 d-flex justify-content-center" *ngIf="show.backdrop_path">
+      <img class="show-page--backdrop" [src]="service.getMovieBackdropPathUrl(show)" />
+    </div>
+
+    <!-- Details -->
+    <div class="pt-4 justify-content-between d-flex">
+      <!-- TODO - replace director/writer with created by -->
+      <div class="pe-2">
+        <p class="font-bold">{{show.tagline}}</p>
+        <p>{{show.overview}}</p>
+        <hr>
+        <div *ngFor="let creator of created_by" class="d-flex">
+          <p><span class="font-bold font-secondary">{{creator.credit}}:</span> {{creator.name}}</p>
+        </div>
+        <p><span class="font-bold font-secondary">Actors:</span> {{getActors()}}</p>
+        <p><span class="font-bold font-secondary">Duration:</span> {{show.first_air_date | date}} - {{show.last_air_date | date}}</p>
+        <!-- Networks -->
+        <div *ngIf="show.networks && show.networks.length > 0" class="d-flex align-items-center">
+          <p class="font-bold font-secondary pe-2">{{ show.networks.length > 1 ? "Production companies:" : "Production company:"}}</p>
+          <div 
+            *ngFor="let network of show.networks"
+            class="show-page--network-logo-container">
+            <img 
+              *ngIf="network.logo_path"
+              [src]="service.getImageUrl(network.logo_path)" 
+              [alt]="network.name" 
+              class="show-page--network-logo"
+              [title]="network.name"  />
+          </div>
+        </div>
+      </div>
+      <img *ngIf="show.poster_path" [src]="service.getMoviePosterPathUrl(show)" title="Poster image" />
+    </div>
+    <hr>
+
+    <!-- Seasons -->
+    <app-seasons
+      [showID]="show.id"
+      [seasons]="show.seasons"></app-seasons>
+    <hr>
+
+    <!-- Recommended, Similar, Reviews, Cast -->
+    <div class="pt-4 mb-4">
+      <div class="d-flex justify-content-between">
+        <h3 
+          [ngClass]="{'selected': chosenSection === '' }"
+          class="show-page--section-button" 
+          (click)="showSection('')">Similar</h3>
+        <h3 
+          [ngClass]="{'selected': chosenSection === 'recommended' }"
+          class="show-page--section-button" 
+          (click)="showSection('recommended')">Recommended</h3>
+         <h3 
+          [ngClass]="{'selected': chosenSection === 'cast' }"
+          class="show-page--section-button" 
+          (click)="showSection('cast')">Cast</h3>
+        <h3 
+          [ngClass]="{'selected': chosenSection === 'reviews' }"
+          class="show-page--section-button" 
+          (click)="showSection('reviews')">Reviews</h3>
+      </div>
+      <div [ngSwitch]="chosenSection">
+        <app-similar-section
+          *ngSwitchCase="''"
+          [showId]="show.id"></app-similar-section>
+        <app-recommended-section
+          *ngSwitchCase="'recommended'" 
+          [showId]="show.id"></app-recommended-section>
+        <app-cast-section
+          *ngSwitchCase="'cast'"
+          [showId]="show.id"></app-cast-section>
+        <app-reviews-section
+          *ngSwitchCase="'reviews'"
+          [showId]="show.id"></app-reviews-section>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #notFound>
+  <div class="d-flex justify-content-center">
+    <p>{{error_message}}</p>
+  </div>
+</ng-template>

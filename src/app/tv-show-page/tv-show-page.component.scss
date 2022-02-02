@@ -1,0 +1,108 @@
+@import "../../variables.scss";
+
+.show-page {
+  &--title {
+    color: $color-secondary;
+  }
+
+  &--rating {
+
+    fa-icon {
+      font-size: $font-size-lg;
+      color: $color-secondary;
+    }
+
+    .vote-avg {
+      font-weight: 500;
+      font-size: $font-size-lg;
+    }
+
+    .vote-max {
+      font-weight: 300;
+      color: rgba($color-font, 0.5);
+    }
+  }
+
+  &--genres {
+    list-style: none;
+    display: flex;
+    flex-flow: wrap;
+    padding: 0;
+  }
+
+  &--genre {
+    font-weight: 500;
+    border-radius: 1rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: $color-font;
+    margin-inline: 0.2rem;
+
+    p {
+      margin: 0.4rem;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba($color-primary-light, 0.5);
+    }
+  }
+
+  &--trailer-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+  }
+
+  &--trailer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &--backdrop {
+    max-width: $container-width;
+    object-fit: cover;
+    padding-inline: 2rem;
+  }
+
+  &--network-logo-container {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+  }
+
+  &--network-logo {
+    width: 100%;
+    max-height: 100%;
+  }
+
+  &--section-button {
+    color: $color-secondary;
+    padding: 0.5rem;
+    width: 25%;
+    text-align: center;
+    margin-bottom: 0;
+
+    &:hover {
+      background-color: $color-primary-light;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      cursor: pointer;
+    }
+  }
+  
+}
+
+.selected {
+  background-color: $color-primary-light;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}

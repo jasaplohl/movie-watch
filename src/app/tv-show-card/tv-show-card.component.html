@@ -1,0 +1,12 @@
+<li 
+  class="tv-show-card"
+  (click)="onTVShowCardClick()">
+  <img [src]="service.getMoviePosterPathUrl(tvShow)" class="tv-show-card--img"/>
+  <div class="tv-show-card--info">
+    <p class="tv-show-card--rating">
+      <fa-icon [icon]="faStarIcon"></fa-icon> 
+        {{tvShow.vote_average}}
+    </p>
+    <p class="tv-show-card--name">{{tvShow.name}}</p>
+  </div>
+</li>

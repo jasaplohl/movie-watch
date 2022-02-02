@@ -1,5 +1,6 @@
 <div class="movie-page app-container">
   <div *ngIf="movie; else movie_not_found">
+    <!-- Basic info -->
     <h1 class="movie-page--title">{{movie.title}}</h1>
     <div class="d-flex justify-content-between align-items-center">
       <div class="d-flex">
@@ -14,6 +15,7 @@
         ({{movie.vote_count}} votes)
       </p>
     </div>
+    <!-- Genres -->
     <div>
       <ul class="movie-page--genres">
         <li 
@@ -24,6 +26,7 @@
         </li>
       </ul>
     </div>
+    <!-- Trailer -->
     <div 
       *ngIf="movie.videos.results.length > 0"
       class="movie-page--trailer-container">
@@ -31,64 +34,66 @@
         class="movie-page--trailer"
         [src]="getTrailerURL() | safe"></iframe>
     </div>
+    <!-- Backdrop -->
     <div class="pt-3 d-flex justify-content-center" *ngIf="movie.backdrop_path">
       <img class="movie-page--backdrop" [src]="service.getMovieBackdropPathUrl(movie)" />
     </div>
-    <div class="pt-4">
-      <div class="d-flex">
-        <div>
-          <p class="font-bold">{{movie.tagline}}</p>
-          <p>{{movie.overview}}</p>
-          <p><span class="font-bold font-secondary">Director:</span> {{getDirector()}}</p>
-          <p><span class="font-bold font-secondary">Writer:</span> {{getWriter()}}</p>
-          <p><span class="font-bold font-secondary">Actors:</span> {{getActors()}}</p>
-        </div>
-        <img *ngIf="movie.poster_path" [src]="service.getMoviePosterPathUrl(movie)" />
-      </div>
-      <div *ngIf="movie.belongs_to_collection && collection">
+    <!-- Details -->
+    <div class="d-flex justify-content-between pt-4">
+      <div class="pe-2">
+        <p class="font-bold">{{movie.tagline}}</p>
+        <p>{{movie.overview}}</p>
         <hr>
-        <h2 class="font-secondary">{{collection.name}}</h2>
-        <p>{{collection.overview}}</p>
-        <ul class="movie-page--collection-movies">
-          <app-movie-card
-            *ngFor="let coll_movie of collection.parts"
-            [movie]="coll_movie"></app-movie-card>
-        </ul>
-        <hr>
+        <p *ngIf="getDirector()"><span class="font-bold font-secondary">Director:</span> {{getDirector()}}</p>
+        <p *ngIf="getWriter()"><span class="font-bold font-secondary">Writer:</span> {{getWriter()}}</p>
+        <p><span class="font-bold font-secondary">Actors:</span> {{getActors()}}</p>
       </div>
-      <div class="pt-4 mb-4">
-        <div class="d-flex justify-content-between">
-          <h3 
-            [ngClass]="{'selected': chosenSection === '' }"
-            class="movie-page--section-button" 
-            (click)="showSection('')">Recommended</h3>
-          <h3 
-            [ngClass]="{'selected': chosenSection === 'similar' }"
-            class="movie-page--section-button" 
-            (click)="showSection('similar')">Similar</h3> <!-- Display keywords under similar videos -->
-          <h3 
-            [ngClass]="{'selected': chosenSection === 'cast' }"
-            class="movie-page--section-button" 
-            (click)="showSection('cast')">Cast</h3>
-          <h3 
-            [ngClass]="{'selected': chosenSection === 'reviews' }"
-            class="movie-page--section-button" 
-            (click)="showSection('reviews')">Reviews</h3>
-        </div>
-        <div [ngSwitch]="chosenSection">
-          <app-movie-page-recommended 
-            *ngSwitchCase="''" 
-            [movieId]="movie.id"></app-movie-page-recommended>
-          <app-movie-page-similar 
-            *ngSwitchCase="'similar'"
-            [movieId]="movie.id"></app-movie-page-similar>
-          <app-movie-page-cast 
-            *ngSwitchCase="'cast'"
-            [movieId]="movie.id"></app-movie-page-cast>
-          <app-movie-page-reviews 
-            *ngSwitchCase="'reviews'"
-            [movieId]="movie.id"></app-movie-page-reviews>
-        </div>
+      <img *ngIf="movie.poster_path" [src]="service.getMoviePosterPathUrl(movie)" />
+    </div>
+    <!-- Collection -->
+    <div *ngIf="movie.belongs_to_collection && collection">
+      <hr>
+      <h2 class="font-secondary">{{collection.name}}</h2>
+      <p>{{collection.overview}}</p>
+      <ul class="movie-page--collection-movies">
+        <app-movie-card
+          *ngFor="let coll_movie of collection.parts"
+          [movie]="coll_movie"></app-movie-card>
+      </ul>
+      <hr>
+    </div>
+    <div class="pt-4 mb-4">
+      <div class="d-flex justify-content-between">
+        <h3 
+          [ngClass]="{'selected': chosenSection === '' }"
+          class="movie-page--section-button" 
+          (click)="showSection('')">Similar</h3> <!-- Display keywords under similar videos -->
+        <h3 
+          [ngClass]="{'selected': chosenSection === 'recommended' }"
+          class="movie-page--section-button" 
+          (click)="showSection('recommended')">Recommended</h3>
+        <h3 
+          [ngClass]="{'selected': chosenSection === 'cast' }"
+          class="movie-page--section-button" 
+          (click)="showSection('cast')">Cast</h3>
+        <h3 
+          [ngClass]="{'selected': chosenSection === 'reviews' }"
+          class="movie-page--section-button" 
+          (click)="showSection('reviews')">Reviews</h3>
+      </div>
+      <div [ngSwitch]="chosenSection">
+        <app-similar-section
+          *ngSwitchCase="''"
+          [movieId]="movie.id"></app-similar-section>
+        <app-recommended-section
+          *ngSwitchCase="'recommended'" 
+          [movieId]="movie.id"></app-recommended-section>
+        <app-cast-section
+          *ngSwitchCase="'cast'"
+          [movieId]="movie.id"></app-cast-section>
+        <app-reviews-section
+          *ngSwitchCase="'reviews'"
+          [movieId]="movie.id"></app-reviews-section>
       </div>
     </div>
   </div>

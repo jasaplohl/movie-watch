@@ -1,0 +1,33 @@
+<div>
+  <h1>{{title}}</h1>
+  <div class="d-flex align-items-center">
+    <button 
+      class="scroll-btn"
+      (click)="scrollLeft()">
+      <fa-icon [icon]="faLeft"></fa-icon> 
+    </button>
+    <ul 
+      *ngIf="movies"
+      #list 
+      class="d-flex movie-carousel" >
+      <app-movie-card
+        *ngFor="let movie of movies"
+        [movie]="movie">
+      </app-movie-card>
+    </ul>
+    <ul 
+      *ngIf="shows"
+      #list 
+      class="d-flex movie-carousel" >
+      <app-tv-show-card
+        *ngFor="let show of shows"
+        [tvShow]="show">
+      </app-tv-show-card>
+    </ul>
+    <button 
+      class="scroll-btn"
+      (click)="scrollRight()">
+      <fa-icon [icon]="faRight"></fa-icon> 
+    </button>
+  </div>
+</div>

@@ -5,32 +5,48 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { SafePipe } from './pipes/safe.pipe';
+import { YearPipe } from './pipes/year.pipe';
+
+import { ImageService } from './services/image.service';
+
 import { AppComponent } from './app.component';
+
 import { NavigationMenuComponent } from './header/navigation-menu/navigation-menu.component';
-import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './header/header.component';
-import { MovieCardComponent } from './movie-card/movie-card.component';
-import { ImageService } from './image.service';
-import { MoviePageComponent } from './movie-page/movie-page.component';
-import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
-import { GenrePageComponent } from './main-page/genre-page/genre-page.component';
-import { GeneralPageComponent } from './main-page/general-page/general-page.component';
 import { FooterComponent } from './footer/footer.component';
-import { SafePipe } from './safe.pipe';
-import { MoviePageRecommendedComponent } from './movie-page/movie-page-recommended/movie-page-recommended.component';
-import { MoviePageSimilarComponent } from './movie-page/movie-page-similar/movie-page-similar.component';
-import { MoviePageCastComponent } from './movie-page/movie-page-cast/movie-page-cast.component';
-import { MoviePageReviewsComponent } from './movie-page/movie-page-reviews/movie-page-reviews.component';
-import { CastMemberComponent } from './movie-page/movie-page-cast/cast-member/cast-member.component';
-import { ReviewComponent } from './movie-page/movie-page-reviews/review/review.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { CarouselComponent } from './carousel/carousel.component';
+
+import { MainPageComponent } from './main-page/main-page.component';
+import { GeneralPageComponent } from './main-page/general-page/general-page.component';
+import { GenrePageComponent } from './main-page/genre-page/genre-page.component';
+
+import { MainShowsPageComponent } from './main-shows-page/main-shows-page.component';
+import { GeneralShowPageComponent } from './main-shows-page/general-show-page/general-show-page.component';
+import { GenreShowsPageComponent } from './main-shows-page/genre-shows-page/genre-shows-page.component';
+
+import { MovieCardComponent } from './movie-card/movie-card.component';
+import { MoviePageComponent } from './movie-page/movie-page.component';
+
+import { RecommendedSectionComponent } from './sections/recommended-section/recommended-section.component';
+import { SimilarSectionComponent } from './sections/similar-section/similar-section.component';
+import { CastSectionComponent } from './sections/cast-section/cast-section.component';
+import { CastMemberComponent } from './sections/cast-section/cast-member/cast-member.component';
+import { ReviewsSectionComponent } from './sections/reviews-section/reviews-section.component';
+import { ReviewComponent } from './sections/reviews-section/review/review.component';
+
 import { SearchPageComponent } from './search-page/search-page.component';
-import { YearPipe } from './year.pipe';
 import { SearchPageMoviesComponent } from './search-page/search-page-movies/search-page-movies.component';
 import { SearchPageShowsComponent } from './search-page/search-page-shows/search-page-shows.component';
 import { SearchPagePeopleComponent } from './search-page/search-page-people/search-page-people.component';
-import { SearchPageShowComponent } from './search-page/search-page-shows/search-page-show/search-page-show.component';
 import { SearchPagePersonComponent } from './search-page/search-page-people/search-page-person/search-page-person.component';
-import { PaginationComponent } from './pagination/pagination.component';
+
+import { TvShowCardComponent } from './tv-show-card/tv-show-card.component';
+import { TvShowPageComponent } from './tv-show-page/tv-show-page.component';
+import { SeasonsComponent } from './tv-show-page/seasons/seasons.component';
+import { TvShowSeasonCardComponent } from './tv-show-page/seasons/season-card/season-card.component';
+import { EpisodesComponent } from './tv-show-page/seasons/episodes/episodes.component';
 
 const appRoutes: Routes = [
   { 
@@ -41,7 +57,16 @@ const appRoutes: Routes = [
       { path: "genre", component: GenrePageComponent }
     ] 
   },
+  {
+    path: "tv",
+    component: MainShowsPageComponent,
+    children: [
+      { path: "", component: GeneralShowPageComponent },
+      { path: "genre", component: GenreShowsPageComponent }
+    ]
+  },
   { path: "movie", component: MoviePageComponent },
+  { path: "show", component: TvShowPageComponent },
   { path: "search", component: SearchPageComponent },
   { path: "search/movies", component: SearchPageMoviesComponent }
 ];
@@ -54,15 +79,15 @@ const appRoutes: Routes = [
     HeaderComponent,
     MovieCardComponent,
     MoviePageComponent,
-    MovieCarouselComponent,
+    CarouselComponent,
     GenrePageComponent,
     GeneralPageComponent,
     FooterComponent,
     SafePipe,
-    MoviePageRecommendedComponent,
-    MoviePageSimilarComponent,
-    MoviePageCastComponent,
-    MoviePageReviewsComponent,
+    RecommendedSectionComponent,
+    SimilarSectionComponent,
+    CastSectionComponent,
+    ReviewsSectionComponent,
     CastMemberComponent,
     ReviewComponent,
     SearchPageComponent,
@@ -70,9 +95,16 @@ const appRoutes: Routes = [
     SearchPageMoviesComponent,
     SearchPageShowsComponent,
     SearchPagePeopleComponent,
-    SearchPageShowComponent,
     SearchPagePersonComponent,
-    PaginationComponent
+    PaginationComponent,
+    TvShowCardComponent,
+    TvShowPageComponent,
+    TvShowSeasonCardComponent,
+    SeasonsComponent,
+    EpisodesComponent,
+    GeneralShowPageComponent,
+    MainShowsPageComponent,
+    GenreShowsPageComponent
   ],
   imports: [
     BrowserModule,

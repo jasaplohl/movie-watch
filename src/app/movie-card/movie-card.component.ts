@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ImageService } from '../image.service';
+import { ImageService } from '../services/image.service';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 

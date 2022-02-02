@@ -30,19 +30,18 @@
     margin: 0;
   }
 
-  ul {
-    list-style: none;
-    padding: 0;
+  &--items {
+    display: flex;
+    flex-direction: column;
   }
 
   &--item {
+    text-decoration: none;
+    color: $color-font;
+    padding: 0.3rem;
+
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);
-    }
-
-    p {
-      margin: 0;
-      padding: 0.3rem;
     }
   }
 }

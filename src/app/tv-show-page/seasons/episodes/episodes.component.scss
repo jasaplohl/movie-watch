@@ -1,0 +1,27 @@
+@import "../../../../variables.scss";
+
+.episode {
+  display: flex;
+  transition: $transition-time;
+  padding: 1rem;
+
+  &--img-container {
+    width: 200px;
+  }
+
+  &--img {
+    height: 113px;
+    width: 200px;
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+  &--info {
+    padding-left: 1rem;
+    width: 100%;
+  }
+
+  &:hover {
+    background-color: $color-primary-light;
+  }
+}

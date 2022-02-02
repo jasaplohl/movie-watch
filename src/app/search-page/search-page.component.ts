@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { ImageService } from '../image.service';
+import { ImageService } from '../services/image.service';
 import { faStar, faFlag, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -15,8 +15,6 @@ export class SearchPageComponent implements OnInit {
   movies: any;
   tvShows: any;
   people: any;
-
-  // movieGenres: any;
   
   faStarIcon = faStar;
   faFlagIcon = faFlag;
@@ -24,7 +22,6 @@ export class SearchPageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, public service: ImageService) {
     this.search_term = "";
-    // this.movieGenres = {};
   }
 
   ngOnInit(): void {
@@ -37,8 +34,6 @@ export class SearchPageComponent implements OnInit {
         this.fetchPerson();
       }
     });
-    
-    // this.fetchMovieGenres();
   }
 
   fetchMovies() {
@@ -95,23 +90,5 @@ export class SearchPageComponent implements OnInit {
         console.error(error);
       });
   }
-
-  // fetchMovieGenres() {
-  //   const urlParams = new URLSearchParams({
-  //     api_key: environment.API_KEY
-  //   });
-  //   const url = environment.API_URL + "/genre/movie/list?" + urlParams;
-
-  //   fetch(url)
-  //     .then(response => response.json())
-  //     .then(response => {
-  //       response.genres.map((genre: any) => {
-  //         this.movieGenres[genre.id] = genre.name;
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-  // }
 
 }

@@ -1,0 +1,16 @@
+<div>
+  <div *ngIf="movieId">
+    <ul class="similar">
+      <app-movie-card
+        *ngFor="let movie of movies"
+        [movie]="movie"></app-movie-card>
+    </ul>
+  </div>
+  <div *ngIf="showId">
+    <ul class="similar">
+      <app-tv-show-card
+        *ngFor="let show of shows"
+        [tvShow]="show"></app-tv-show-card>
+    </ul>
+  </div>
+</div>
