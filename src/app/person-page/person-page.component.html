@@ -11,10 +11,14 @@
     </div>
     <p>{{person.biography}}</p>
 
+    <hr>
+
     <!-- Movie credits -->
     <app-person-credits
       type="movies"
       [personId]="person.id"></app-person-credits>
+
+    <hr>
 
     <!-- TV show credits -->
     <app-person-credits

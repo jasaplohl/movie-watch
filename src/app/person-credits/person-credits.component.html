@@ -1,22 +1,38 @@
-<div *ngIf="credits">
-  <h2>{{(type === 'movies') ? 'Movie credits' : 'TV show credits'}}</h2>
-  <!-- Cast -->
-  <div *ngIf="credits.cast.length > 0">
-    <h3>Cast ({{credits.cast.length}} results)</h3>
-    <div>
-      <app-cast-credit
-        *ngFor="let castCredit of credits.cast"
-        [credit]="castCredit"></app-cast-credit>
-    </div>
-  </div>
+<div 
+  *ngIf="credits">
+  <h2 class="font-secondary">{{(type === 'movies') ? 'Movie credits' : 'TV show credits'}}</h2>
 
-  <!-- Crew -->
-  <div *ngIf="credits.crew.length > 0">
-    <h3>Crew ({{credits.crew.length}} results)</h3>
-    <div>
-      <app-crew-credit
-        *ngFor="let crewCredit of credits.crew"
-        [credit]="crewCredit"></app-crew-credit>
+  <div class="credits-section">
+    <!-- Cast -->
+    <div *ngIf="credits.cast.length > 0">
+      <h3 #castScrollAnchor class="font-secondary">Cast ({{credits.cast.length}} results)</h3>
+      <ul>
+        <app-cast-credit
+          *ngFor="let castCredit of displayedCastCredits"
+          [credit]="castCredit"
+          [type]="type"></app-cast-credit>
+      </ul>
+      <app-pagination
+        *ngIf="total_cast_pages > 1"
+        [current_page]="current_cast_page"
+        [total_pages]="total_cast_pages"
+        (pageChange)="onCastPageChange($event, castScrollAnchor)"></app-pagination>
+    </div>
+
+    <!-- Crew -->
+    <div *ngIf="credits.crew.length > 0">
+      <h3 #crewScrollAnchor class="font-secondary">Crew ({{credits.crew.length}} results)</h3>
+      <ul>
+        <app-crew-credit
+          *ngFor="let crewCredit of displayedCrewCredits"
+          [credit]="crewCredit"
+          [type]="type"></app-crew-credit>
+      </ul>
+      <app-pagination
+        *ngIf="total_crew_pages > 1"
+        [current_page]="current_crew_page"
+        [total_pages]="total_crew_pages"
+        (pageChange)="onCrewPageChange($event, crewScrollAnchor)"></app-pagination>
     </div>
   </div>
 </div>

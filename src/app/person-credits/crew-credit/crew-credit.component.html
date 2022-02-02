@@ -1,4 +1,6 @@
-<li class="crew-credit">
+<li
+  (click)="onItemClick()"
+  class="crew-credit">
   <div class="d-flex justify-content-between">
     <div class="d-flex">
       <img class="crew-credit--img" [src]="service.getMoviePosterPathUrl(credit)"/>
