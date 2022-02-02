@@ -1,28 +1,39 @@
 <div>
-  <h1>{{title}}</h1>
+  <h1
+    [ngClass]="{'clickable': url}"
+    (click)="onTitleClick()">{{title}}</h1>
   <div class="d-flex align-items-center">
     <button 
       class="scroll-btn"
       (click)="scrollLeft()">
       <fa-icon [icon]="faLeft"></fa-icon> 
     </button>
+    <!-- Movies -->
     <ul 
       *ngIf="movies"
       #list 
       class="d-flex movie-carousel" >
       <app-movie-card
         *ngFor="let movie of movies"
-        [movie]="movie">
-      </app-movie-card>
+        [movie]="movie"></app-movie-card>
     </ul>
+    <!-- Shows -->
     <ul 
       *ngIf="shows"
       #list 
       class="d-flex movie-carousel" >
       <app-tv-show-card
         *ngFor="let show of shows"
-        [tvShow]="show">
-      </app-tv-show-card>
+        [tvShow]="show"></app-tv-show-card>
+    </ul>
+    <!-- People -->
+    <ul 
+      *ngIf="people"
+      #list 
+      class="d-flex movie-carousel" >
+      <app-person-card
+        *ngFor="let person of people"
+        [person]="person"></app-person-card>
     </ul>
     <button 
       class="scroll-btn"

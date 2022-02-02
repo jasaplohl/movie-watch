@@ -20,7 +20,7 @@ export class MainPageComponent implements OnInit {
   }
 
   onGenreClick(genre: any) {
-    this.router.navigate(["/genre", { 
+    this.router.navigate(["/movies/genre", { 
       id: genre.id,
       name: genre.name
     }]);

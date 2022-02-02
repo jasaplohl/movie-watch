@@ -29,3 +29,12 @@ h1 {
     color: $color-font;
   }
 }
+
+.clickable {
+  transition: $transition-time;
+  
+  &:hover {
+    cursor: pointer;
+    color: rgba($color-secondary, 0.7);
+  }
+}

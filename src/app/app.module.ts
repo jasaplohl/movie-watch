@@ -22,6 +22,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { CarouselComponent } from './carousel/carousel.component';
 
 // Main page
+import { HomePageComponent } from './home-page/home-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { GeneralPageComponent } from './main-page/general-page/general-page.component';
 import { GenrePageComponent } from './main-page/genre-page/genre-page.component';
@@ -65,8 +66,9 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { SearchPageSeeAllComponent } from './search-page/search-page-see-all/search-page-see-all.component';
 
 const appRoutes: Routes = [
+  { path: "", component: HomePageComponent},
   { 
-    path: "", 
+    path: "movies", 
     component: MainPageComponent,
     children: [
       { path: "", component: GeneralPageComponent },
@@ -125,7 +127,8 @@ const appRoutes: Routes = [
     PersonPageComponent,
     PersonCreditsComponent,
     CastCreditComponent,
-    CrewCreditComponent
+    CrewCreditComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
