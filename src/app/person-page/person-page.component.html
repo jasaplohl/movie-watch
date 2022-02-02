@@ -1,1 +1,39 @@
-<p>person-page works!</p>
+<div class="app-container" *ngIf="!error_message; else error">
+  <div *ngIf="person">
+    <h1>{{person.name}}</h1>
+    <p>{{person.known_for_department}}</p> <!-- TODO: pill -->
+    <div class="d-flex">
+      <img [src]="service.getActorProfilePathUrl(person.profile_path)" [title]="person.name" />
+      <div>
+        <p>Born {{person.birthday | date}} in {{person.place_of_birth}}</p>
+        <p *ngIf="person.deathday">Death: {{person.deathday | date}}</p>
+      </div>
+    </div>
+    <p>{{person.biography}}</p>
+
+    <!-- Movie credits -->
+    <app-person-credits
+      type="movies"
+      [personId]="person.id"></app-person-credits>
+
+    <!-- TV show credits -->
+    <app-person-credits
+      type="tv"
+      [personId]="person.id"></app-person-credits>
+
+    <!-- <div>
+      <img
+        *ngFor="let image of person.images.profiles" 
+        [src]="service.getImageUrl(image.file_path)"/>
+    </div>
+    <div>
+      <img
+        *ngFor="let image of person.tagged_images.results" 
+        [src]="service.getImageUrl(image.file_path)"/>
+    </div> -->
+  </div>
+</div>
+
+<ng-template #error class="app-container d-flex justify-content-center">
+  <p class="text-center">{{error_message}}</p>
+</ng-template>

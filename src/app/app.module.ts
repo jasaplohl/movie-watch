@@ -48,6 +48,9 @@ import { EpisodesComponent } from './tv-show-page/seasons/episodes/episodes.comp
 // People
 import { PersonCardComponent } from './person-card/person-card.component';
 import { PersonPageComponent } from './person-page/person-page.component';
+import { PersonCreditsComponent } from './person-credits/person-credits.component';
+import { CastCreditComponent } from './person-credits/cast-credit/cast-credit.component';
+import { CrewCreditComponent } from './person-credits/crew-credit/crew-credit.component';
 
 // Page sections
 import { RecommendedSectionComponent } from './sections/recommended-section/recommended-section.component';
@@ -125,7 +128,10 @@ const appRoutes: Routes = [
     GenreShowsPageComponent,
     MainPeoplePageComponent,
     PersonCardComponent,
-    PersonPageComponent
+    PersonPageComponent,
+    PersonCreditsComponent,
+    CastCreditComponent,
+    CrewCreditComponent
   ],
   imports: [
     BrowserModule,

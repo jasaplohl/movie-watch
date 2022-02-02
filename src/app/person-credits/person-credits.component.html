@@ -1,0 +1,22 @@
+<div *ngIf="credits">
+  <h2>{{(type === 'movies') ? 'Movie credits' : 'TV show credits'}}</h2>
+  <!-- Cast -->
+  <div *ngIf="credits.cast.length > 0">
+    <h3>Cast</h3>
+    <div>
+      <app-cast-credit
+        *ngFor="let castCredit of credits.cast"
+        [credit]="castCredit"></app-cast-credit>
+    </div>
+  </div>
+
+  <!-- Crew -->
+  <div *ngIf="credits.crew.length > 0">
+    <h3>Crew</h3>
+    <div>
+      <app-crew-credit
+        *ngFor="let crewCredit of credits.crew"
+        [credit]="crewCredit"></app-crew-credit>
+    </div>
+  </div>
+</div>
