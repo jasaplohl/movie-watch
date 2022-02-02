@@ -45,6 +45,10 @@ import { SeasonsComponent } from './tv-show-page/seasons/seasons.component';
 import { TvShowSeasonCardComponent } from './tv-show-page/seasons/season-card/season-card.component';
 import { EpisodesComponent } from './tv-show-page/seasons/episodes/episodes.component';
 
+// People
+import { PersonCardComponent } from './person-card/person-card.component';
+import { PersonPageComponent } from './person-page/person-page.component';
+
 // Page sections
 import { RecommendedSectionComponent } from './sections/recommended-section/recommended-section.component';
 import { SimilarSectionComponent } from './sections/similar-section/similar-section.component';
@@ -59,7 +63,6 @@ import { SearchPageMoviesComponent } from './search-page/search-page-movies/sear
 import { SearchPageShowsComponent } from './search-page/search-page-shows/search-page-shows.component';
 import { SearchPagePeopleComponent } from './search-page/search-page-people/search-page-people.component';
 import { SearchPagePersonComponent } from './search-page/search-page-people/search-page-person/search-page-person.component';
-import { PersonCardComponent } from './person-card/person-card.component';
 
 const appRoutes: Routes = [
   { 
@@ -79,6 +82,7 @@ const appRoutes: Routes = [
     ]
   },
   { path: "people", component: MainPeoplePageComponent },
+  { path: "person", component: PersonPageComponent },
   { path: "movie", component: MoviePageComponent },
   { path: "show", component: TvShowPageComponent },
   { path: "search", component: SearchPageComponent },
@@ -120,7 +124,8 @@ const appRoutes: Routes = [
     MainShowsPageComponent,
     GenreShowsPageComponent,
     MainPeoplePageComponent,
-    PersonCardComponent
+    PersonCardComponent,
+    PersonPageComponent
   ],
   imports: [
     BrowserModule,
