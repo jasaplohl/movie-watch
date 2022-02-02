@@ -1,1 +1,17 @@
-<p>tv-credit works!</p>
+<li class="crew-credit">
+  <div class="d-flex justify-content-between">
+    <div class="d-flex">
+      <img class="crew-credit--img" [src]="service.getMoviePosterPathUrl(credit)"/>
+      <div>
+        <p class="font-bold">
+          {{credit.original_title ? credit.original_title : credit.name}} 
+          <span *ngIf="getReleaseDate()">({{getReleaseDate() | year}})</span>
+        </p>
+        <p>Department: {{credit.department}}</p>
+        <p>Job: {{credit.job}}</p>
+        <p *ngIf="credit.episode_count">Episodes: {{credit.episode_count}}</p>
+      </div>
+    </div>
+    <p>{{credit.vote_average}}</p>
+  </div>
+</li>

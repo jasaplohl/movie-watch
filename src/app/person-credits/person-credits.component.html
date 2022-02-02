@@ -2,7 +2,7 @@
   <h2>{{(type === 'movies') ? 'Movie credits' : 'TV show credits'}}</h2>
   <!-- Cast -->
   <div *ngIf="credits.cast.length > 0">
-    <h3>Cast</h3>
+    <h3>Cast ({{credits.cast.length}} results)</h3>
     <div>
       <app-cast-credit
         *ngFor="let castCredit of credits.cast"
@@ -12,7 +12,7 @@
 
   <!-- Crew -->
   <div *ngIf="credits.crew.length > 0">
-    <h3>Crew</h3>
+    <h3>Crew ({{credits.crew.length}} results)</h3>
     <div>
       <app-crew-credit
         *ngFor="let crewCredit of credits.crew"

@@ -1,0 +1,16 @@
+@import "../../../variables.scss";
+
+.crew-credit {
+  list-style: none;
+  transition: $transition-time;
+
+  &:hover {
+    background-color: $color-primary-light;
+  }
+
+  &--img {
+    height: 120px;
+    width: 80px;
+    object-fit: cover;
+  }
+}
