@@ -2,9 +2,9 @@
   <div *ngIf="!error_message; else noMovies">
     <h1 class="other-page--title">{{title.split("_").join(" ") | capitalize}}</h1>
     <ul class="other-page--list">
-      <app-movie-card
-        *ngFor="let movie of movies"
-        [movie]="movie"></app-movie-card>
+      <app-tv-show-card
+        *ngFor="let show of shows"
+        [tvShow]="show"></app-tv-show-card>
     </ul>
     <app-pagination
       (pageChange)="onPageChange($event)"

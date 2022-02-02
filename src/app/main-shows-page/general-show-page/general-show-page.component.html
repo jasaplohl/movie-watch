@@ -1,14 +1,22 @@
 <div>
   <app-carousel
     title="Popular"
+    url="/tv/other"
+    [urlParams]="{type: 'popular'}"
     [shows]="popular"></app-carousel>
   <app-carousel
     title="Top Rated"
+    url="/tv/other"
+    [urlParams]="{type: 'top_rated'}"
     [shows]="top_rated"></app-carousel>
   <app-carousel
     title="Airing Today"
+    url="/tv/other"
+    [urlParams]="{type: 'airing_today'}"
     [shows]="airing_today"></app-carousel>
   <app-carousel
     title="On The Air"
+    url="/tv/other"
+    [urlParams]="{type: 'on_the_air'}"
     [shows]="on_the_air"></app-carousel>
 </div>

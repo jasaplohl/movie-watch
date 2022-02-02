@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // Pipes
 import { SafePipe } from './pipes/safe.pipe';
 import { YearPipe } from './pipes/year.pipe';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
 
 // Services
 import { ImageService } from './services/image.service';
@@ -21,8 +22,9 @@ import { FooterComponent } from './footer/footer.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { CarouselComponent } from './carousel/carousel.component';
 
-// Main page
 import { HomePageComponent } from './home-page/home-page.component';
+
+// Main page
 import { MainPageComponent } from './main-page/main-page.component';
 import { GeneralPageComponent } from './main-page/general-page/general-page.component';
 import { GenrePageComponent } from './main-page/genre-page/genre-page.component';
@@ -32,6 +34,7 @@ import { OtherPageComponent } from './main-page/other-page/other-page.component'
 import { MainShowsPageComponent } from './main-shows-page/main-shows-page.component';
 import { GeneralShowPageComponent } from './main-shows-page/general-show-page/general-show-page.component';
 import { GenreShowsPageComponent } from './main-shows-page/genre-shows-page/genre-shows-page.component';
+import { OtherShowsPageComponent } from './main-shows-page/other-shows-page/other-shows-page.component';
 
 // Main people page
 import { MainPeoplePageComponent } from './main-people-page/main-people-page.component';
@@ -82,7 +85,8 @@ const appRoutes: Routes = [
     component: MainShowsPageComponent,
     children: [
       { path: "", component: GeneralShowPageComponent },
-      { path: "genre", component: GenreShowsPageComponent }
+      { path: "genre", component: GenreShowsPageComponent },
+      { path: "other", component: OtherShowsPageComponent }
     ]
   },
   { path: "people", component: MainPeoplePageComponent },
@@ -131,7 +135,9 @@ const appRoutes: Routes = [
     CastCreditComponent,
     CrewCreditComponent,
     HomePageComponent,
-    OtherPageComponent
+    OtherPageComponent,
+    OtherShowsPageComponent,
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,
