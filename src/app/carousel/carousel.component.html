@@ -6,11 +6,23 @@
       (click)="scrollLeft()">
       <fa-icon [icon]="faLeft"></fa-icon> 
     </button>
-    <ul class="d-flex movie-carousel" #list>
+    <ul 
+      *ngIf="movies"
+      #list 
+      class="d-flex movie-carousel" >
       <app-movie-card
         *ngFor="let movie of movies"
         [movie]="movie">
       </app-movie-card>
+    </ul>
+    <ul 
+      *ngIf="shows"
+      #list 
+      class="d-flex movie-carousel" >
+      <app-tv-show-card
+        *ngFor="let show of shows"
+        [tvShow]="show">
+      </app-tv-show-card>
     </ul>
     <button 
       class="scroll-btn"

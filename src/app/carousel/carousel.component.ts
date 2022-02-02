@@ -2,13 +2,14 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-movie-carousel',
-  templateUrl: './movie-carousel.component.html',
-  styleUrls: ['./movie-carousel.component.scss']
+  selector: 'app-carousel',
+  templateUrl: './carousel.component.html',
+  styleUrls: ['./carousel.component.scss']
 })
-export class MovieCarouselComponent implements OnInit {
+export class CarouselComponent implements OnInit {
   @Input() declare title: String;
   @Input() declare movies: any;
+  @Input() declare shows: any;
 
   @ViewChild("list") list!: ElementRef;
 

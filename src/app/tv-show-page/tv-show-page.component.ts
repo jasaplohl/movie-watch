@@ -60,7 +60,7 @@ export class TvShowPageComponent implements OnInit {
   }
 
   onGenreClick(genre: any) {
-    this.router.navigate(["/genre", { 
+    this.router.navigate(["/tv/genre", { 
       id: genre.id,
       name: genre.name
     }]);

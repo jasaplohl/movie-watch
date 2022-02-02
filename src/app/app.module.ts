@@ -16,6 +16,7 @@ import { NavigationMenuComponent } from './header/navigation-menu/navigation-men
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 import { MainPageComponent } from './main-page/main-page.component';
 import { GeneralPageComponent } from './main-page/general-page/general-page.component';
@@ -26,7 +27,6 @@ import { GeneralShowPageComponent } from './main-shows-page/general-show-page/ge
 import { GenreShowsPageComponent } from './main-shows-page/genre-shows-page/genre-shows-page.component';
 
 import { MovieCardComponent } from './movie-card/movie-card.component';
-import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
 import { MoviePageComponent } from './movie-page/movie-page.component';
 
 import { RecommendedSectionComponent } from './sections/recommended-section/recommended-section.component';
@@ -79,7 +79,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     MovieCardComponent,
     MoviePageComponent,
-    MovieCarouselComponent,
+    CarouselComponent,
     GenrePageComponent,
     GeneralPageComponent,
     FooterComponent,
