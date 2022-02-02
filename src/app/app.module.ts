@@ -26,6 +26,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { GeneralPageComponent } from './main-page/general-page/general-page.component';
 import { GenrePageComponent } from './main-page/genre-page/genre-page.component';
+import { OtherPageComponent } from './main-page/other-page/other-page.component';
 
 // Main shows page
 import { MainShowsPageComponent } from './main-shows-page/main-shows-page.component';
@@ -72,7 +73,8 @@ const appRoutes: Routes = [
     component: MainPageComponent,
     children: [
       { path: "", component: GeneralPageComponent },
-      { path: "genre", component: GenrePageComponent }
+      { path: "genre", component: GenrePageComponent },
+      { path: "other", component: OtherPageComponent }
     ] 
   },
   {
@@ -128,7 +130,8 @@ const appRoutes: Routes = [
     PersonCreditsComponent,
     CastCreditComponent,
     CrewCreditComponent,
-    HomePageComponent
+    HomePageComponent,
+    OtherPageComponent
   ],
   imports: [
     BrowserModule,

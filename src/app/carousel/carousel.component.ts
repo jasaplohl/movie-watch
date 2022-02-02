@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class CarouselComponent implements OnInit {
   @Input() declare title: String;
   @Input() declare url: String;
+  @Input() declare urlParams: any;
   @Input() declare movies: any;
   @Input() declare shows: any;
   @Input() declare people: any;
@@ -34,7 +35,11 @@ export class CarouselComponent implements OnInit {
 
   onTitleClick(): void {
     if(this.url) {
-      this.router.navigate([this.url]);
+      if(this.urlParams) {
+        this.router.navigate([this.url, this.urlParams]);
+      } else {
+        this.router.navigate([this.url]);
+      }
     }
   }
 

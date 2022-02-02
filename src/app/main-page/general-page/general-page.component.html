@@ -1,14 +1,22 @@
 <div>
   <app-carousel
     title="Upcoming"
+    url="/movies/other"
+    [urlParams]="{type: 'upcomming'}"
     [movies]="upcomingMovies"></app-carousel>
   <app-carousel
     title="Now Playing"
+    url="/movies/other"
+    [urlParams]="{type: 'now_playing'}"
     [movies]="nowPlayingMovies"></app-carousel>
   <app-carousel
     title="Popular"
+    url="/movies/other"
+    [urlParams]="{type: 'popular'}"
     [movies]="popularMovies"></app-carousel>
   <app-carousel
     title="Top rated"
+    url="/movies/other"
+    [urlParams]="{type: 'top_rated'}"
     [movies]="topRatedMovies"></app-carousel>
 </div>
