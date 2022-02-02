@@ -48,9 +48,9 @@ import { EpisodesComponent } from './tv-show-page/seasons/episodes/episodes.comp
 // People
 import { PersonCardComponent } from './person-card/person-card.component';
 import { PersonPageComponent } from './person-page/person-page.component';
-import { PersonCreditsComponent } from './person-credits/person-credits.component';
-import { CastCreditComponent } from './person-credits/cast-credit/cast-credit.component';
-import { CrewCreditComponent } from './person-credits/crew-credit/crew-credit.component';
+import { PersonCreditsComponent } from './person-page/person-credits/person-credits.component';
+import { CastCreditComponent } from './person-page/person-credits/cast-credit/cast-credit.component';
+import { CrewCreditComponent } from './person-page/person-credits/crew-credit/crew-credit.component';
 
 // Page sections
 import { RecommendedSectionComponent } from './sections/recommended-section/recommended-section.component';
@@ -62,9 +62,7 @@ import { ReviewComponent } from './sections/reviews-section/review/review.compon
 
 // Search page
 import { SearchPageComponent } from './search-page/search-page.component';
-import { SearchPageMoviesComponent } from './search-page/search-page-movies/search-page-movies.component';
-import { SearchPageShowsComponent } from './search-page/search-page-shows/search-page-shows.component';
-import { SearchPagePeopleComponent } from './search-page/search-page-people/search-page-people.component';
+import { SearchPageSeeAllComponent } from './search-page/search-page-see-all/search-page-see-all.component';
 
 const appRoutes: Routes = [
   { 
@@ -88,9 +86,7 @@ const appRoutes: Routes = [
   { path: "movie", component: MoviePageComponent },
   { path: "show", component: TvShowPageComponent },
   { path: "search", component: SearchPageComponent },
-  { path: "search/all", component: SearchPageMoviesComponent },
-  // { path: "search/tv", component: SearchPageShowsComponent },
-  // { path: "search/people", component: SearchPagePeopleComponent }
+  { path: "search/all", component: SearchPageSeeAllComponent }
 ];
 
 @NgModule({
@@ -114,9 +110,7 @@ const appRoutes: Routes = [
     ReviewComponent,
     SearchPageComponent,
     YearPipe,
-    SearchPageMoviesComponent,
-    SearchPageShowsComponent,
-    SearchPagePeopleComponent,
+    SearchPageSeeAllComponent,
     PaginationComponent,
     TvShowCardComponent,
     TvShowPageComponent,

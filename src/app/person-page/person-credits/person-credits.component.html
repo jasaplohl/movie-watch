@@ -1,5 +1,5 @@
 <div 
-  *ngIf="credits"
+  *ngIf="credits && !(credits.cast.length === 0 && credits.crew.length === 0)"
   class="pt-3">
   <h2 class="font-secondary">{{(type === 'movies') ? 'Movie credits' : 'TV show credits'}}</h2>
 

@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-search-page-movies',
-  templateUrl: './search-page-movies.component.html',
-  styleUrls: ['./search-page-movies.component.scss']
+  selector: 'app-search-page-see-all',
+  templateUrl: './search-page-see-all.component.html',
+  styleUrls: ['./search-page-see-all.component.scss']
 })
-export class SearchPageMoviesComponent implements OnInit {
+export class SearchPageSeeAllComponent implements OnInit {
 
   type: string;
   search_term: string;

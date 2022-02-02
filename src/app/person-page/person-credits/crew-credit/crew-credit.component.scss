@@ -1,6 +1,6 @@
-@import "../../../variables.scss";
+@import "../../../../variables.scss";
 
-.cast-credit {
+.crew-credit {
   list-style: none;
   transition: $transition-time;
 
@@ -19,7 +19,7 @@
     width: 100%;
     padding: 0.5rem;
   }
-
+  
   &--rating {
     font-weight: 600;
     margin: 0;
