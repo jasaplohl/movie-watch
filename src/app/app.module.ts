@@ -65,7 +65,6 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { SearchPageMoviesComponent } from './search-page/search-page-movies/search-page-movies.component';
 import { SearchPageShowsComponent } from './search-page/search-page-shows/search-page-shows.component';
 import { SearchPagePeopleComponent } from './search-page/search-page-people/search-page-people.component';
-import { SearchPagePersonComponent } from './search-page/search-page-people/search-page-person/search-page-person.component';
 
 const appRoutes: Routes = [
   { 
@@ -89,7 +88,9 @@ const appRoutes: Routes = [
   { path: "movie", component: MoviePageComponent },
   { path: "show", component: TvShowPageComponent },
   { path: "search", component: SearchPageComponent },
-  { path: "search/movies", component: SearchPageMoviesComponent }
+  { path: "search/all", component: SearchPageMoviesComponent },
+  // { path: "search/tv", component: SearchPageShowsComponent },
+  // { path: "search/people", component: SearchPagePeopleComponent }
 ];
 
 @NgModule({
@@ -116,7 +117,6 @@ const appRoutes: Routes = [
     SearchPageMoviesComponent,
     SearchPageShowsComponent,
     SearchPagePeopleComponent,
-    SearchPagePersonComponent,
     PaginationComponent,
     TvShowCardComponent,
     TvShowPageComponent,

@@ -1,7 +1,7 @@
 <div class="app-container">
   <div *ngIf="movies && movies.results.length > 0" class="pb-3">
     <h1 class="search-result--title">Movies</h1>
-    <a class="search-result--see-all-link" [routerLink]="['/search/movies', {q: search_term}]">
+    <a class="search-result--see-all-link" [routerLink]="['/search/all', {q: search_term, type: 'movie'}]">
       See all the movies ({{movies.total_results}}) <fa-icon [icon]="faRightIcon" class="font-secondary"></fa-icon> 
     </a>
     <div class="search-result--movie-container">
@@ -14,7 +14,7 @@
   
   <div *ngIf="tvShows && tvShows.results.length > 0" class="pb-3">
     <h1 class="search-result--title">TV Shows</h1>
-    <a class="search-result--see-all-link" href="#">
+    <a class="search-result--see-all-link" [routerLink]="['/search/all', {q: search_term, type: 'tv'}]">
       See all the TV shows ({{tvShows.total_results}}) <fa-icon [icon]="faRightIcon"></fa-icon> 
     </a>
     <div class="search-result--movie-container">
@@ -26,12 +26,13 @@
 
   <div *ngIf="people && people.results.length > 0" class="pb-3">
     <h1 class="search-result--title">People</h1>
-    <a class="search-result--see-all-link" href="#">
+    <a class="search-result--see-all-link" [routerLink]="['/search/all', {q: search_term, type: 'person'}]">
       See all the people ({{people.total_results}}) <fa-icon [icon]="faRightIcon" class="font-secondary"></fa-icon> 
     </a>
-    <app-search-page-person 
-      *ngFor="let person of people.results.slice(0, 5)"
-      [person]="person">
-    </app-search-page-person >
+    <div class="search-result--movie-container">
+      <app-person-card
+        *ngFor="let person of people.results.slice(0, 10)"
+        [person]="person"></app-person-card>
+      </div>
   </div>
 </div>
