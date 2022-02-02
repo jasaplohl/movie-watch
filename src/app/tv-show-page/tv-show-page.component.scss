@@ -66,9 +66,8 @@
   }
 
   &--backdrop {
-    max-width: $container-width;
+    width: 100%;
     object-fit: cover;
-    padding-inline: 2rem;
   }
 
   &--network-logo-container {
