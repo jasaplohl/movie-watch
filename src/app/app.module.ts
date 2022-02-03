@@ -68,7 +68,6 @@ import { ReviewComponent } from './sections/reviews-section/review/review.compon
 // Search page
 import { SearchPageComponent } from './search-page/search-page.component';
 import { SearchPageSeeAllComponent } from './search-page/search-page-see-all/search-page-see-all.component';
-import { APP_BASE_HREF } from '@angular/common';
 
 const appRoutes: Routes = [
   { path: "", component: HomePageComponent},
@@ -148,8 +147,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    ImageService,
-    { provide: APP_BASE_HREF, useValue: '/movie-watch/' }
+    ImageService
   ],
   bootstrap: [AppComponent]
 })
