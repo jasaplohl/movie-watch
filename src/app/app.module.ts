@@ -146,7 +146,9 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ImageService],
+  providers: [
+    ImageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
