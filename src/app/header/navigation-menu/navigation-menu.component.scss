@@ -44,6 +44,7 @@
     display: flex;
     padding: 0.3rem;
     transition: $transition-time;
+    border-radius: 1rem;
 
     &:hover {
       background-color: $color-primary;//rgba(0, 0, 0, 0.1);
@@ -58,6 +59,7 @@
   &--item-title {
     text-decoration: none;
     color: $color-font;
+    font-weight: 500;
   }
 
   &--sublist-item {
