@@ -122,3 +122,35 @@
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
 }
+
+@media screen and (max-width: 750px) {
+  .show-page {
+    &--language {
+      display: none;
+    }
+
+    &--poster {
+      display: none;
+    }
+
+    &--section-button {
+      width: 50%;
+    }
+  }
+
+  .vote-max {
+    display: none;
+  }
+
+  .votes-total {
+    display: none;
+  }
+
+  .cast-button {
+    display: none;
+  }
+
+  .reviews-button {
+    display: none;
+  }
+}

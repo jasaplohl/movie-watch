@@ -4,6 +4,7 @@
   background-color: $color-primary-dark;
   padding: $padding;
   display: flex;
+  justify-content: space-between;
 
   &--left {
     width: 33%;
@@ -19,10 +20,11 @@
     width: 33%;
     display: flex;
     justify-content: flex-end;
+  }
 
-    input {
-      width: fit-content;
-    }
+  &--search-bar {
+    transition: $transition-time;
+    width: 0%;
   }
 
   &--menu-btn {
@@ -40,5 +42,16 @@
     font-size: $font-size-lg;
     margin: 0;
     text-decoration: none;
+  }
+
+}
+
+@media screen and (max-width: 750px) {
+  .hide {
+    display: none;
+  }
+
+  .wide {
+    width: 100%;
   }
 }

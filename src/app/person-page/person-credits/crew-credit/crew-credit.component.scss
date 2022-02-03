@@ -29,3 +29,27 @@
     }
   }
 }
+
+@media screen and (max-width: 750px) {
+  .crew-credit {
+    &--rating {
+      white-space: nowrap;
+    }
+
+    &--release-date {
+      display: none;
+    }
+
+    &--department {
+      display: none;
+    }
+
+    &--job {
+      display: none;
+    }
+
+    &--episodes {
+      display:none;
+    }
+  }
+}

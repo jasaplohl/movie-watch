@@ -25,3 +25,22 @@
     background-color: $color-primary-light;
   }
 }
+
+@media screen and (max-width: 750px) {
+  .episode {
+    padding: 0.5rem;
+
+    &--img-container {
+      width: 100px;
+    }
+
+    &--img {
+      width: 100px;
+      height: 60px;
+    }
+
+    &--overview {
+      display: none;
+    }
+  }
+}

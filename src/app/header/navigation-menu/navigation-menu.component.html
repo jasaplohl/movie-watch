@@ -5,12 +5,80 @@
         <fa-icon [icon]="faTimesIcon"></fa-icon>
       </p>
     </div>
-    <p class="nav-menu--title">Categories</p>
-    <div class="nav-menu--items">
-      <a (click)="closeMenu()" [routerLink]="['/']" class="nav-menu--item">Home</a>
-      <a (click)="closeMenu()" [routerLink]="['/movies']" class="nav-menu--item">Movies</a>
-      <a (click)="closeMenu()" [routerLink]="['/tv']" class="nav-menu--item">TV Shows</a>
-      <a (click)="closeMenu()" [routerLink]="['/people']" class="nav-menu--item">Actors</a>
-    </div>
+    <div class="d-flex justify-content-center">
+      <div>
+        <p class="nav-menu--title">Categories</p>
+        <div class="nav-menu--menu">
+          <div class="nav-menu--col">
+            <div class="nav-menu--item">
+              <fa-icon class="nav-menu--item-icon" [icon]="faHomeIcon"></fa-icon>
+              <div>
+                <a
+                  class="nav-menu--item-title"
+                  (click)="closeMenu()" 
+                  routerLink="/">
+                  Home
+                </a>
+              </div>
+            </div>
+            
+            <div class="nav-menu--item">
+              <fa-icon class="nav-menu--item-icon" [icon]="faFilmIcon"></fa-icon>
+              <div>
+                <a 
+                  class="nav-menu--item-title"
+                  (click)="closeMenu()" 
+                  routerLink="/movies">
+                  Movies
+                </a>
+                <ul>
+                  <li 
+                    class="nav-menu--sublist-item"
+                    *ngFor="let genre of movieGenres">
+                    <a (click)="closeMenu()" [routerLink]="['/movies/genre', {id: genre.id, name: genre.name}]">
+                      {{genre.name}}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+          <div class="nav-menu--col">
+
+            <div class="nav-menu--item">
+              <fa-icon class="nav-menu--item-icon" [icon]="faTvIcon"></fa-icon>
+              <div>
+                <a
+                  class="nav-menu--item-title"
+                  (click)="closeMenu()" 
+                  routerLink="/tv">
+                  TV Shows
+                </a>
+                <ul>
+                  <li 
+                    class="nav-menu--sublist-item"
+                    *ngFor="let genre of tvGenres">
+                    <a (click)="closeMenu()" [routerLink]="['/tv/genre', {id: genre.id, name: genre.name}]">
+                      {{genre.name}}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+      
+            <div class="nav-menu--item">
+              <fa-icon class="nav-menu--item-icon" [icon]="faUserFriendsIcon"></fa-icon>
+              <a 
+                class="nav-menu--item-title"
+                (click)="closeMenu()" 
+                routerLink="/people">
+                People
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
   </div>
 </div>

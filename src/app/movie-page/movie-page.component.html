@@ -5,14 +5,14 @@
     <div class="d-flex justify-content-between align-items-center">
       <div class="d-flex">
         <p>{{movie.release_date | date}}</p>
-        <p class="ms-2">{{movie.original_language |uppercase}}</p>
+        <p class="ms-2 movie-page--language">{{movie.original_language |uppercase}}</p>
         <p class="ms-2">{{getMovieDuration()}}</p>
       </div>
       <p class="movie-page--rating">
         <fa-icon [icon]="faStarIcon"></fa-icon> 
         <span class="vote-avg">{{movie.vote_average}}</span>
         <span class="vote-max">/10</span> 
-        ({{movie.vote_count}} votes)
+        <span class="votes-total">({{movie.vote_count}} votes)</span>
       </p>
     </div>
     <!-- Genres -->
@@ -68,7 +68,7 @@
           </div>
         </div>
       </div>
-      <img *ngIf="movie.poster_path" [src]="service.getMoviePosterPathUrl(movie)" />
+      <img class="movie-page--poster" *ngIf="movie.poster_path" [src]="service.getMoviePosterPathUrl(movie)" />
     </div>
     <!-- Collection -->
     <div *ngIf="movie.belongs_to_collection && collection">
@@ -94,11 +94,11 @@
           (click)="showSection('recommended')">Recommended</h3>
         <h3 
           [ngClass]="{'selected': chosenSection === 'cast' }"
-          class="movie-page--section-button" 
+          class="movie-page--section-button cast-button" 
           (click)="showSection('cast')">Cast</h3>
         <h3 
           [ngClass]="{'selected': chosenSection === 'reviews' }"
-          class="movie-page--section-button" 
+          class="movie-page--section-button reviews-button" 
           (click)="showSection('reviews')">Reviews</h3>
       </div>
       <div [ngSwitch]="chosenSection">

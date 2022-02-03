@@ -29,3 +29,23 @@
     }
   }
 }
+
+@media screen and (max-width: 750px) {
+  .cast-credit {
+    &--rating {
+      white-space: nowrap;
+    }
+
+    &--release-date {
+      display: none;
+    }
+
+    &--character {
+      display: none;
+    }
+
+    &--episodes {
+      display:none;
+    }
+  }
+}

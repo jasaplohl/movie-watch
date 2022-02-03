@@ -7,14 +7,14 @@
     <h1 class="show-page--title">{{show.name}}</h1>
     <div class="d-flex justify-content-between align-items-center">
       <div class="d-flex">
-        <p class="ms-2">{{show.original_language |uppercase}}</p>
+        <p class="ms-2 show-page--language">{{show.original_language |uppercase}}</p>
         <p class="ms-2">Seasons: {{show.number_of_seasons}} Episodes: {{show.number_of_episodes}}</p>
       </div>
       <p class="show-page--rating">
         <fa-icon [icon]="faStarIcon"></fa-icon> 
         <span class="vote-avg">{{show.vote_average}}</span>
         <span class="vote-max">/10</span> 
-        ({{show.vote_count}} votes)
+        <span class="votes-total">({{show.vote_count}} votes)</span>
       </p>
     </div>
 
@@ -87,7 +87,7 @@
           </div>
         </div>
       </div>
-      <img *ngIf="show.poster_path" [src]="service.getMoviePosterPathUrl(show)" title="Poster image" />
+      <img class="show-page--poster" *ngIf="show.poster_path" [src]="service.getMoviePosterPathUrl(show)" title="Poster image" />
     </div>
     <hr>
 
@@ -110,11 +110,11 @@
           (click)="showSection('recommended')">Recommended</h3>
          <h3 
           [ngClass]="{'selected': chosenSection === 'cast' }"
-          class="show-page--section-button" 
+          class="show-page--section-button cast-button" 
           (click)="showSection('cast')">Cast</h3>
         <h3 
           [ngClass]="{'selected': chosenSection === 'reviews' }"
-          class="show-page--section-button" 
+          class="show-page--section-button reviews-button" 
           (click)="showSection('reviews')">Reviews</h3>
       </div>
       <div [ngSwitch]="chosenSection">
