@@ -76,3 +76,22 @@
     }
   }
 }
+
+@media screen and (max-width: 750px) {
+  .nav-menu {
+
+    &--content {
+      padding-block: 0.5rem;
+      padding-inline: 1rem;
+    }
+
+    &--close-btn {
+      padding: 0;
+    }
+
+    &--col {
+      padding-block: 0;
+      padding-inline: 0.5rem;
+    }
+  }
+}
