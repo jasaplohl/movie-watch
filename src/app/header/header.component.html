@@ -5,16 +5,23 @@
         <fa-icon [icon]="faBarsIcon"></fa-icon> 
       </p>
     </div>
-    <div class="header--middle">
+    <div 
+      class="header--middle"
+      [ngClass]="{ 'hide': search_bar_displayed }">
       <a class="header--title" routerLink="/">MovieWatch</a>
     </div>
-    <form (submit)="onSearch($event)" class="header--right">
+    <form 
+      (submit)="onSearch($event)" 
+      class="header--right"
+      [ngClass]="{ 'wide': search_bar_displayed }">
       <input 
+          #search
           autocomplete="off"
         	type="text" 
           name="search-term"
-          class="form-control" 
+          class="form-control header--search-bar" 
           placeholder="Search" 
+          [ngStyle]="{'width': (search_bar_displayed) ? '100%' : '0%', 'opacity': (search_bar_displayed) ? '1' : '0'}"
           [(ngModel)]="searchTerm"/>
       <button (click)="onSearch()" type="button" class="btn btn-secondary">
         <fa-icon [icon]="faSearchIcon"></fa-icon> 
