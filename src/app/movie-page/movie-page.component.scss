@@ -93,6 +93,10 @@
     object-fit: cover;
   }
 
+  &--poster {
+    height: fit-content;
+  }
+
   &--person-link {
     text-decoration: none;
     color: $color-font;
@@ -115,4 +119,24 @@
   background-color: $color-primary-light;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
+}
+
+@media screen and (max-width: 750px) {
+  .movie-page {
+    &--language {
+      display: none;
+    }
+
+    &--poster {
+      display: none;
+    }
+  }
+
+  .vote-max {
+    display: none;
+  }
+
+  .votes-total {
+    display: none;
+  }
 }
