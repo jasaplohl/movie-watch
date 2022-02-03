@@ -7,16 +7,16 @@
       <div class="d-flex justify-content-between">
         <p>
           <span class="font-bold">{{credit.original_title ? credit.original_title : credit.name}} </span>
-          <span *ngIf="getReleaseDate()">({{getReleaseDate() | year}})</span>
+          <span class="crew-credit--release-date" *ngIf="getReleaseDate()">({{getReleaseDate() | year}})</span>
         </p>
         <p class="crew-credit--rating">
           <fa-icon [icon]="faStarIcon"></fa-icon> 
-          {{credit.vote_average}}
+          {{credit.vote_average.toFixed(1)}}
         </p>
       </div>
-      <p>Department: {{credit.department}}</p>
-      <p>Job: {{credit.job}}</p>
-      <p *ngIf="credit.episode_count">Episodes: {{credit.episode_count}}</p>
+      <p class="crew-credit--department">Department: {{credit.department}}</p>
+      <p><span class="crew-credit--job">Job: </span>{{credit.job}}</p>
+      <p class="crew-credit--episodes" *ngIf="credit.episode_count">Episodes: {{credit.episode_count}}</p>
     </div>
   </div>
 </li>

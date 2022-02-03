@@ -7,15 +7,15 @@
       <div class="d-flex justify-content-between">
         <p>
           <span class="font-bold">{{credit.original_title ? credit.original_title : credit.name}} </span>
-          <span *ngIf="getReleaseDate()">({{getReleaseDate() | year}})</span>
+          <span class="cast-credit--release-date" *ngIf="getReleaseDate()">({{getReleaseDate() | year}})</span>
         </p>
         <p class="cast-credit--rating">
           <fa-icon [icon]="faStarIcon"></fa-icon> 
-          {{credit.vote_average}}
+          {{credit.vote_average.toFixed(1)}}
         </p>
       </div>
-      <p>Character: {{credit.character}}</p>
-      <p *ngIf="credit.episode_count">Episodes: {{credit.episode_count}}</p>
+      <p><span class="cast-credit--character">Character: </span>{{credit.character}}</p>
+      <p class="cast-credit--episodes" *ngIf="credit.episode_count">Episodes: {{credit.episode_count}}</p>
     </div>
   </div>
 </li>
