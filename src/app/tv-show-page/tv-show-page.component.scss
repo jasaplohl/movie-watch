@@ -132,6 +132,10 @@
     &--poster {
       display: none;
     }
+
+    &--section-button {
+      width: 50%;
+    }
   }
 
   .vote-max {
@@ -139,6 +143,14 @@
   }
 
   .votes-total {
+    display: none;
+  }
+
+  .cast-button {
+    display: none;
+  }
+
+  .reviews-button {
     display: none;
   }
 }

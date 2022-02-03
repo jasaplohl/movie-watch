@@ -110,11 +110,11 @@
           (click)="showSection('recommended')">Recommended</h3>
          <h3 
           [ngClass]="{'selected': chosenSection === 'cast' }"
-          class="show-page--section-button" 
+          class="show-page--section-button cast-button" 
           (click)="showSection('cast')">Cast</h3>
         <h3 
           [ngClass]="{'selected': chosenSection === 'reviews' }"
-          class="show-page--section-button" 
+          class="show-page--section-button reviews-button" 
           (click)="showSection('reviews')">Reviews</h3>
       </div>
       <div [ngSwitch]="chosenSection">
